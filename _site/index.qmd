@@ -1,0 +1,344 @@
+---
+title: ""
+format:
+  html:
+    theme: lumen
+    page-layout: full
+---
+
+```{r setup, include=FALSE}
+# dir()
+# here::i_am("ep2024.Rproj")
+
+library(tidyverse)
+library(htmltools)
+
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+
+# sets <- jsonlite::fromJSON(here::here("settings.json"))
+
+
+
+
+library(glue)
+# write_csv(aidat, file = "../data/aidat.csv")
+
+```
+
+
+> Willkommen beim **CampAIgn Tracker**, Ihrer **go-to Plattform** zur Überwachung des Einsatzes von **KI-generierten Inhalten** in politischen Kampagnen. *Derzeit* konzentriert sich unsere Analyse auf *bezahlte Werbung auf Meta-Plattformen* von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in **Targeting-Strategien**, **Ausgabemuster** und **die Verbreitung von KI-generierten Bildern und Botschaften**.
+
+```{r}
+cleaned_content <- readRDS("../data/cleaned_content.rds")
+```
+
+
+
+```{r}
+
+# Generate numbers heavily skewed towards 0
+set.seed(42) # For reproducibility
+random_numbers <- rbeta(n = nrow(cleaned_content), shape1 = 0.5, shape2 = 1)
+
+# Round the result if you want binary outcomes (0 or 1)
+binary_numbers <- random_numbers %>% round()
+
+battery <- readRDS("../data/battery.rds")
+# profile_handle
+# Example: Print the first 10 values
+# head(binary_numbers, 10)
+party_data <- cleaned_content %>% 
+  mutate(ai = binary_numbers) %>% 
+  left_join(battery %>% rename(profile_handle = facebook_handle)) %>% 
+  count(ai, parteizugehorigkeit) %>%
+  group_by(parteizugehorigkeit) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+library(highcharter)
+
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(parteizugehorigkeit) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "parteizugehorigkeit")
+
+# Get the sorted party names
+sorted_parties <- unique(sorted_party_data$parteizugehorigkeit)
+
+# Update the Party Chart
+library(highcharter)
+
+# Updated Party Chart
+party_chart <- highchart() %>%
+  hc_chart(type = "bar", backgroundColor = "#f8f9fa") %>%
+  hc_xAxis(
+    categories = sorted_parties,
+    title = list(text = "Party"),
+    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
+  ) %>%
+  hc_yAxis(
+    title = list(text = "Proportion (%)"),
+    max = 100,
+    labels = list(style = list(fontSize = "12px")),
+    gridLineColor = "#e9ecef"
+  ) %>%
+  hc_add_series(
+    name = "AI = 1",
+    data = sorted_party_data %>% filter(ai == 1) %>% pull(proportion),
+    stack = "ai",
+    color = "#6c757d",
+    dataLabels = list(
+      enabled = TRUE,
+      format = '{point.y:.1f}%',
+      style = list(color = "white", textOutline = "none", fontSize = "12px")
+    )
+  ) %>%
+  hc_add_series(
+    name = "AI = 0",
+    data = sorted_party_data %>% filter(ai == 0) %>% pull(proportion),
+    stack = "ai",
+    color = "#17a2b8",
+    dataLabels = list(
+      enabled = TRUE,
+      format = '{point.y:.1f}%',
+      style = list(color = "white", textOutline = "none", fontSize = "12px")
+    )
+  ) %>%
+  hc_tooltip(
+    useHTML = TRUE,
+    shared = TRUE,
+    headerFormat = "<span style='font-size:14px'><b>{point.key}</b></span><br/>",
+    pointFormat = "<span style='color:{series.color}'>●</span> {series.name}: <b>{point.y:.1f}%</b><br/>"
+  ) %>%
+  hc_plotOptions(bar = list(
+    stacking = "percent",
+    borderWidth = 0,
+    pointPadding = 0.2,
+    groupPadding = 0.1
+  )) %>%
+  hc_legend(
+    layout = "horizontal",
+    align = "center",
+    verticalAlign = "top",
+    itemStyle = list(fontSize = "12px", fontWeight = "normal")
+  ) %>%
+  hc_title(
+    text = "AI Proportion by Party (Sorted)",
+    style = list(fontSize = "18px", fontWeight = "bold")
+  ) %>%
+  hc_size(height = 1200, width = 800)
+
+party_chart
+```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+::: {.panel-tabset}
+
+
+## Overall Statistics
+
+
+
+<br>
+
+<center>
+
+*Timeframe: January 1st - December 13th 2024*
+
+Source: Meta Ad Library. We retrieved all *paid ads* from 160+ *official* German party accounts.
+
+</center>
+
+
+## By Party
+
+### Unique AI Ads
+
+
+### Spending
+
+
+
+## Content Exploring
+
+This only shows the top 3 ads in terms of impressions but future versions will include a browsable table!
+
+::: {.gallery}
+
+<!-- #2585232091623704-adid -->
+
+
+<div class="gallery-item">
+
+<img src="https://i.imgur.com/MIAnb4S.png" alt="Bild 1"/>
+
+<p class="description">
+
+-   **Impressionen:** 125 000 <br>
+
+-   **Total Spend:** 500 €<br>
+
+
+-   **Target Gender:** Women<br>
+-   **Target Age:** All <br>
+-   **Target Location:** Brandenburg <br>
+
+[More info on the ad: Ad Library Link](https://www.facebook.com/ads/library/?active_status=active&ad_type=political_and_issue_ads&country=DE&is_targeted_country=false&media_type=all&q=2585232091623704&search_type=keyword_unordered)
+
+</p>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img src="https://i.imgur.com/pSl9bjt.png" alt="Bild 2"/>
+
+<p class="description">
+
+-   **Impressions:** 120 500<br>
+
+-   **Total Spend:** 1300 €<br>
+
+-   **Target Gender:** Men<br>
+-   **Target Age:** All <br>
+-   **Target Location:** Brandenburg <br>
+
+[More info on the ad: Ad Library Link](https://www.facebook.com/ads/library/?active_status=active&ad_type=political_and_issue_ads&country=DE&is_targeted_country=false&media_type=all&q=1024684215458526&search_type=keyword_unordered)
+
+
+</p>
+
+</div>
+
+<div class="gallery-item">
+
+<img src="https://i.imgur.com/ocrCnnd.png" alt="Bild 3"/>
+
+<p class="description">
+
+-   **Impressions:** 100 000<br>
+
+-   **Total Spend:** 500 €<br>
+
+-   **Target Gender:** Mixed<br>
+-   **Target Age:** All <br>
+-   **Target Location:** Brandenburg <br>
+
+[More info on the ad: Ad Library Link](https://www.facebook.com/ads/library/?active_status=active&ad_type=political_and_issue_ads&country=DE&is_targeted_country=false&media_type=all&q=808709021104029&search_type=keyword_unordered)
+
+
+</p>
+
+</div>
+
+:::
+
+
+
+## Methodology
+
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #0056b3;
+}
+
+.section-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.section-container p {
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+.section-container strong {
+  color: #0073e6;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #0073e6;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+</style>
+
+<!-- Content -->
+<div class="section-container">
+  <h1>CampAIgn Tracker</h1>
+  
+  <h2>Daten</h2>
+  <p>
+    Für unseren <strong>CampAIgn Tracker</strong> greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als <strong>bezahlte Werbung</strong> ausgespielt haben. Dafür nutzen wir Metadaten zu <strong>Targeting, Spending</strong> und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum <strong>Einsatz von KI</strong>.
+  </p>
+</div>
+
+<div class="section-container">
+  <h2>Prozess</h2>
+  <p>
+    Wir setzen auf einem KI-Modell auf, welches <strong>automatisiert erkennt</strong>, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine <strong>100%ige Genauigkeit</strong> haben. Deshalb schließen wir eine <strong>manuelle Klassifizierung</strong> an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.
+  </p>
+</div>
+
+<div class="section-container">
+  <h2>Bald verfügbar</h2>
+  <p>
+    Wir erweitern unseren <strong>CampAIgn Tracker</strong> kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern <strong>60.000 weitere Accounts</strong> von politischen Akteur:innen in Deutschland. So ermöglichen wir ein <strong>Live-Tracking von KI-Inhalten</strong> bei den nächsten Wahlen.
+  </p>
+</div>
+
+<div class="section-container button-container">
+  <a href="mailto:research@yourorganization.de" class="button">Kontaktieren Sie unsere Wissenschaftler:innen!</a>
+</div>
+
+
+::: 
+
+
+
+
