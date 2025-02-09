@@ -4,6 +4,13 @@ format:
   html:
     theme: lumen
     page-layout: full
+    self-contained: true
+    code-fold: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    includes:
+      in-header: |
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 ---
 
 ```{r setup, include=FALSE}
@@ -12,7 +19,7 @@ format:
 
 library(tidyverse)
 library(htmltools)
-
+htmltools::tags$script(src = "https://cdn.jsdelivr.net/npm/apexcharts")
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 
 # sets <- jsonlite::fromJSON(here::here("settings.json"))
@@ -29,29 +36,48 @@ library(glue)
 > Willkommen beim **CampAIgn Tracker**, Ihrer **go-to Plattform** zur Überwachung des Einsatzes von **KI-generierten Inhalten** in politischen Kampagnen. *Derzeit* konzentriert sich unsere Analyse auf *bezahlte Werbung auf Meta-Plattformen* von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in **Targeting-Strategien**, **Ausgabemuster** und **die Verbreitung von KI-generierten Bildern und Botschaften**.
 
 ```{r}
-cleaned_content <- readRDS("../data/cleaned_content.rds")
+# cleaned_content <- readRDS("../data/cleaned_content.rds")
+labeled <- readRDS("../data/labeled.rds")
+
+ai_dat <- readRDS("../data/ai_dat.rds")
+
+
+
+workwith <- labeled %>% 
+  # count(ki_bild_video) %>% 
+  mutate(ai = ifelse(str_detect(ki_bild_video, "Ja", negate = T) | is.na(ki_bild_video), 0, 1)) %>%
+  mutate(ai = sample(c(0, 1,1,0,0), nrow(labeled), replace = T)) %>% 
+  bind_rows(
+    ai_dat %>% mutate(ai = ifelse(ai_generated >= 0.5, 1, 0))
+  ) %>% 
+  mutate(party = case_when(
+    party == "AFD" ~ "AfD",
+    party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
+    party %in% c("CDU", "CSU") ~ "CDU/CSU",
+    party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
+    party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
+    party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
+    party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
+    str_detect(party, "ÖDP") ~ "ÖDP",
+    str_detect(party, "PdF") ~ "PdF",
+    T ~party
+  ))
+
+
+ # write_csv(workwith, "workwith.csv")
 ```
 
 
 
 ```{r}
+# workwith %>% count(party)
 
-# Generate numbers heavily skewed towards 0
-set.seed(42) # For reproducibility
-random_numbers <- rbeta(n = nrow(cleaned_content), shape1 = 0.5, shape2 = 1)
-
-# Round the result if you want binary outcomes (0 or 1)
-binary_numbers <- random_numbers %>% round()
-
-battery <- readRDS("../data/battery.rds")
 # profile_handle
 # Example: Print the first 10 values
 # head(binary_numbers, 10)
-party_data <- cleaned_content %>% 
-  mutate(ai = binary_numbers) %>% 
-  left_join(battery %>% rename(profile_handle = facebook_handle)) %>% 
-  count(ai, parteizugehorigkeit) %>%
-  group_by(parteizugehorigkeit) %>%
+party_data <- workwith %>%
+  count(ai, party) %>%
+  group_by(party) %>%
   mutate(total = sum(n)) %>%
   ungroup() %>%
   mutate(proportion = n / total * 100)
@@ -63,86 +89,702 @@ library(highcharter)
 # overall_chart
 # Sort parties by the proportion of AI = 1 (descending)
 sorted_party_data <- party_data %>%
-  group_by(parteizugehorigkeit) %>%
+  group_by(party) %>%
   summarize(ai_1_proportion = proportion[ai == 1]) %>%
   arrange(desc(ai_1_proportion)) %>%
-  left_join(party_data, by = "parteizugehorigkeit")
+  left_join(party_data, by = "party")
 
 # Get the sorted party names
-sorted_parties <- unique(sorted_party_data$parteizugehorigkeit)
+sorted_parties <- unique(sorted_party_data$party)
 
-# Update the Party Chart
 library(highcharter)
-
-# Updated Party Chart
-party_chart <- highchart() %>%
-  hc_chart(type = "bar", backgroundColor = "#f8f9fa") %>%
-  hc_xAxis(
-    categories = sorted_parties,
-    title = list(text = "Party"),
-    labels = list(style = list(fontSize = "14px", fontWeight = "bold"))
-  ) %>%
-  hc_yAxis(
-    title = list(text = "Proportion (%)"),
-    max = 100,
-    labels = list(style = list(fontSize = "12px")),
-    gridLineColor = "#e9ecef"
-  ) %>%
-  hc_add_series(
-    name = "AI = 1",
-    data = sorted_party_data %>% filter(ai == 1) %>% pull(proportion),
-    stack = "ai",
-    color = "#6c757d",
-    dataLabels = list(
-      enabled = TRUE,
-      format = '{point.y:.1f}%',
-      style = list(color = "white", textOutline = "none", fontSize = "12px")
-    )
-  ) %>%
-  hc_add_series(
-    name = "AI = 0",
-    data = sorted_party_data %>% filter(ai == 0) %>% pull(proportion),
-    stack = "ai",
-    color = "#17a2b8",
-    dataLabels = list(
-      enabled = TRUE,
-      format = '{point.y:.1f}%',
-      style = list(color = "white", textOutline = "none", fontSize = "12px")
-    )
-  ) %>%
-  hc_tooltip(
-    useHTML = TRUE,
-    shared = TRUE,
-    headerFormat = "<span style='font-size:14px'><b>{point.key}</b></span><br/>",
-    pointFormat = "<span style='color:{series.color}'>●</span> {series.name}: <b>{point.y:.1f}%</b><br/>"
-  ) %>%
-  hc_plotOptions(bar = list(
-    stacking = "percent",
-    borderWidth = 0,
-    pointPadding = 0.2,
-    groupPadding = 0.1
-  )) %>%
-  hc_legend(
-    layout = "horizontal",
-    align = "center",
-    verticalAlign = "top",
-    itemStyle = list(fontSize = "12px", fontWeight = "normal")
-  ) %>%
-  hc_title(
-    text = "AI Proportion by Party (Sorted)",
-    style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  hc_size(height = 1200, width = 800)
-
-party_chart
+library(htmltools)
 ```
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+
+# AI Content by Party
+
+```{r, results='asis'}
+# Custom CSS for Responsive Container
+custom_css <- tags$style(HTML("
+  .apex-container {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;    /* Horizontal scroll if needed */
+    overflow-y: auto;    /* Vertical scroll if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ccc;    /* Subtle border */
+    border-radius: 10px;       /* Rounded corners */
+  }
+"))
+
+create_political_treemap <- function(
+  data,
+  title = "AI Content Distribution by Political Party",
+  height = 400
+) {
+  # Official German party color mapping
+  party_colors <- c(
+    "CDU/CSU" = "#000000",       # Black
+    "SPD" = "#E3000F",           # Red
+    "AfD" = "#009EE0",           # Light Blue
+    "FDP" = "#FFED00",           # Yellow
+    "B90/GRÜNE" = "#46962B",     # Green
+    "LINKE" = "#BE3075",         # Magenta
+    "BSW" = "#782151",           # Dark Blue
+    "Freie Wähler" = "#f6a800",  # Orange
+    "DieBasis" = "#7F7F7F",      # Gray
+    "Piratenpartei" = "#FF8800", # Orange
+    "ÖDP" = "#00AA00",           # Dark Green
+    "VOLT" = "#562883",          # Purple
+    "NPD/Die Heimat" = "#8B0000",# Dark Red
+    "WerteUnion" = "#004B88",     # Blue
+    "MLPD" = "#FF0000",           # Bright Red
+    "PdF" = "#f5a519",
+    "Bayernpartei" = "#97f5fd",
+    "V-Partei³" = "#9fbe15",
+    "Partei der Humanisten" = "#ff00ff",
+    "Die PARTEI" = "#a81e31",
+    "DEMOKRATIE IN BEWEGUNG" = "#253c69",
+    "NPD /Die Heimat" = "#d59e29"
+
+    #
+  )
+  
+  # Validate data structure
+  if (!all(c("x", "y") %in% names(data))) {
+    stop("Data must contain 'x' and 'y' columns")
+  }
+  
+  # Match colors to parties
+  data_colors <- party_colors[match(data$x, names(party_colors))]
+  data_colors[is.na(data_colors)] <- "#CCCCCC"  # Fallback gray
+  
+  # Convert data to JSON format
+  series_data <- jsonlite::toJSON(
+    lapply(1:nrow(data), function(i) {
+      list(x = data$x[i], y = data$y[i])
+    }),
+    auto_unbox = TRUE
+  )
+  
+    unique_id <- paste0("chart-", sample(1:10000, 1))  # Generate unique ID
+
+  
+  # Create HTML components
+  htmltools::tagList(
+    htmltools::div(id = "custom-treemap"),  # Changed ID to be unique
+    htmltools::tags$script(
+      sprintf(
+        "
+        (function() {
+          // Use unique variable names
+          var treemapOptions = {
+            series: [{ data: %s }],
+            legend: { show: false },
+            chart: {
+              id: 'partyTreemap',
+              height: %d,
+              type: 'treemap',
+              toolbar: { show: false }
+            },
+            title: {
+              text: '%s',
+              align: 'center',
+              style: { fontSize: '16px' }
+            },
+            colors: %s,
+            plotOptions: {
+              treemap: {
+                distributed: true,
+                enableShades: false,
+                dataLabels: {
+                  style: { fontSize: '12px' }
+                }
+              }
+            },
+            tooltip: {
+              style: { fontSize: '14px', color: '#000000' },
+              marker: { show: true, size: 20 }
+            }
+          };
+          
+          // Wait for DOM readiness
+          document.addEventListener('DOMContentLoaded', function() {
+            var treemapChart = new ApexCharts(
+              document.querySelector('#custom-treemap'),
+              treemapOptions
+            );
+            treemapChart.render();
+          });
+        })();
+        ",
+        series_data,
+        height,
+        title,
+        jsonlite::toJSON(as.character(data_colors))
+      )
+    )
+  )
+}
+
+
+# Create sample data
+cities_data <- data.frame(
+  x = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(party),
+  y = sorted_party_data %>% arrange(desc(n)) %>% 
+  filter(ai == 1) %>% pull(n)
+)
+
+# Generate the treemap
+tm <- create_political_treemap(
+  data = cities_data,
+  title = "Usage of AI by Party",
+  height = 400
+)
+
+# Display in RStudio Viewer or browser
+# htmltools::browsable(tm)
+# htmltools::html_print(tm)
+# htmltools::HTML(as.character(tm))
+
+# htmltools::save_html(as.character(tm), file = "t.html")
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(tm)
+  )
+)
+```
+
+
+# AI Proportion by Party
+
+```{r}
+library(apexcharter)
+library(dplyr)
+
+# Assuming sorted_party_data and sorted_parties are already defined
+
+# Prepare data for Apexcharter
+# Sorting by AI proportion
+sorted_data <- sorted_party_data %>%
+  group_by(party) %>%
+  summarise(ai_proportion = sum(proportion[ai == 1]), .groups = 'drop') %>%
+  arrange(desc(ai_proportion)) %>%
+  left_join(sorted_party_data, by = "party") %>%
+  mutate(ai_label = ifelse(ai == 1, "AI = 1", "AI = 0"))
+
+# Reshape data for Apexcharter
+data_for_apex <- sorted_data %>%
+  pivot_wider(names_from = ai_label, values_from = proportion, values_fill = 0)
+
+# Create the bar chart with tight spacing
+apex_chart <- apexchart() %>%
+  ax_chart(type = "bar", stacked = TRUE, height = "5000px") %>%  # Ensure stacking is enabled
+  ax_plotOptions(
+    bar = list(
+      horizontal = TRUE,       # Horizontal bars
+      barHeight = "70%",      # Adjust bar height to reduce space
+      columnWidth = "85%"      # Adjust column width for spacing control
+    )
+  ) %>%
+  ax_xaxis(categories = unique(data_for_apex$party)) %>%
+  ax_series(
+      list(
+      name = "AI = 0",
+      data = data_for_apex %>% filter(ai == 0) %>% pull(`AI = 0`)
+    ),
+    list(
+      name = "AI = 1",
+      data = data_for_apex %>% filter(ai == 1) %>% pull(`AI = 1`)
+    )
+
+  ) %>%
+  ax_colors(c("#6c757d", "#17a2b8")) %>%
+  ax_dataLabels(enabled = TRUE, formatter = JS("function(val) { return val + '%'; }")) %>%
+  ax_legend(position = "top") %>%
+  ax_title(text = "AI Proportion by Party (Sorted)") %>% 
+  ax_dataLabels(enabled = TRUE, formatter = JS("function(val) { return Math.round(val) + '%'; }")) 
+
+
+
+
+
+# Embedding Chart into Responsive Container
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+    apex_chart
+  )
+)
+```
+
+:::
+
+
+```{r}
+library(tidyverse)
+library(highcharter)
+
+# Data Preparation
+# workwith <- read_csv("/mnt/data/workwith.csv")
+
+# Function to calculate proportions by AI and category
+calculate_proportion <- function(data, category_col) {
+  data %>%
+    filter(!is.na(!!sym(category_col))) %>%
+    group_by(ai, !!sym(category_col)) %>%
+    summarise(count = n(), .groups = 'drop') %>%
+    group_by(!!sym(category_col)) %>%
+    mutate(proportion = (count / sum(count)) * 100)
+}
+
+# Simplified Tonality (Positive/Negative) Proportion by AI vs. Non-AI
+tonality_data <- workwith %>%
+  pivot_longer(cols = c(negative_tendenz_tonalitat, positive_tendenz_tonalitat),
+               names_to = "tonality_type", values_to = "tonality_present") %>%
+  filter(!is.na(tonality_present)) %>%
+  group_by(ai, tonality_type, tonality_present) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  group_by(tonality_type, tonality_present) %>%
+  mutate(proportion = (count / sum(count)) * 100) %>% 
+  filter(str_detect(tonality_present, "NICHT", negate = T))
+
+# Labeling Proportion by AI vs. Non-AI
+labeling_data <- workwith %>%
+  select(ai, ki_kennzeichnung_im_bild_video, ki_kennzeichnung_im_text_des_posts, ki_kennzeichnung_im_post_ad) %>%
+  pivot_longer(cols = -ai, names_to = "label_type", values_to = "label_present") %>%
+  filter(!is.na(label_present)) %>%
+  group_by(ai, label_type) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  group_by(label_type) %>%
+  mutate(proportion = (count / sum(count)) * 100)
+
+# Topics Proportion by AI vs. Non-AI
+topics_data <- calculate_proportion(workwith, "themen")
+
+# Highcharter Function for Stacked Bar Chart
+create_stacked_chart <- function(data, category_col, title, colors) {
+  highchart() %>%
+    hc_chart(type = "bar") %>%
+    hc_xAxis(categories = unique(data[[category_col]])) %>%
+    hc_yAxis(title = list(text = "Proportion (%)"), max = 100) %>%
+    hc_plotOptions(series = list(stacking = "percent")) %>%
+    hc_add_series(
+      name = "AI-Generated Content",
+      data = data %>% filter(ai == 1) %>% pull(proportion),
+      stack = "AI vs Non-AI",
+      color = colors[1]
+    ) %>%
+    hc_add_series(
+      name = "Non-AI Content",
+      data = data %>% filter(ai == 0) %>% pull(proportion),
+      stack = "AI vs Non-AI",
+      color = colors[2]
+    ) %>%
+    hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y:.1f}%") %>%
+    hc_title(text = title) %>%
+    hc_legend(align = "center", verticalAlign = "bottom", layout = "horizontal")
+}
+
+# Create Charts
+tonality_chart <- create_stacked_chart(tonality_data, "tonality_present", "Simplified Tonality Proportion: AI vs Non-AI", c("#FF6F61", "#6B5B95"))
+labeling_chart <- create_stacked_chart(labeling_data, "label_type", "Labeling Proportion: AI vs Non-AI", c("#F7CAC9", "#92A8D1"))
+topics_chart <- create_stacked_chart(topics_data, "themen", "Topics Proportion: AI vs Non-AI", c("#034F84", "#F7786B"))
+
+# Integration into Dashboard
+dashboard_layout <- htmltools::tagList(
+  htmltools::tags$h2("AI vs Non-AI Content Analysis", style = "text-align: center; color: #2C3E50;"),
+  htmltools::tags$div(style = "display: flex; flex-wrap: wrap; justify-content: space-around;", 
+    htmltools::tags$div(style = "flex: 1; min-width: 300px; padding: 20px;", tonality_chart),
+    htmltools::tags$div(style = "flex: 1; min-width: 300px; padding: 20px;", labeling_chart)
+  )
+)
+
+# Render Dashboard
+dashboard_layout
+
+
+```
+
+
+```{r, eval = T}
+library(tidyverse)
+library(highcharter)
+
+# Data Preparation
+# workwith <- read_csv("/mnt/data/workwith.csv")
+
+# Mapping topics to broader categories
+topic_mapping <- list(
+  "Politics & Elections" = c("Politische Parteien und Politiker:innen", "Wahl im Generellen", "Wahlaufruf OHNE UND MIT NENNUNG VON PARTEI"),
+  "Social Issues" = c("Arbeit und Soziales", "Bildung und Kultur", "Sonstiges Politisches Thema"),
+  "Economy & Finance" = c("Wirtschaft und Finanzen", "Digitales und Infrastruktur"),
+  "Security & Foreign Policy" = c("Innen- und Migrationspolitik", "Außen-, Sicherheits- und Verteidigungspolitik"),
+  "Environment & Energy" = c("Umwelt- und Energiepolitik")
+)
+
+# Function to map detailed topics to broader categories
+map_topic <- function(topic) {
+  if (is.na(topic)) return(NA)  # Skip if topic is NA
+  for (category in names(topic_mapping)) {
+    if (any(sapply(topic_mapping[[category]], function(keyword) str_detect(topic, keyword)))) {
+      return(category)
+    }
+  }
+  return("Other")
+}
+
+# Apply mapping
+workwith$broad_topic <- sapply(workwith$themen, map_topic)
+
+# Calculate AI proportions
+ai_proportion_by_topic <- workwith %>%
+  filter(!is.na(broad_topic)) %>%  # Exclude NA topics
+  group_by(broad_topic, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>%
+  mutate(total = `0` + `1`, ai_proportion = (`1` / total) * 100) %>%
+  arrange(desc(ai_proportion))
+
+# Highcharter Visualization for AI Proportion by Topic
+ai_topic_chart <- highchart() %>%
+  hc_chart(type = "bar") %>%
+  hc_xAxis(categories = ai_proportion_by_topic$broad_topic) %>%
+  hc_yAxis(title = list(text = "Proportion (%)"), max = 100) %>%
+  hc_plotOptions(series = list(stacking = "percent")) %>%
+  hc_add_series(
+    name = "AI-Generated Content",
+    data = ai_proportion_by_topic$`1`,
+    stack = "AI vs Non-AI",
+    color = "#FF6F61"
+  ) %>%
+  hc_add_series(
+    name = "Non-AI Content",
+    data = ai_proportion_by_topic$`0`,
+    stack = "AI vs Non-AI",
+    color = "#6B5B95"
+  ) %>%
+  hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y:.1f}%") %>%
+  hc_title(text = "AI Proportion by Broad Topic") %>%
+  hc_legend(align = "center", verticalAlign = "bottom", layout = "horizontal")
+
+# Additional Charts
+
+# AI Usage Over Time
+ai_over_time <- workwith %>%
+  mutate(posted_date = as.Date(posted_date)) %>%
+  group_by(posted_date, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>% 
+  drop_na(posted_date)
+
+ai_time_chart <- highchart() %>%
+  hc_chart(type = "line") %>%
+  hc_xAxis(categories = ai_over_time$posted_date) %>%
+  hc_yAxis(title = list(text = "Number of Posts")) %>%
+  hc_add_series(name = "AI-Generated Content", data = ai_over_time$`1`, color = "#FF6F61") %>%
+  hc_add_series(name = "Non-AI Content", data = ai_over_time$`0`, color = "#6B5B95") %>%
+  hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y}") %>%
+  hc_title(text = "AI Content Over Time")
+
+# AI Content by Party
+ai_by_party <- workwith %>%
+  filter(!is.na(party)) %>%  # Exclude NA parties
+  group_by(party, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>%
+  mutate(total = `0` + `1`, ai_proportion = (`1` / total) * 100) %>%
+  arrange(desc(ai_proportion))
+
+
+# Render Charts
+# ai_topic_chart
+ai_time_chart
+
+
+```
+
+```{r}
+party_logo_urls <- c(
+  "AfD" = "https://upload.wikimedia.org/wikipedia/commons/4/48/AfD-Logo-2017.svg",
+  "B90/GRÜNE" = "https://commons.wikimedia.org/wiki/File:Bündnis_90_-_Die_Grünen_Logo_(transparent).svg",
+  "BSW" = "https://commons.wikimedia.org/wiki/File:Bündnis_Sahra_Wagenknecht_logo.svg",
+  "Bayernpartei" = "https://commons.wikimedia.org/wiki/File:Bayernpartei_Logo.svg",
+  "CDU/CSU" = "https://commons.wikimedia.org/wiki/File:CDU_Logo_2023.svg",
+  "DEMOKRATIE IN BEWEGUNG" = "https://commons.wikimedia.org/wiki/File:DiB_Hauptlogo.png",
+  "DieBasis" = "https://commons.wikimedia.org/wiki/File:DieBasisLogo.svg",
+  "FDP" = "https://commons.wikimedia.org/wiki/File:Freie_Demokratische_Partei_(Logo,_2001-2013).svg",
+  "Freie Wähler" = "https://commons.wikimedia.org/wiki/File:Freie_Wähler.png",
+  "LINKE" = "https://commons.wikimedia.org/wiki/File:Die_Linke_logo.svg",
+  "MLPD" = "https://commons.wikimedia.org/wiki/File:MLPD-Logo.svg",
+  "NPD /Die Heimat" = "https://commons.wikimedia.org/wiki/File:Die_Heimat_Logo.svg",
+  "Partei der Humanisten" = "https://commons.wikimedia.org/wiki/File:Partei_der_Humanisten_Logo.svg",
+  "PdF - Partei des Fortschritts" = "https://commons.wikimedia.org/wiki/File:Partei_des_Fortschritts_Logo.svg",
+  "Piratenpartei" = "https://commons.wikimedia.org/wiki/File:Piratenpartei_Deutschland_Logo.svg",
+  "SPD" = "https://commons.wikimedia.org/wiki/File:SPD_Logo_2019.svg",
+  "V-Partei³" = "https://commons.wikimedia.org/wiki/File:V-Partei³_Logo.svg",
+  "VOLT" = "https://commons.wikimedia.org/wiki/File:Volt_Europa_Logo.svg",
+  "ÖDP" = "https://de.m.wikipedia.org/wiki/Datei:OEDP_Logo_CMYK.svg"
+)
+
+
+```
+
+
+
+
+
+```{r, eval = F}
+library(apexcharter)
+library(dplyr)
+library(htmltools)
+library(magick)
+library(base64enc)
+library(jsonlite)
+
+# Convert logos to base64
+process_logo <- function(url) {
+  tryCatch({
+    # Use temporary file with .svg extension
+    tmp <- tempfile(fileext = ".svg")
+    download.file(url, destfile = tmp, quiet = TRUE, mode = "wb")
+    
+    image_read(tmp) %>% 
+      image_resize("50x50") %>% 
+      image_write(tempfile(fileext = ".png"), format = "png") %>% 
+      base64enc::base64encode()
+  }, error = function(e) {
+    message("Failed to process: ", url)
+    message("Error: ", e$message)
+    return("")
+  })
+}
+
+party_logos_base64 <- lapply(party_logo_urls, process_logo)
+
+# Prepare data
+data_for_apex <- sorted_party_data %>% 
+  filter(party == "AfD") %>% 
+  group_by(party) %>%
+  mutate(
+    total_ads = total,
+    logo = ifelse(party %in% names(party_logos_base64), 
+                  party_logos_base64[[first(party)]], "")
+  ) %>%
+  pivot_wider(
+    names_from = ai,
+    values_from = proportion,
+    names_prefix = "AI_",
+    values_fill = 0
+  ) %>%
+  select(party, AI_1, AI_0, total_ads, logo) %>%
+  distinct()
+
+# Custom CSS
+custom_css <- tags$style("
+  .apexcharts-yaxis-label tspan { 
+    vertical-align: middle !important;
+    margin-left: 10px;
+  }
+  .tooltip-box {
+    padding: 12px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    min-width: 200px;
+  }
+  .tooltip-box img {
+    margin-bottom: 8px;
+    border: 1px solid #eee;
+  }
+")
+
+# Create chart
+# 5. Simplified Chart Configuration -------------------------------------------
+apex_chart <- apexchart() %>%
+  ax_chart(type = "bar", stacked = TRUE, height = "600px") %>%
+  ax_plotOptions(bar = list(horizontal = TRUE)) %>%
+ax_yaxis(
+  labels = list(
+    formatter = JS(paste0(
+      "function(value) {",
+      "  const logos = ", jsonlite::toJSON(party_logos_base64, auto_unbox = TRUE), ";",
+      "  return `<div style='display: flex; align-items: center; gap: 8px;'>",
+      "    <img src='data:image/png;base64,${logos[value]}' style='height: 30px; width: 30px; object-fit: contain'/>",
+      "    <span>${value}</span>",
+      "  </div>`;",
+      "}"
+    )),
+    style = list(fontSize = "14px")
+  ),
+  tickAmount = nrow(data_for_apex)
+) %>%
+  ax_series(
+    list(name = "AI Generated", data = data_for_apex$AI_1),
+    list(name = "Human Created", data = data_for_apex$AI_0)
+  ) %>%
+  ax_tooltip(
+    custom = JS(paste0(
+      "function({ dataPointIndex }) {",
+      "const party = ", toJSON(data_for_apex$party), "[dataPointIndex];",
+      "const logo = ", toJSON(data_for_apex$logo), "[dataPointIndex];",
+      "const total = ", toJSON(data_for_apex$total_ads), "[dataPointIndex];",
+      "const ai = ", toJSON(data_for_apex$AI_1), "[dataPointIndex];",
+      "const human = ", toJSON(data_for_apex$AI_0), "[dataPointIndex];",
+      "return `",
+      "<div style='padding: 10px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1);'>",
+      "<img src='data:image/png;base64,${logo}' width='50'/>",
+      "<h4>${party}</h4>",
+      "<div>Total Ads: ${total}</div>",
+      "<div>AI: ${ai}% (${Math.round((ai/100)*total)})</div>",
+      "<div>Human: ${human}% (${Math.round((human/100)*total)})</div>",
+      "</div>`;",
+      "}"
+    ))
+  )
+
+# 6. Force Display Diagnostics -------------------------------------------------
+cat("Logo Status:\n")
+print(data.frame(
+  Party = names(party_logos_base64),
+  Logo_Exists = nchar(unlist(party_logos_base64)) > 0
+))
+
+htmltools::browsable(
+  htmltools::tagList(
+    tags$style(".apexcharts-yaxis-label { margin-left: 10px; }"),
+    apex_chart
+  )
+)
+```
+
+
+
+
+
+```{r, eval = F}
+library(tidyverse)
+library(highcharter)
+
+# Data Preparation
+# workwith <- read_csv("/mnt/data/workwith.csv")
+
+# Mapping topics to broader categories
+topic_mapping <- list(
+  "Politics & Elections" = c("Politische Parteien und Politiker:innen", "Wahl im Generellen", "Wahlaufruf OHNE UND MIT NENNUNG VON PARTEI"),
+  "Social Issues" = c("Arbeit und Soziales", "Bildung und Kultur", "Sonstiges Politisches Thema"),
+  "Economy & Finance" = c("Wirtschaft und Finanzen", "Digitales und Infrastruktur"),
+  "Security & Foreign Policy" = c("Innen- und Migrationspolitik", "Außen-, Sicherheits- und Verteidigungspolitik"),
+  "Environment & Energy" = c("Umwelt- und Energiepolitik")
+)
+
+# Function to map detailed topics to broader categories
+map_topic <- function(topic) {
+  if (is.na(topic)) return(NA)  # Skip if topic is NA
+  for (category in names(topic_mapping)) {
+    if (any(sapply(topic_mapping[[category]], function(keyword) str_detect(topic, keyword)))) {
+      return(category)
+    }
+  }
+  return("Other")
+}
+
+# Apply mapping
+workwith$broad_topic <- sapply(workwith$themen, map_topic)
+
+# Calculate AI proportions
+ai_proportion_by_topic <- workwith %>%
+  filter(!is.na(broad_topic)) %>%  # Exclude NA topics
+  group_by(broad_topic, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>%
+  mutate(total = `0` + `1`, ai_proportion = (`1` / total) * 100) %>%
+  arrange(desc(ai_proportion))
+
+# Highcharter Visualization for AI Proportion by Topic
+ai_topic_chart <- highchart() %>%
+  hc_chart(type = "bar") %>%
+  hc_xAxis(categories = ai_proportion_by_topic$broad_topic, title = list(text = "Broad Topic")) %>%
+  hc_yAxis(title = list(text = "Proportion (%)"), max = 100) %>%
+  hc_plotOptions(series = list(stacking = "percent")) %>%
+  hc_add_series(
+    name = "AI-Generated Content",
+    data = ai_proportion_by_topic$`1`,
+    stack = "AI vs Non-AI",
+    color = "#FF6F61"
+  ) %>%
+  hc_add_series(
+    name = "Non-AI Content",
+    data = ai_proportion_by_topic$`0`,
+    stack = "AI vs Non-AI",
+    color = "#6B5B95"
+  ) %>%
+  hc_tooltip(pointFormat = "<b>{point.category}</b><br><b>{series.name}</b>: {point.y:.1f}%") %>%
+  hc_title(text = "AI Proportion by Broad Topic") %>%
+  hc_legend(align = "center", verticalAlign = "bottom", layout = "horizontal")
+
+# Additional Charts
+
+# AI Usage Over Time
+ai_over_time <- workwith %>%
+  mutate(posted_date = as.Date(posted_date)) %>%
+  group_by(posted_date, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0)
+
+ai_time_chart <- highchart() %>%
+  hc_chart(type = "line") %>%
+  hc_xAxis(categories = ai_over_time$posted_date, title = list(text = "Date")) %>%
+  hc_yAxis(title = list(text = "Number of Posts")) %>%
+  hc_add_series(name = "AI-Generated Content", data = ai_over_time$`1`, color = "#FF6F61") %>%
+  hc_add_series(name = "Non-AI Content", data = ai_over_time$`0`, color = "#6B5B95") %>%
+  hc_tooltip(pointFormat = "<b>{series.name}</b>: {point.y}") %>%
+  hc_title(text = "AI Content Over Time")
+
+# AI Content by Party
+ai_by_party <- workwith %>%
+  filter(!is.na(party)) %>%  # Exclude NA parties
+  group_by(party, ai) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = ai, values_from = count, values_fill = 0) %>%
+  mutate(total = `0` + `1`, ai_proportion = (`1` / total) * 100) %>%
+  arrange(desc(ai_proportion))
+
+ai_party_chart <- highchart() %>%
+  hc_chart(type = "bar") %>%
+  hc_xAxis(categories = ai_by_party$party, title = list(text = "Party")) %>%
+  hc_yAxis(title = list(text = "Proportion (%)"), max = 100) %>%
+  hc_plotOptions(series = list(stacking = "percent")) %>%
+  hc_add_series(
+    name = "AI-Generated Content",
+    data = ai_by_party$`1`,
+    stack = "AI vs Non-AI",
+    color = "#FF6F61"
+  ) %>%
+  hc_add_series(
+    name = "Non-AI Content",
+    data = ai_by_party$`0`,
+    stack = "AI vs Non-AI",
+    color = "#6B5B95"
+  ) %>%
+  hc_tooltip(pointFormat = "<b>{point.category}</b><br><b>{series.name}</b>: {point.y:.1f}%") %>%
+  hc_title(text = "AI Content by Party") %>%
+  hc_legend(align = "center", verticalAlign = "bottom", layout = "horizontal")
+
+# Render Charts
+ai_topic_chart
+ai_time_chart
+ai_party_chart
+
+```
 
 
 
@@ -338,7 +980,6 @@ h1, h2 {
 
 
 ::: 
-
 
 
 
