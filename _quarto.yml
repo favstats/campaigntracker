@@ -10,6 +10,8 @@ website:
         text: "{{< iconify ph star-four-light >}} AI Content Tracking"
       - href: index.qmd
         text: "{{< iconify ph binoculars-light >}} Datenexplorer"
+      - href: https://favstats.github.io/campaigntracker/blog
+        text: "Blog"
 
 format:
   html:
