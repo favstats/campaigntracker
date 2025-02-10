@@ -5399,7 +5399,15 @@ flex: 0 0 auto;
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html" rel target>
- <span class="menu-text"><iconify-icon inline icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Political Content Tracker</span></a>
+ <span class="menu-text"><iconify-icon inline icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Content Tracking</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntracker/explore" rel target>
+ <span class="menu-text"><iconify-icon inline icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> Datenexplorer</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html" rel target>
+ <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -5429,7 +5437,7 @@ flex: 0 0 auto;
         (function() {
           // Use unique variable names
           var treemapOptions = {
-            series: [{ data: [{"x":"B90/GRÜNE","y":142},{"x":"SPD","y":92},{"x":"CDU/CSU","y":75},{"x":"AfD","y":51},{"x":"LINKE","y":43},{"x":"FDP","y":27},{"x":"PdF","y":11},{"x":"Bayernpartei","y":7},{"x":"BSW","y":6},{"x":"DieBasis","y":4},{"x":"Freie Wähler","y":4},{"x":"VOLT","y":3},{"x":"WerteUnion","y":2},{"x":"V-Partei³","y":2},{"x":"ÖDP","y":2},{"x":"Partei der Humanisten","y":2},{"x":"DEMOKRATIE IN BEWEGUNG","y":1},{"x":"NPD /Die Heimat","y":1},{"x":"MLPD","y":1}] }],
+            series: [{ data: [{"x":"B90/GRÜNE","y":144},{"x":"SPD","y":89},{"x":"CDU/CSU","y":71},{"x":"AfD","y":50},{"x":"LINKE","y":41},{"x":"FDP","y":32},{"x":"PdF","y":11},{"x":"BSW","y":9},{"x":"Bayernpartei","y":7},{"x":"DieBasis","y":6},{"x":"Freie Wähler","y":4},{"x":"V-Partei³","y":3},{"x":"ÖDP","y":2},{"x":"Partei der Humanisten","y":2},{"x":"VOLT","y":2},{"x":"WerteUnion","y":1},{"x":"DEMOKRATIE IN BEWEGUNG","y":1},{"x":"NPD /Die Heimat","y":1},{"x":"MLPD","y":1}] }],
             legend: { show: false },
             chart: {
               id: 'partyTreemap',
@@ -5442,7 +5450,7 @@ flex: 0 0 auto;
               align: 'center',
               style: { fontSize: '16px' }
             },
-            colors: ["#46962B","#E3000F","#000000","#009EE0","#BE3075","#FFED00","#f5a519","#97f5fd","#782151","#7F7F7F","#f6a800","#562883","#004B88","#9fbe15","#00AA00","#ff00ff","#253c69","#d59e29","#FF0000"],
+            colors: ["#46962B","#E3000F","#000000","#009EE0","#BE3075","#FFED00","#f5a519","#782151","#97f5fd","#7F7F7F","#f6a800","#9fbe15","#00AA00","#ff00ff","#562883","#004B88","#253c69","#d59e29","#FF0000"],
             plotOptions: {
               treemap: {
                 distributed: true,
@@ -5474,8 +5482,8 @@ flex: 0 0 auto;
 <h2 class="anchored" data-anchor-id="ai-proportion-by-party">AI Proportion by Party</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-5e2a3cff692d26c7c31c" style="width:100%;height:350px;"></div>
-<script type="application/json" data-for="htmlwidget-5e2a3cff692d26c7c31c">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":true,"height":"5000px"},"plotOptions":{"bar":{"horizontal":true,"barHeight":"70%","columnWidth":"85%"}},"xaxis":{"categories":["WerteUnion","Bayernpartei","PdF","DEMOKRATIE IN BEWEGUNG","V-Partei³","DieBasis","ÖDP","Partei der Humanisten","VOLT","BSW","NPD /Die Heimat","AfD","B90/GRÜNE","LINKE","MLPD","CDU/CSU","SPD","FDP","Freie Wähler"]},"series":[{"name":"AI = 0","data":[65,65.625,66.66666666666666,90.90909090909091,91.11111111111111,91.30434782608695,95.91836734693877,96,96.47058823529412,96.875,97.10884353741497,97.48316199929104,97.89936492427942,98.11320754716981,98.15950920245399,98.38341240555263,98.71244635193133,99.11699779249447]},{"name":"AI = 1","data":[100,35,34.375,33.33333333333333,9.090909090909092,8.888888888888889,8.695652173913043,4.081632653061225,4,3.529411764705882,3.125,2.891156462585034,2.516838000708968,2.100635075720567,1.886792452830189,1.840490797546012,1.616587594447373,1.28755364806867,0.8830022075055187]}],"colors":["#6c757d","#17a2b8"],"dataLabels":{"enabled":true,"formatter":"function(val) { return Math.round(val) + '%'; }"},"legend":{"position":"top"},"title":{"text":"AI Proportion by Party (Sorted)"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-0ca90b28ef11de5ac8a3" style="width:100%;height:350px;"></div>
+<script type="application/json" data-for="htmlwidget-0ca90b28ef11de5ac8a3">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":true,"height":"5000px"},"plotOptions":{"bar":{"horizontal":true,"barHeight":"70%","columnWidth":"85%"}},"xaxis":{"categories":["WerteUnion","Bayernpartei","PdF","DEMOKRATIE IN BEWEGUNG","V-Partei³","DieBasis","ÖDP","BSW","Partei der Humanisten","NPD /Die Heimat","AfD","VOLT","B90/GRÜNE","LINKE","MLPD","CDU/CSU","SPD","FDP","Freie Wähler"]},"series":[{"name":"AI = 0","data":[50,65,65.625,66.66666666666666,86.36363636363636,86.66666666666667,91.30434782608695,94.70588235294117,95.91836734693877,96.875,97.1655328798186,97.33333333333334,97.44771357674583,97.99706888128969,98.11320754716981,98.25766871165644,98.43612721841504,98.47401049117788,99.11699779249447]},{"name":"AI = 1","data":[50,35,34.375,33.33333333333333,13.63636363636363,13.33333333333333,8.695652173913043,5.294117647058823,4.081632653061225,3.125,2.834467120181406,2.666666666666667,2.552286423254165,2.002931118710308,1.886792452830189,1.742331288343558,1.563872781584959,1.525989508822127,0.8830022075055187]}],"colors":["#6c757d","#17a2b8"],"dataLabels":{"enabled":true,"formatter":"function(val) { return Math.round(val) + '%'; }"},"legend":{"position":"top"},"title":{"text":"AI Proportion by Party (Sorted)"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 
