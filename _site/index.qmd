@@ -833,6 +833,9 @@ data <- rawprep %>% select(Inhalte = matched_meds, party, text, ai_generated, pl
 library(reactable)
 library(htmltools)
 library(dplyr)
+# 
+# data %>% 
+#   select(Inhalte)
 ```
 
 
