@@ -8,7 +8,7 @@ website:
     left:
       - href: index.qmd
         text: "{{< iconify ph star-four-light >}} AI Content Tracking"
-      - href: explore.qmd
+      - href: https://favstats.github.io/campaigntracker/explore.html
         text: "{{< iconify ph binoculars-light >}} Datenexplorer"
 
 format:
