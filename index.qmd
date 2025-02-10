@@ -1,0 +1,468 @@
+---
+title: ""
+format:
+  html:
+    theme: lumen
+    page-layout: full
+    self-contained: true
+    code-fold: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    includes:
+      in-header: |
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+---
+
+```{r setup, include=FALSE}
+# dir()
+# here::i_am("ep2024.Rproj")
+
+library(tidyverse)
+library(htmltools)
+htmltools::tags$script(src = "https://cdn.jsdelivr.net/npm/apexcharts")
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+
+# sets <- jsonlite::fromJSON(here::here("settings.json"))
+
+
+
+
+library(glue)
+# write_csv(aidat, file = "../data/aidat.csv")
+
+```
+
+
+> Willkommen beim **CampAIgn Tracker**, Ihrer **go-to Plattform** zur Überwachung des Einsatzes von **KI-generierten Inhalten** in politischen Kampagnen. *Derzeit* konzentriert sich unsere Analyse auf *bezahlte Werbung auf Meta-Plattformen* von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in **Targeting-Strategien**, **Ausgabemuster** und **die Verbreitung von KI-generierten Bildern und Botschaften**.
+
+```{r}
+# cleaned_content <- readRDS("../data/cleaned_content.rds")
+labeled <- readRDS("data/labeled.rds")
+
+ai_dat <- readRDS("data/ai_dat.rds")
+
+
+
+workwith <- labeled %>% 
+  # count(ki_bild_video) %>% 
+  mutate(ai = ifelse(str_detect(ki_bild_video, "Ja", negate = T) | is.na(ki_bild_video), 0, 1)) %>%
+  mutate(ai = sample(c(0, 1,1,0,0), nrow(labeled), replace = T)) %>% 
+  bind_rows(
+    ai_dat %>% mutate(ai = ifelse(ai_generated >= 0.5, 1, 0))
+  ) %>% 
+  mutate(party = case_when(
+    party == "AFD" ~ "AfD",
+    party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
+    party %in% c("CDU", "CSU") ~ "CDU/CSU",
+    party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
+    party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
+    party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
+    party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
+    str_detect(party, "ÖDP") ~ "ÖDP",
+    str_detect(party, "PdF") ~ "PdF",
+    T ~party
+  ))
+
+
+ # write_csv(workwith, "workwith.csv")
+
+ai_hashes <- workwith %>% 
+  select(hash, text, platform, type, ai_generated) %>% 
+  filter(ai_generated >= 0.9) %>% pull(hash) 
+
+# Step 2: Get all medication-related files
+allmeds <- dir("organic", recursive = TRUE, all.files = TRUE, full.names = T) %>% 
+  c(dir("paid", recursive = TRUE, all.files = TRUE, full.names = T)) %>% 
+  c(dir("output_frames", recursive = TRUE, all.files = TRUE, full.names = T)) %>% 
+  discard(~ str_detect(.x, "vid_hash|mp4"))
+
+# Step 3: Map AI hashes to matched medications
+hhh <- map(ai_hashes, ~ allmeds[str_detect(allmeds, .x)])
+
+# Step 4: Convert to tibble with key-value pairs
+result <- tibble(ai_hash = ai_hashes, matched_meds = hhh) %>%
+  unnest(matched_meds)
+
+# Display the final tibble
+
+
+# workwith %>% 
+#   select(hash, text, platform, type, ai_generated) %>% 
+#   filter(ai_generated >= 0.9) %>% 
+#   left_join(result %>% distinct(ai_hash, .keep_all = T) %>% rename(hash = ai_hash))
+```
+
+
+
+```{r}
+# workwith %>% count(party)
+
+# profile_handle
+# Example: Print the first 10 values
+# head(binary_numbers, 10)
+party_data <- workwith %>%
+  count(ai, party) %>%
+  group_by(party) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(proportion = n / total * 100)
+
+library(highcharter)
+
+
+# Render both charts
+# overall_chart
+# Sort parties by the proportion of AI = 1 (descending)
+sorted_party_data <- party_data %>%
+  group_by(party) %>%
+  summarize(ai_1_proportion = proportion[ai == 1]) %>%
+  arrange(desc(ai_1_proportion)) %>%
+  left_join(party_data, by = "party")
+
+# Get the sorted party names
+sorted_parties <- unique(sorted_party_data$party)
+
+library(highcharter)
+library(htmltools)
+```
+
+```{r}
+# Install necessary packages if not already installed
+if (!requireNamespace("reactable", quietly = TRUE)) {
+  install.packages("reactable")
+}
+if (!requireNamespace("htmltools", quietly = TRUE)) {
+  install.packages("htmltools")
+}
+
+# Load the required libraries
+library(reactable)
+library(htmltools)
+
+
+
+# Function to embed images in table cells
+embed_image <- function(image_url) {
+  img(src = image_url, height = "300px", alt = "Image")  # Adjust 'height' as needed
+}
+```
+
+## Entdecken
+
+```{r}
+rawprep <- workwith %>% 
+  select(hash, text, party, platform, type, ai_generated, url) %>% 
+  filter(ai_generated >= 0.9) %>% 
+  left_join(result %>% distinct(ai_hash, .keep_all = T) %>% rename(hash = ai_hash))
+```
+
+
+```{r}
+data <- rawprep %>% select(Inhalte = matched_meds, party, text, ai_generated, platform, type, url) %>% 
+  arrange(desc(ai_generated)) 
+
+
+library(reactable)
+library(htmltools)
+library(dplyr)
+
+file.copy2 <- function(from, to, ...) {
+  # Ensure destination directory exists
+  dir.create(dirname(to), recursive = TRUE, showWarnings = FALSE)
+  
+  # Copy the file
+  file.copy(from, to, ...)
+}
+
+# hashed_files/0056e9bbb2cf3325f1e29caaf135326c.jpg
+
+data %>%
+  select(Inhalte) %>%# View()
+  # slice(1) %>%
+  split(1:nrow(.)) %>%
+  walk(~{
+    the_dat <-  paste0("docs/explore/", .x$Inhalte)
+    # print(the_dat)
+    file.copy2(.x$Inhalte, to = paste0("docs/explore/", .x$Inhalte), recursive = T, overwrite = T)
+  })
+
+data <- data %>% 
+  mutate(Inhalte = paste0("https://raw.githubusercontent.com/favstats/campaigntracker/refs/heads/main/docs/explore/", Inhalte))
+```
+
+
+
+```{r}
+party_colors <- c(
+  "CDU/CSU" = "#000000",       # Black
+  "SPD" = "#E3000F",           # Red
+  "AfD" = "#009EE0",           # Light Blue
+  "FDP" = "#FFED00",           # Yellow
+  "B90/GRÜNE" = "#46962B",     # Green
+  "LINKE" = "#BE3075",         # Magenta
+  "BSW" = "#782151",           # Dark Blue
+  "Freie Wähler" = "#f6a800",  # Orange
+  "DieBasis" = "#7F7F7F",      # Gray
+  "Piratenpartei" = "#FF8800", # Orange
+  "ÖDP" = "#00AA00",           # Dark Green
+  "VOLT" = "#562883",          # Purple
+  "NPD/Die Heimat" = "#8B0000",# Dark Red
+  "WerteUnion" = "#004B88",     # Blue
+  "MLPD" = "#FF0000",           # Bright Red
+  "PdF" = "#f5a519",
+  "Bayernpartei" = "#97f5fd",
+  "V-Partei³" = "#9fbe15",
+  "Partei der Humanisten" = "#ff00ff",
+  "Die PARTEI" = "#a81e31",
+  "DEMOKRATIE IN BEWEGUNG" = "#253c69",
+  "NPD /Die Heimat" = "#d59e29"
+)
+
+# Creates a data list column filter for a table with the given ID
+dataListFilter <- function(tableId, style = "width: 100%; height: 28px;") {
+  function(values, name) {
+    dataListId <- sprintf("%s-%s-list", tableId, name)
+    tagList(
+      tags$input(
+        type = "text",
+        list = dataListId,
+        oninput = sprintf("Reactable.setFilter('%s', '%s', event.target.value || undefined)", tableId, name),
+        "aria-label" = sprintf("Filter %s", name),
+        style = style
+      ),
+      tags$datalist(
+        id = dataListId,
+        lapply(unique(values), function(value) tags$option(value = value))
+      )
+    )
+  }
+}
+
+library(fontawesome)
+
+
+reactable(
+  data,
+  columns = list(
+    Inhalte = colDef(
+      cell = function(value) {
+        div(
+          class = "image-cell",
+          img(
+            src = value, 
+            style = list(
+              width = "220px", 
+              height = "200px",
+              objectFit = "cover",
+              borderRadius = "4px",
+              boxShadow = "0 2px 4px rgba(0,0,0,0.1)",
+              filter = ifelse(is.na(value), "grayscale(100%)", "none")
+            ),
+            alt = "Generated content image"
+          )
+        )
+      },
+      html = TRUE,
+      name = paste0(as.character(fa("photo-film")), " Inhalte"),  # Covers images, videos, GIFs
+      width = 200
+
+    ),
+    party = colDef(
+      name = paste0(as.character(fa("bullhorn")), " Partei"),
+      cell = function(value) {
+        party_color <- as.character(party_colors[value == names(party_colors)])
+        div(
+          style = list(
+            backgroundColor = party_color,
+            color = "white",
+            padding = "2px 8px",
+            borderRadius = "12px",
+            fontWeight = "600",
+            textTransform = "uppercase",
+            fontSize = "0.8em"
+          ),
+          value
+        )
+      },
+      html = TRUE,
+      filterable = TRUE,
+      filterInput = function(values, name) {
+        tags$select(
+          # Set to undefined to clear the filter
+          onchange = sprintf("Reactable.setFilter('cars-select', '%s', event.target.value || undefined)", name),
+          # "Alle" has an empty value to clear the filter, and is the default option
+          tags$option(value = "", "Alle"),
+          lapply(unique(values), tags$option),
+          "aria-label" = sprintf("Filter %s", name),
+          style = "width: 100%; height: 28px;"
+        )
+      }    ),
+    text = colDef(
+      name = paste0(as.character(fa("align-justify")), " Text"),
+      cell = function(value) {
+        short_text <- ifelse(nchar(value) > 100, paste0(substr(value, 1, 97), "..."), value)
+        div(
+          style = list(
+            whiteSpace = "pre-wrap",
+            maxHeight = "100px",
+            overflow = "hidden",
+            textOverflow = "ellipsis",
+            lineHeight = "1.4",
+            cursor = "pointer"
+          ),
+          onclick = sprintf("this.nextElementSibling.style.display='block'; this.style.display='none';"),
+          short_text,
+          div(
+            style = list(
+              display = "none",
+              whiteSpace = "pre-wrap",
+              backgroundColor = "#f8f9fa",
+              padding = "8px",
+              borderRadius = "4px"
+            ),
+            value
+          )
+        )
+      },
+      html = TRUE,
+      filterable = TRUE,
+      # Filter by case-insensitive text match
+      filterMethod = JS("function(rows, columnId, filterValue) {
+        const pattern = new RegExp(filterValue, 'i')
+
+        return rows.filter(function(row) {
+          return pattern.test(row.values[columnId])
+        })
+      }"),
+      minWidth = 300
+    ),
+    ai_generated = colDef(
+      name = paste0(as.character(fa("robot")), " KI"),
+      format = colFormat(percent = TRUE, digits = 1),
+      style = function(value) {
+        color <- ifelse(value >= 0.9, "#00C853", "#FF9800")
+        list(color = color, fontWeight = "bold")
+      },
+      html = TRUE,
+    ),
+    platform = colDef(
+      name = paste0(as.character(fa("icons")), " Medium"),
+      cell = function(value) {
+        icon <- case_when(
+          value == "Twitter" ~ "🐦",
+          value == "Facebook" ~ "📘",
+          value == "Instagram" ~ "📸",
+          TRUE ~ "🌍"
+        )
+        paste(icon, value)
+      },
+      html = TRUE,
+        filterable = TRUE,
+      filterInput = function(values, name) {
+        tags$select(
+          # Set to undefined to clear the filter
+          onchange = sprintf("Reactable.setFilter('cars-select', '%s', event.target.value || undefined)", name),
+          # "Alle" has an empty value to clear the filter, and is the default option
+          tags$option(value = "", "Alle"),
+          lapply(unique(values), tags$option),
+          "aria-label" = sprintf("Filter %s", name),
+          style = "width: 100%; height: 28px;"
+        )
+      }  
+    ),
+    type = colDef(
+      name = paste0(as.character(fa("list")), " Typ"),
+      cell = function(value) {
+        badge_style <- list(
+          padding = "2px 8px",
+          borderRadius = "12px",
+          fontSize = "0.8em",
+          color = "white"
+        )
+        type_color <- case_when(
+          value == "organic" ~ "#2196F3",
+          value == "paid" ~ "#4CAF50",
+          value == "Story" ~ "#9C27B0",
+          TRUE ~ "#607D8B"
+        )
+        div(style = append(badge_style, list(backgroundColor = type_color)), value)
+      },
+      html = TRUE,
+      filterable = TRUE,
+      filterInput = function(values, name) {
+        tags$select(
+          # Set to undefined to clear the filter
+          onchange = sprintf("Reactable.setFilter('cars-select', '%s', event.target.value || undefined)", name),
+          # "Alle" has an empty value to clear the filter, and is the default option
+          tags$option(value = "", "Alle"),
+          lapply(unique(values), tags$option),
+          "aria-label" = sprintf("Filter %s", name),
+          style = "width: 100%; height: 28px;"
+        )
+      }    ),
+    url = colDef(
+      name = paste0(as.character(fa("link")), " Link"),
+      cell = function(value) {
+        htmltools::tags$a(
+          href = value,
+          target = "_blank",
+          style = list(
+            color = "#2196F3",
+            textDecoration = "none",
+            "&:hover" = list(textDecoration = "underline")
+          ),
+          "View Source"
+        )
+      },
+      html = TRUE,
+    )
+  ),
+  searchable = TRUE,
+  defaultPageSize = 10,
+  paginationType = "numbers",
+  showPageSizeOptions = TRUE,
+  pageSizeOptions = c(5, 10, 15),
+  bordered = TRUE,
+  highlight = TRUE,
+  striped = TRUE,
+  theme = reactableTheme(
+    color = "#333",
+    backgroundColor = "#FFFFFF",
+    headerStyle = list(
+      backgroundColor = "#f8f9fa",
+      borderBottom = "2px solid #eee",
+      fontWeight = "600",
+      textTransform = "uppercase"
+    ),
+    rowHighlightStyle = list(
+      backgroundColor = "rgba(33,150,243,0.1)",
+      transition = "all 0.2s ease"
+    ),
+    searchInputStyle = list(
+      width = "100%",
+      padding = "8px 12px",
+      borderRadius = "4px",
+      border = "1px solid #ddd"
+    ),
+    cellPadding = "12px 8px"
+  ),
+  language = reactableLang(
+    searchPlaceholder = "🔍 Textsuche...",
+    noData = "Keine Posts fefunden",
+    pageInfo = "{rowStart} bis {rowEnd} von {rows} posts",
+    pagePrevious = "← Vorherige",
+    pageNext = "Nächste →"
+  ),
+  details = function(index) {
+    htmltools::div(
+      style = list(padding = "16px", backgroundColor = "#f8f9fa"),
+      htmltools::tags$pre(
+        style = list(whiteSpace = "pre-wrap", margin = 0),
+        data$text[index]
+      )
+    )
+  },
+  elementId = "cars-select"
+)
+```
+
