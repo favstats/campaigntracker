@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "AI Content by Party",
     "section": "",
-    "text": "Willkommen beim CampAIgn Tracker, Ihrer go-to Plattform zur Überwachung des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf bezahlte Werbung auf Meta-Plattformen von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in Targeting-Strategien, Ausgabemuster und die Verbreitung von KI-generierten Bildern und Botschaften.\n\n\nAI Content by Party\n\n\n\n\n\n\n\n\n\nAI Proportion by Party\n\n\n\n\n\n\n\n\n\n:::\n\n\n\nAI vs Non-AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOverall StatisticsBy PartyContent ExploringMethodology\n\n\n\n\nTimeframe: January 1st - December 13th 2024\nSource: Meta Ad Library. We retrieved all paid ads from 160+ official German party accounts.\n\n\n\n\nUnique AI Ads\n\n\nSpending\n\n\n\nThis only shows the top 3 ads in terms of impressions but future versions will include a browsable table!\n\n\n\n\n\n\nImpressionen: 125 000 \nTotal Spend: 500 €\nTarget Gender: Women\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\nImpressions: 120 500\nTotal Spend: 1300 €\nTarget Gender: Men\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\nImpressions: 100 000\nTotal Spend: 500 €\nTarget Gender: Mixed\nTarget Age: All \nTarget Location: Brandenburg \n\nMore info on the ad: Ad Library Link\n\n\n\n\n\n\n\n\n\n\nCampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+    "text": "Willkommen beim CampAIgn Tracker, Ihrer go-to Plattform zur Überwachung des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf bezahlte Werbung auf Meta-Plattformen von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in Targeting-Strategien, Ausgabemuster und die Verbreitung von KI-generierten Bildern und Botschaften.\n\n\nAI Content by Party\n\n\n\n\n\n\n\n\n\nAI Proportion by Party\n\n\n\n\n\n\n\n\n\n:::\n\n\n\nAI vs Non-AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEntdecken\n\n\n\n\n\n\n\n\n\nMethodologie\n\n\n\n\n\nCampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
   },
   {
     "objectID": "index.html#hello",
@@ -61,5 +61,26 @@
     "title": "CampAIgn Tracker",
     "section": "AI Proportion by Party",
     "text": "AI Proportion by Party"
+  },
+  {
+    "objectID": "index.html#methodologie",
+    "href": "index.html#methodologie",
+    "title": "AI Content by Party",
+    "section": "Methodologie",
+    "text": "Methodologie\n\n\n\n\n\nCampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+  },
+  {
+    "objectID": "explore.html",
+    "href": "explore.html",
+    "title": "CampAIgn Tracker",
+    "section": "",
+    "text": "Willkommen beim CampAIgn Tracker, Ihrer go-to Plattform zur Überwachung des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf bezahlte Werbung auf Meta-Plattformen von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in Targeting-Strategien, Ausgabemuster und die Verbreitung von KI-generierten Bildern und Botschaften."
+  },
+  {
+    "objectID": "explore.html#entdecken",
+    "href": "explore.html#entdecken",
+    "title": "CampAIgn Tracker",
+    "section": "Entdecken",
+    "text": "Entdecken"
   }
 ]

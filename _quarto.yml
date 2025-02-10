@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs/explore
+
+website:
+  title: "CampAIgn Tracker"
+  navbar:
+    left:
+      - href: https://favstats.github.io/campaigntracker
+        text: "{{< iconify ph star-four-light >}} AI Content Tracking"
+      - href: index.qmd
+        text: "{{< iconify ph binoculars-light >}} Datenexplorer"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    fontsize: 1.2em
+

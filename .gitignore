@@ -21,3 +21,4 @@ prototype_media
 brightdata.R
 data
 *.R
+/.quarto/
