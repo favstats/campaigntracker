@@ -7,7 +7,9 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: "{{< iconify ph star-four-light >}} AI Political Content Tracker"
+        text: "{{< iconify ph star-four-light >}} AI Content Tracking"
+      - href: explore.qmd
+        text: "{{< iconify ph binoculars-light >}} Datenexplorer"
 
 format:
   html:
