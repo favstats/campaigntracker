@@ -5437,7 +5437,7 @@ flex: 0 0 auto;
         (function() {
           // Use unique variable names
           var treemapOptions = {
-            series: [{ data: [{"x":"B90/GRÜNE","y":141},{"x":"SPD","y":91},{"x":"CDU/CSU","y":74},{"x":"AfD","y":51},{"x":"LINKE","y":43},{"x":"FDP","y":29},{"x":"PdF","y":11},{"x":"Bayernpartei","y":7},{"x":"DieBasis","y":7},{"x":"BSW","y":7},{"x":"V-Partei³","y":3},{"x":"VOLT","y":3},{"x":"Freie Wähler","y":3},{"x":"ÖDP","y":2},{"x":"Partei der Humanisten","y":2},{"x":"Die PARTEI","y":1},{"x":"DEMOKRATIE IN BEWEGUNG","y":1},{"x":"NPD /Die Heimat","y":1},{"x":"MLPD","y":1}] }],
+            series: [{ data: [{"x":"B90/GRÜNE","y":146},{"x":"SPD","y":86},{"x":"CDU/CSU","y":70},{"x":"AfD","y":63},{"x":"LINKE","y":42},{"x":"FDP","y":26},{"x":"PdF","y":15},{"x":"Bayernpartei","y":8},{"x":"DieBasis","y":5},{"x":"BSW","y":4},{"x":"Freie Wähler","y":4},{"x":"V-Partei³","y":2},{"x":"ÖDP","y":2},{"x":"NPD /Die Heimat","y":2},{"x":"Partei der Humanisten","y":2},{"x":"DEMOKRATIE IN BEWEGUNG","y":1},{"x":"MLPD","y":1},{"x":"VOLT","y":1}] }],
             legend: { show: false },
             chart: {
               id: 'partyTreemap',
@@ -5450,7 +5450,7 @@ flex: 0 0 auto;
               align: 'center',
               style: { fontSize: '16px' }
             },
-            colors: ["#46962B","#E3000F","#000000","#009EE0","#BE3075","#FFED00","#f5a519","#97f5fd","#7F7F7F","#782151","#9fbe15","#562883","#f6a800","#00AA00","#ff00ff","#a81e31","#253c69","#d59e29","#FF0000"],
+            colors: ["#46962B","#E3000F","#000000","#009EE0","#BE3075","#FFED00","#f5a519","#97f5fd","#7F7F7F","#782151","#f6a800","#9fbe15","#00AA00","#d59e29","#ff00ff","#253c69","#FF0000","#562883"],
             plotOptions: {
               treemap: {
                 distributed: true,
@@ -5482,8 +5482,8 @@ flex: 0 0 auto;
 <h2 class="anchored" data-anchor-id="ai-proportion-by-party">AI Proportion by Party</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="apexcharter html-widget html-fill-item" id="htmlwidget-fc4c5c96eb2aeeafe707" style="width:100%;height:350px;"></div>
-<script type="application/json" data-for="htmlwidget-fc4c5c96eb2aeeafe707">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":true,"height":"5000px"},"plotOptions":{"bar":{"horizontal":true,"barHeight":"70%","columnWidth":"85%"}},"xaxis":{"categories":["Die PARTEI","Bayernpartei","PdF","DEMOKRATIE IN BEWEGUNG","DieBasis","V-Partei³","ÖDP","BSW","Partei der Humanisten","VOLT","NPD /Die Heimat","AfD","B90/GRÜNE","LINKE","MLPD","CDU/CSU","SPD","FDP","Freie Wähler"]},"series":[{"name":"AI = 0","data":[65,65.625,66.66666666666666,84.44444444444444,86.36363636363636,91.30434782608695,95.88235294117648,95.91836734693877,96,96.875,97.10884353741497,97.50088621056364,97.89936492427942,98.11320754716981,98.1840490797546,98.4009840098401,98.61707200762994,99.33774834437085]},{"name":"AI = 1","data":[100,35,34.375,33.33333333333333,15.55555555555556,13.63636363636363,8.695652173913043,4.117647058823529,4.081632653061225,4,3.125,2.891156462585034,2.49911378943637,2.100635075720567,1.886792452830189,1.815950920245399,1.599015990159901,1.382927992370052,0.6622516556291391]}],"colors":["#6c757d","#17a2b8"],"dataLabels":{"enabled":true,"formatter":"function(val) { return Math.round(val) + '%'; }"},"legend":{"position":"top"},"title":{"text":"AI Proportion by Party (Sorted)"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter"],"jsHooks":[]}</script>
+<div class="apexcharter html-widget html-fill-item" id="htmlwidget-4baa352c68d668e7faec" style="width:100%;height:350px;"></div>
+<script type="application/json" data-for="htmlwidget-4baa352c68d668e7faec">{"x":{"ax_opts":{"chart":{"type":"bar","stacked":true,"height":"5000px"},"plotOptions":{"bar":{"horizontal":true,"barHeight":"70%","columnWidth":"85%"}},"xaxis":{"categories":["Bayernpartei","PdF","DEMOKRATIE IN BEWEGUNG","DieBasis","V-Partei³","ÖDP","NPD /Die Heimat","Partei der Humanisten","AfD","B90/GRÜNE","BSW","LINKE","MLPD","CDU/CSU","SPD","VOLT","FDP","Freie Wähler"]},"series":[{"name":"AI = 0","data":[61.90476190476191,62.5,66.66666666666666,88.88888888888889,90.90909090909091,91.30434782608695,94.11764705882352,95.91836734693877,96.48829431438128,97.4127237285132,97.53086419753086,97.94621026894865,98.11320754716981,98.27840629611411,98.48698099929626,98.61111111111111,98.75835721107927,99.11894273127754]},{"name":"AI = 1","data":[38.09523809523809,37.5,33.33333333333333,11.11111111111111,9.090909090909092,8.695652173913043,5.88235294117647,4.081632653061225,3.511705685618729,2.587276271486798,2.469135802469136,2.053789731051345,1.886792452830189,1.721593703885883,1.51301900070373,1.388888888888889,1.241642788920726,0.881057268722467]}],"colors":["#6c757d","#17a2b8"],"dataLabels":{"enabled":true,"formatter":"function(val) { return Math.round(val) + '%'; }"},"legend":{"position":"top"},"title":{"text":"AI Proportion by Party (Sorted)"}},"auto_update":{"series_animate":true,"update_options":false,"options_animate":true,"options_redrawPaths":true,"update_synced_charts":false},"sparkbox":false},"evals":["ax_opts.dataLabels.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 
