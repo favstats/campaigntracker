@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Theresa Schültken">
+<meta name="description" content="Der CampAIgn Tracker schafft Transparenz über den Einsatz von KI in politischen Kampagnen auf Social Media. Verfolgen Sie den Einfluss von KI-generierten Inhalten im Wahlkampf 2024.">
+
+<title>CampAIgn Tracker - Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../logobigger.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logobigger.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CampAIgn Tracker</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:star-four-light" aria-label="Icon star-four-light from ph Iconify.design set." title="Icon star-four-light from ph Iconify.design set."></iconify-icon> AI Content Tracking</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://favstats.github.io/campaigntracker/explore" rel="" target="">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:binoculars-light" aria-label="Icon binoculars-light from ph Iconify.design set." title="Icon binoculars-light from ph Iconify.design set."></iconify-icon> Datenexplorer</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../info.html" rel="" target="">
+ <span class="menu-text">Über Uns</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhalt</h2>
+   
+  <ul class="collapse">
+  <li><a href="#der-campaign-tracker-für-mehr-transparenz-beim-ki-einsatz" id="toc-der-campaign-tracker-für-mehr-transparenz-beim-ki-einsatz" class="nav-link active" data-scroll-target="#der-campaign-tracker-für-mehr-transparenz-beim-ki-einsatz">Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz</a>
+  <ul class="collapse">
+  <li><a href="#hintergrund" id="toc-hintergrund" class="nav-link" data-scroll-target="#hintergrund">Hintergrund</a></li>
+  <li><a href="#entwicklung-des-prototyps" id="toc-entwicklung-des-prototyps" class="nav-link" data-scroll-target="#entwicklung-des-prototyps">Entwicklung des Prototyps</a></li>
+  <li><a href="#ausblick" id="toc-ausblick" class="nav-link" data-scroll-target="#ausblick">Ausblick</a></li>
+  <li><a href="#unser-erfolg-beim-politechathon" id="toc-unser-erfolg-beim-politechathon" class="nav-link" data-scroll-target="#unser-erfolg-beim-politechathon">Unser Erfolg beim Politechathon</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-contents">
+             <p>Theresa Schültken </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2. Dezember 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+<section id="der-campaign-tracker-für-mehr-transparenz-beim-ki-einsatz" class="level1">
+<h1>Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz</h1>
+<p>Samstagmorgen, 9.00 Uhr im grauen Berlin: voller Erwartungen und Vorfreude treffen wir einzeln in der weihnachtlich beleuchteten Landesvertretung Baden-Württemberg ein.<br>
+Wir, das sind <strong>Dr.&nbsp;Simon Kruschinski</strong> (Politischer Kommunikationsforscher der Johannes Gutenberg-Universität Mainz), <strong>Miriam Runde</strong> (M. Sc. Data Science for Public Policy), <strong>Dr.&nbsp;Fabio Votta</strong> (Postdoc Forscher Data-Driven-Campaigning an der Universität Amsterdam), <strong>Jakob Scherer</strong> (M. Sc. Management) und <strong>Theresa Schültken</strong> (MA Internationale Beziehungen, Beraterin Strategische Vorausschau).</p>
+<p>Als wir uns dann gegen 10.30 Uhr zum ersten Mal kennenlernen, merken wir gleich, dass wir mit der Kombination aus <strong>Politikwissenschaft</strong>, <strong>Data Science</strong> und <strong>KI-Kenntnissen</strong> eine sehr gute Grundlage für das Wochenende haben.<br>
+Im Laufe eines Wochenendes paralleler Datenaufbereitung, Tests von möglichen KI-Modellen, Persona-Recherche und vielen erkenntnisreichen Gesprächen wurde aus einer Idee ein Projekt: <strong>Der CampAIgn Tracker.</strong></p>
+<img src="fotoa1.png" class="img-fluid" alt="Teamfoto des CampAIgn Tracker"><br>
+
+<div class="credit">
+Credits @ BW Stiftung / Viktor Heekeren
+</div>
+<section id="hintergrund" class="level2">
+<h2 class="anchored" data-anchor-id="hintergrund">Hintergrund</h2>
+<p>Vor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.<br>
+Die Sorge vor <strong>Fake News</strong>, <strong>Desinformation</strong>, <strong>Emotionalisierung</strong> und <strong>Beeinflussung</strong> ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.</p>
+<p>Hier setzt der <strong>CampAIgn Tracker</strong> an:<br>
+Er stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.</p>
+<blockquote class="blockquote">
+<p><em>“Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht.”</em><br>
+— <strong>Dr.&nbsp;Simon Kruschinski</strong></p>
+</blockquote>
+</section>
+<section id="entwicklung-des-prototyps" class="level2">
+<h2 class="anchored" data-anchor-id="entwicklung-des-prototyps">Entwicklung des Prototyps</h2>
+<p>Auf dem <strong>Politechathon</strong> entstand hierfür ein erster Prototyp.<br>
+Die Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.<br>
+Die erste Herausforderung bestand darin, ein <strong>KI-Modell zur Identifizierung von KI-generierten Inhalten</strong> zu finden und mit der Datengrundlage zu testen.</p>
+<p>Hier setzt der CampAIgn Tracker auf ein <strong>zweistufiges Verfahren</strong>:</p>
+<ol type="1">
+<li><strong>Automatisierte Erkennung</strong> von KI-generierten Inhalten.<br>
+</li>
+<li><strong>Manuelle Validierung</strong> durch Expert:innen, um die Genauigkeit zu erhöhen.</li>
+</ol>
+<p>So wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts.</p>
+</section>
+<section id="ausblick" class="level2">
+<h2 class="anchored" data-anchor-id="ausblick">Ausblick</h2>
+<p>Auf der Website <a href="https://www.campaigntracker.de">www.campaigntracker.de</a> können in Zukunft:</p>
+<ul>
+<li><strong>KI-generierte Inhalte</strong> von über 5000 politischen Akteuren in Deutschland eingesehen werden<br>
+</li>
+<li>Details zu <strong>Interaktionen</strong>, <strong>Geldausgaben</strong> und <strong>Reichweite</strong> abgerufen werden<br>
+</li>
+<li>Einzelne KI-Botschaften mit Metadaten analysiert werden</li>
+</ul>
+</section>
+<section id="unser-erfolg-beim-politechathon" class="level2">
+<h2 class="anchored" data-anchor-id="unser-erfolg-beim-politechathon">Unser Erfolg beim Politechathon</h2>
+<p>Am Sonntagnachmittag kam dann die große Überraschung:<br>
+Nach einem Projektpitch gewannen wir den <strong>ersten Platz in der Kategorie Medienkompetenz</strong> – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.</p>
+<p>Innerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von <strong>Transparenz im Wahlkampf</strong>.</p>
+<blockquote class="blockquote">
+<p><em>“Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas ‘Nerd-Power’ (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann.”</em><br>
+— <strong>Miriam Runde</strong></p>
+</blockquote>
+<img src="Foto 2_Preisgeld.jpeg" class="img-fluid" alt="Preisverleihung des Politechathons"><br>
+
+<div class="credit">
+Credits @ BW Stiftung / Viktor Heekeren
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
