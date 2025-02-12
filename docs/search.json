@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "CampAIgn Tracker",
     "section": "",
-    "text": "Willkommen beim CampAIgn Tracker, die Plattform für mehr Transparenz des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf Posts und bezahlte Werbung auf Facebook und Instagram von offiziellen Partei- und Kandidierendenaccounts in Deutschland während der Bundestagswahl 2025. Wir bieten Einblicke in Tonalität, Themenschwerpunkte und die Verbreitung von KI-generierten Bildern und Botschaften.\nDiese Seite veranschaulicht aggreggierte Statistiken zu der Nutzung von KI-generierten Inhalten. Für einen detaillierten Überblick über die tatsächlichen Bilder und Videos könnt ihr zu unserem Datenexplorer wechseln."
+    "text": "Willkommen beim CampAIgn Tracker! Die Plattform, die zeigt, wie Parteien KI in digitalen Wahlkämpfen nutzen – übersichtlich, verständlich und datenbasiert.\n\n\nAktuell untersuchen wir Beiträge und bezahlte Werbung auf Facebook und Instagram von Parteien und Kandidierenden zur Bundestagswahl 2025. Der CampAIgn Tracker zeigt, wie viele KI-generierte Botschaften von welchen Parteien verbreitet werden. Außerdem analysieren wir, welche Themen und Tonalitäten darin genutzt werden.\nAuf dieser Seite finden sich Auswertungen zu den KI-generierten Kampagnen bei der Bundestagswahl 2025. Eine durchsuchbare Übersicht über die einzelnen Ki-Bilder und -Videos ist im Datenexplorer zu finden."
   },
   {
     "objectID": "index.html#hello",
@@ -115,22 +115,22 @@
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
     "title": "CampAIgn Tracker",
-    "section": "Entwicklung von KI-Inhalten über die Zeit",
-    "text": "Entwicklung von KI-Inhalten über die Zeit\n\n\n\n\n\n\n\n\n\n\nDiese Grafik veranschaulicht den zeitlichen Verlauf von KI-generierten und nicht-KI-generierten Inhalten."
+    "section": "KI-Inhalte im Zeitverlauf",
+    "text": "KI-Inhalte im Zeitverlauf\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt, wie sich die Anzahl der Beiträge mit und ohne KI über die Zeit entwickelt."
   },
   {
     "objectID": "index.html#ki-content-by-party1",
     "href": "index.html#ki-content-by-party1",
     "title": "CampAIgn Tracker",
     "section": "KI-Inhalte nach Partei",
-    "text": "KI-Inhalte nach Partei\n\n\n\n\n\n\n\nDie Visualisierung zeigt den Anteil von KI-generierten Inhalten pro Partei in einer flächenbasierten Darstellung. Je größer das Feld, desto mehr KI-Inhalte wurden von der entsprechenden Partei veröffentlicht."
+    "text": "KI-Inhalte nach Partei\n\n\n\n\n\n\n\nDiese Visualisierung zeigt, wie viele KI-generierte Inhalte jede Partei veröffentlicht hat. Die Feldgröße entspricht der Anzahl der identifizierten Beiträge. Größere Felder bedeuten mehr KI-Einsatz von der entsprechenden Partei."
   },
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
     "title": "CampAIgn Tracker",
-    "section": "Anteil von Nicht-Ki und KI-Inhalten nach Partei",
-    "text": "Anteil von Nicht-Ki und KI-Inhalten nach Partei\n\n\n\n\n\n\n\n\n\nDieser Graph zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Die Parteien sind nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nBitte beachten: kleinere Parteien haben weniger Posts insgesamt daher kann auch eine geringe Nutzung von KI-Inhalten zu hohen relativen Anteilen führen."
+    "section": "Anteil von Beiträgen mit und ohne KI nach Partei",
+    "text": "Anteil von Beiträgen mit und ohne KI nach Partei\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Dabei sind die Parteien nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nHinweis: Bei Parteien mit geringerer Beitragsanzahl (u.a. kleinere Parteien) kann auch ein geringer Einsatz von KI-Inhalten zu hohen relativen Anteilen führen."
   },
   {
     "objectID": "index.html#content-analyse",
@@ -151,7 +151,7 @@
     "href": "info.html",
     "title": "\nCampAIgn Tracker\n",
     "section": "",
-    "text": "CampAIgn Tracker\n\n\nÜber Uns\n\n\nWir sind ein interdisziplinäres Team, welches sich ehrenamtlich dafür engagiert, dass im politischen Diskurs auf Social Media Transparenz über den Einsatz von KI herrscht. Wir haben uns auf dem von der Baden-Württemberg Stiftung organisierten Politechathon in Berlin kennengelernt. Auf diesem konnten wir das Preisgeld in der Kategorie „Medienkompetenz“ gewinnen, was es uns ermöglicht, den CampAIgn Tracker weiterzuentwickeln.\n\n\nWir, das sind unsere zwei Forscher Dr. Simon Kruschinski (Universität Mainz) und Dr. Fabio Votta (AlgoSoc Konsortium an der Universität Amsterdam), die im Bereich politische Kampagnen auf Social Media forschen. Sie haben die Idee in die Gruppe gebracht und sind für die reibungslose Kodierung der Bilder und Videos sowie deren schnelle Aufbereitung auf unserer Plattform verantwortlich. Miriam Runde ist Data Scientist und ist vor allem mitverantwortlich für das Backend der Plattform sowie die Nutzung von KI-Detektoren. Jakob Scherer (Hintergrund in BWL und IT) und Theresa Schültken (Hintergrund in Politik und Strategischer Vorausschau) sind für die Außenkommunikation des CampAIgn Trackers sowie die inhaltliche Mitgestaltung zuständig.\n\n\n\nVon links nach rechts auf dem Bild: Theresa Gröninger (Jurorin beim Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer [Credits: @BW Stiftung / Viktor Heekeren]\n\n\n\n\nMethodik – Wie der CampAIgn Tracker funktioniert\n\n\nWir wollen mit dem CampAIgn Tracker dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, wo KI genutzt wurde und vor allem in welchem Kontext das Bild verwendet wurde. Dafür haben wir ein zweistufiges Verfahren aufgesetzt, um KI-Bilder zuverlässig zu identifizieren und zu kodieren.\n\n\nIm ersten Schritt werden 3000 politische Accounts in Deutschland wie z.B. die Accounts der aktuellen Parteispitzen und Spitzenkandidierenden auf Facebook und Instagram überwacht, um neue Posts direkt zu analysieren. Dafür wird zunächst der KI-Detektor von SightEngine verwendet, um mithilfe von KI die Verwendung von KI in den Bildern und Videos zu erkennen. Diese identifizierten KI-Posts sowie alle Posts der Parteispitzen werden dann an unsere geschulten Kodierer:innen weitergeleitet. In diesem Schritt analysieren Menschen nochmals die KI-Bilder, um folgende Infos zu generieren:\n\n\n\nDas Ausmaß der KI-Nutzung im Bild\n\n\nDie Kennzeichnung von KI-Nutzung\n\n\nDie Akteur:innen im Bild oder Video\n\n\nDas Thema des Bildes oder Videos\n\n\nDie Verwendung von Negativität, z.B. durch den Angriff auf die Leistung einer Partei\n\n\nDie Verwendung von Acclaims, z.B. durch den Verweis auf vergangene oder zukünftige Leistungen einer Partei\n\n\n\nDiese umfangreichen Informationen über die KI-Bilder sowie die aller Posts der Parteispitzen finden Sie auf unserer Plattform www.campaigntracker.de in einfachen Visualisierungen. Mithilfe der Plattform ermöglichen wir, dass Bürger:innen und Journalist:innen erfahren, wie KI im Wahlkampf genutzt wird und so aktiv über die Nutzung von KI in der Politik diskutieren können.\n\n\n\n\nKontakt\n\n\nUm mehr über die methodischen Hintergründe zu erfahren oder falls Sie als Journalist:in mit dem Team in Kontakt treten wollen, kontaktieren Sie uns bitte unter:\n\ninfo@campaigntracker.de"
+    "text": "Wir sind ein interdisziplinäres Team, welches sich ehrenamtlich dafür engagiert, dass im politischen Diskurs auf Social Media Transparenz über den Einsatz von KI herrscht. Wir haben uns auf dem von der Baden-Württemberg Stiftung organisierten Politechathon in Berlin kennengelernt. Auf diesem konnten wir das Preisgeld in der Kategorie „Medienkompetenz“ gewinnen, was es uns ermöglicht, den CampAIgn Tracker weiterzuentwickeln.\n\n\nWir, das sind unsere zwei Forscher Dr. Simon Kruschinski (Universität Mainz) und Dr. Fabio Votta (AlgoSoc Konsortium an der Universität Amsterdam), die im Bereich politische Kampagnen auf Social Media forschen. Sie haben die Idee in die Gruppe gebracht und sind für die reibungslose Kodierung der Bilder und Videos sowie deren schnelle Aufbereitung auf unserer Plattform verantwortlich. Miriam Runde ist Data Scientist und ist vor allem mitverantwortlich für das Backend der Plattform sowie die Nutzung von KI-Detektoren. Jakob Scherer (Hintergrund in BWL und IT) und Theresa Schültken (Hintergrund in Politik und Strategischer Vorausschau) sind für die Außenkommunikation des CampAIgn Trackers sowie die inhaltliche Mitgestaltung zuständig.\n\n\n\nVon links nach rechts auf dem Bild: Theresa Gröninger (Jurorin beim Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer [Credits: @BW Stiftung / Viktor Heekeren]"
   },
   {
     "objectID": "posts/anfang.html",
@@ -187,5 +187,26 @@
     "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
     "section": "",
     "text": "Am Sonntagnachmittag kam dann die große Überraschung:\nNach einem Projektpitch gewannen wir den ersten Platz in der Kategorie Medienkompetenz – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.\nInnerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von Transparenz im Wahlkampf.\n\n“Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas ‘Nerd-Power’ (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "index.html#transparenz-beim-ki-einsatz",
+    "href": "index.html#transparenz-beim-ki-einsatz",
+    "title": "CampAIgn Tracker",
+    "section": "Transparenz beim KI-Einsatz",
+    "text": "Transparenz beim KI-Einsatz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnungen von KI-Inhalten mit Disclaimern durch die Parteien oder durch Plattformen sind wichtig für einen transparenten Einsatz. Diese Grafik zeigt, wie oft KI-generierte Inhalte ohne bzw. mit Kennzeichnung veröffentlicht wurden."
+  },
+  {
+    "objectID": "index.html#analyse-der-ki-inhalte",
+    "href": "index.html#analyse-der-ki-inhalte",
+    "title": "CampAIgn Tracker",
+    "section": "Analyse der KI-Inhalte",
+    "text": "Analyse der KI-Inhalte\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Beitrag kann mehrere Themen gleichzeitig behandeln."
+  },
+  {
+    "objectID": "info.html#methode",
+    "href": "info.html#methode",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "Methode",
+    "text": "Methode\nWir wollen mit dem CampAIgn Tracker dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, wo KI genutzt wurde und in welchem Kontext. Dafür haben wir ein zweistufiges Verfahren entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.\n\nDatenerhebung\nWir erfassen alle unbezahlten Beiträge und bezahlten Werbeanzeigen von über 3000 Accounts der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien).\nDabei berücksichtigen wir die Accounts der Parteien auf Bundes-, Landes- und Lokalebene.\n\nOrganische Posts werden über die Brightdata gesammelt.\n\nWerbeanzeigen stammen aus der Meta Ad Library API.\n\n\n\n\n\n\n\n\n\n\nKI-Detektion\nUnsere KI-Detektion ist ein Multi-Step-Verfahren, das automatische Klassifikation mit einem KI-Modell und manuelle Annotation kombiniert.\n\nAutomatische Prüfung:\n\nAlle gesammelten Bilder und Video-Stills werden mit dem KI-Detektionsmodell von SightEngine auf KI-Generierung geprüft.\n\nMenschliche Validierung:\n\nFalls die Klassifikationswahrscheinlichkeit über 0.1 liegt, prüfen geschulte Codierer:innen das Bild manuell.\n\nSo wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.\n\n\nZusätzlich klassifizieren die Codierer:innen für alle identifizierten KI-Beiträge folgende Merkmale:\n\nDie Kennzeichnung von KI-Nutzung\n\nDie Akteur:innen im Bild oder Video\n\nDas Thema des Bildes oder Videos\n\nDie Akteur:innen im gesamten Beitrag\n\nDie Verwendung von Negativität, z. B. durch Angriffe auf Parteien\n\nDie Verwendung von Acclaims, z. B. durch Verweise auf Erfolge einer Partei\n\nDiese umfassenden Informationen sind auf unserer Plattform campaigntracker.de in einfachen Visualisierungen verfügbar.\nSo ermöglichen wir, dass Bürger:innen und Journalist:innen erfahren, wie KI im Wahlkampf genutzt wird und eine öffentliche Debatte über den Einsatz von KI in der Politik führen können."
   }
 ]
