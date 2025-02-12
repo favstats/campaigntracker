@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "AI Content by Party",
+    "title": "CampAIgn Tracker",
     "section": "",
-    "text": "Willkommen beim CampAIgn Tracker, eine Plattform zur Transparenz des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf Posts und bezahlte Werbung auf Facebook und Instagram von offiziellen Partei- und Kandidierendenaccounts in Deutschland und bietet Einblicke in Tonalität, Themenschwerpunkte und die Verbreitung von KI-generierten Bildern und Botschaften.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Content by Party\n\n\n\n\n\n\n\n\n\nAI Proportion by Party\n\n\n\n\n\n\n\n\n\n:::\n\n\n\nAI vs Non-AI Content Analysis"
+    "text": "Willkommen beim CampAIgn Tracker, die Plattform für mehr Transparenz des Einsatzes von KI-generierten Inhalten in politischen Kampagnen. Derzeit konzentriert sich unsere Analyse auf Posts und bezahlte Werbung auf Facebook und Instagram von offiziellen Partei- und Kandidierendenaccounts in Deutschland während der Bundestagswahl 2025. Wir bieten Einblicke in Tonalität, Themenschwerpunkte und die Verbreitung von KI-generierten Bildern und Botschaften.\nDiese Seite veranschaulicht aggreggierte Statistiken zu der Nutzung von KI-generierten Inhalten. Für einen detaillierten Überblick über die tatsächlichen Bilder und Videos könnt ihr zu unserem Datenexplorer wechseln."
   },
   {
     "objectID": "index.html#hello",
@@ -103,5 +103,47 @@
     "title": "Methodologie",
     "section": "",
     "text": "CampAIgn Tracker\n\n\nDaten\n\n\nFür unseren CampAIgn Tracker greifen wir aktuell auf die offiziellen Partei-Accounts der deutschen Parteien zu und analysieren deren Beiträge, die sie als bezahlte Werbung ausgespielt haben. Dafür nutzen wir Metadaten zu Targeting, Spending und vielem mehr und kombinieren diese mit einer Auswertung der einzelnen Beiträge zum Einsatz von KI.\n\n\n\n\nProzess\n\n\nWir setzen auf einem KI-Modell auf, welches automatisiert erkennt, wann Bilder und Videos mit KI bearbeitet oder erstellt wurden. Wir wissen, dass diese Detektoren keine 100%ige Genauigkeit haben. Deshalb schließen wir eine manuelle Klassifizierung an, in der Codierer:innen die Beiträge nochmal prüfen. Somit stellen wir sicher, dass wir alle KI-Bilder zuverlässig erkennen.\n\n\n\n\nBald verfügbar\n\n\nWir erweitern unseren CampAIgn Tracker kontinuierlich und werden bald nicht nur offizielle Partei-Accounts inkludieren, sondern 60.000 weitere Accounts von politischen Akteur:innen in Deutschland. So ermöglichen wir ein Live-Tracking von KI-Inhalten bei den nächsten Wahlen.\n\n\n\nKontaktieren Sie unsere Wissenschaftler:innen!"
+  },
+  {
+    "objectID": "index.html#ki-content-by-party",
+    "href": "index.html#ki-content-by-party",
+    "title": "CampAIgn Tracker",
+    "section": "Anteil KI-Inhalte nach Partei",
+    "text": "Anteil KI-Inhalte nach Partei\n\n\n\n\n\n\n\n\n\nDieser Graph zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Die Parteien sind nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nBitte beachten: kleinere Parteien haben weniger Posts insgesamt daher kann auch eine geringe Nutzung von KI-Inhalten zu hohen relativen Anteilen führen.\n\n\n\n\nAI vs Non-AI Content Analysis"
+  },
+  {
+    "objectID": "index.html#ai-over-time",
+    "href": "index.html#ai-over-time",
+    "title": "CampAIgn Tracker",
+    "section": "Entwicklung von KI-Inhalten über die Zeit",
+    "text": "Entwicklung von KI-Inhalten über die Zeit\n\n\n\n\n\n\n\nDiese Grafik veranschaulicht den zeitlichen Verlauf von KI-generierten und nicht-KI-generierten Inhalten."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party1",
+    "href": "index.html#ki-content-by-party1",
+    "title": "CampAIgn Tracker",
+    "section": "KI-Inhalte nach Partei",
+    "text": "KI-Inhalte nach Partei\n\n\n\n\n\n\n\nDie Visualisierung zeigt den Anteil von KI-generierten Inhalten pro Partei in einer flächenbasierten Darstellung. Je größer das Feld, desto mehr KI-Inhalte wurden von der entsprechenden Partei veröffentlicht."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party2",
+    "href": "index.html#ki-content-by-party2",
+    "title": "CampAIgn Tracker",
+    "section": "Anteil von Nicht-Ki und KI-Inhalten nach Partei",
+    "text": "Anteil von Nicht-Ki und KI-Inhalten nach Partei\n\n\n\n\n\n\n\n\n\nDieser Graph zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Die Parteien sind nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nBitte beachten: kleinere Parteien haben weniger Posts insgesamt daher kann auch eine geringe Nutzung von KI-Inhalten zu hohen relativen Anteilen führen."
+  },
+  {
+    "objectID": "index.html#content-analyse",
+    "href": "index.html#content-analyse",
+    "title": "CampAIgn Tracker",
+    "section": "Content Analyse",
+    "text": "Content Analyse\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post mehrere Themen beinhaltet."
+  },
+  {
+    "objectID": "index.html#transparenz-der-ki-nutzung-in-politischen-inhalten",
+    "href": "index.html#transparenz-der-ki-nutzung-in-politischen-inhalten",
+    "title": "CampAIgn Tracker",
+    "section": "Transparenz der KI-Nutzung in Politischen Inhalten",
+    "text": "Transparenz der KI-Nutzung in Politischen Inhalten\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnung von KI-generierten Inhalten ist entscheidend für Transparenz und Vertrauen. Diese Grafik zeigt, wie häufig KI-Inhalte ohne klare Kennzeichnung veröffentlicht wurden."
   }
 ]
