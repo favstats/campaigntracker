@@ -6034,6 +6034,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+          link.addEventListener("click", function(event) {
+              event.preventDefault(); // Prevent default behavior
+              window.open(link.href, "_blank"); // Open in a new tab/window
+          });
+      });
+  });
+</script>
 
 
 
