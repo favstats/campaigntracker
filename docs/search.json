@@ -207,7 +207,7 @@
     "href": "info.html#methode",
     "title": "\nCampAIgn Tracker\n",
     "section": "Methode",
-    "text": "Methode\nWir wollen mit dem CampAIgn Tracker dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, wo KI genutzt wurde und in welchem Kontext. Dafür haben wir ein zweistufiges Verfahren entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.\n\nDatenerhebung\nWir erfassen alle unbezahlten Beiträge und bezahlten Werbeanzeigen von über 3000 Accounts der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien).\nDabei berücksichtigen wir die Accounts der Parteien auf Bundes-, Landes- und Lokalebene.\n\nOrganische Posts werden über die Brightdata gesammelt.\n\nWerbeanzeigen stammen aus der Meta Ad Library API.\n\nDerzeit tracken wir 12020 Beiträge zwischen 2025-01-26 und 2025-02-02`.\n\n\n\n\n\n\n\nDie Klassifizierung der Accounts basiert auf der engagierten Freiwilligenarbeit von Who Targets Me, einer Organisation, die sich für Transparenz im digitalen Wahlkampf einsetzt. Sie verfolgen die Online-Werbeausgaben von über 109.000 Werbetreibenden aus 729 Parteien in 51 Ländern.\n\n\nKI-Detektion\nUnsere KI-Detektion ist ein zweistufiges Verfahren, das automatische Klassifikation mit einem KI-Modell und manuelle Annotation kombiniert.\n\nAutomatische Prüfung:\n\nAlle gesammelten Bilder und Video-Stills werden mit dem KI-Detektionsmodell von SightEngine auf KI-Generierung geprüft.\n\nMenschliche Validierung:\n\nFalls die Klassifikations-wahrscheinlichkeit über 0.1 liegt, prüfen geschulte Codierer:innen das Bild manuell.\n\nSo wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.\n\n\nZusätzlich klassifizieren die Codierer:innen für alle identifizierten KI-Beiträge folgende Merkmale:\n\nDie Kennzeichnung von KI-Nutzung\n\nDie Akteur:innen im Bild oder Video\n\nDas Thema des Bildes oder Videos\n\nDie Akteur:innen im gesamten Beitrag\n\nDie Verwendung von Negativität, z. B. durch Angriffe auf Parteien\n\nDie Verwendung von Acclaims, z. B. durch Verweise auf Erfolge einer Partei\n\nDiese umfassenden Informationen sind auf unserer Plattform campaigntracker.de in einfachen Visualisierungen verfügbar.\nSo ermöglichen wir, dass Bürger:innen und Journalist:innen erfahren, wie KI im Wahlkampf genutzt wird und eine öffentliche Debatte über den Einsatz von KI in der Politik führen können."
+    "text": "Methode\nWir wollen mit dem CampAIgn Tracker dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, wo KI genutzt wurde und in welchem Kontext. Dafür haben wir ein zweistufiges Verfahren entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.\n\nDatenerhebung\nWir erfassen alle unbezahlten Beiträge und bezahlten Werbeanzeigen von über 3000 Accounts der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien).\nDabei berücksichtigen wir die Accounts der Parteien auf Bundes-, Landes- und Lokalebene.\n\nOrganische Posts werden über die Brightdata gesammelt.\n\nWerbeanzeigen stammen aus der Meta Ad Library API.\n\nDerzeit tracken wir 12070 Beiträge zwischen 2025-01-26 und 2025-02-02.\n\n\n\n\n\n\n\nDie Klassifizierung der Accounts basiert auf der engagierten Freiwilligenarbeit von Who Targets Me, einer Organisation, die sich für Transparenz im digitalen Wahlkampf einsetzt. Sie verfolgen die Online-Werbeausgaben von über 100.000 Werbetreibenden von 650+ Parteien in über 50 Ländern.\n\n\nKI-Detektion\nUnsere KI-Detektion ist ein zweistufiges Verfahren, das automatische Klassifikation mit einem KI-Modell und manuelle Annotation kombiniert.\n\nAutomatische Prüfung:\n\nAlle gesammelten Bilder und Video-Stills werden mit dem KI-Detektionsmodell von SightEngine auf KI-Generierung geprüft.\n\nMenschliche Validierung:\n\nFalls die Klassifikations-wahrscheinlichkeit über 0.1 liegt, prüfen geschulte Codierer:innen das Bild manuell.\n\nSo wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.\n\n\nZusätzlich klassifizieren die Codierer:innen für alle identifizierten KI-Beiträge folgende Merkmale:\n\nDie Kennzeichnung von KI-Nutzung\n\nDie Akteur:innen im Bild oder Video\n\nDas Thema des Bildes oder Videos\n\nDie Akteur:innen im gesamten Beitrag\n\nDie Verwendung von Negativität, z. B. durch Angriffe auf Parteien\n\nDie Verwendung von Acclaims, z. B. durch Verweise auf Erfolge einer Partei\n\nDiese umfassenden Informationen sind auf unserer Plattform campaigntracker.de in einfachen Visualisierungen verfügbar.\nSo ermöglichen wir, dass Bürger:innen und Journalist:innen erfahren, wie KI im Wahlkampf genutzt wird und eine öffentliche Debatte über den Einsatz von KI in der Politik führen können."
   },
   {
     "objectID": "impressum.html",
@@ -227,8 +227,8 @@
     "objectID": "index.html#personen",
     "href": "index.html#personen",
     "title": "CampAIgn Tracker",
-    "section": "Gezeigte Personen in KI-Beiträgen",
-    "text": "Gezeigte Personen in KI-Beiträgen\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt, welche Personen(gruppen) in den Bild-/Video-Inhalten vorkommen und wie häufig sie vertreten sind\n\nHinweis: Ein Bild kann mehrere Inhalte gleichzeitig zeigen."
+    "section": "",
+    "text": "Diese Grafik zeigt, welche Personen(gruppen) in den Bild-/Video-Inhalten vorkommen und wie häufig sie vertreten sind"
   },
   {
     "objectID": "posts/ausgaben.html",
@@ -249,7 +249,7 @@
     "href": "posts/ausgaben.html#wer-gibt-mehr-aus-und-wer-weniger",
     "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
     "section": "Wer gibt mehr aus – und wer weniger?",
-    "text": "Wer gibt mehr aus – und wer weniger?\nBesonders Die Grünen (+419.000 €) und Volt (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die CDU/CSU (-392.000 €) und die SPD (-370.000 €) ihre digitale Wahlwerbungsbudgets gekürzt.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\nDiese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald."
+    "text": "Wer gibt mehr aus – und wer weniger?\nBesonders Die Grünen (+419.000 €) und Volt (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die CDU/CSU (-392.000 €) und die SPD (-370.000 €) ihre digitalen Wahlwerbungsbudgets gekürzt.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\nDiese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald."
   },
   {
     "objectID": "posts/ausgaben.html#plattformwechsel-google-boomt-meta-stagniert",
@@ -271,5 +271,19 @@
     "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
     "section": "Trozdem: Google steigt aus – Meta bleibt",
     "text": "Trozdem: Google steigt aus – Meta bleibt\nDiese Entwicklung steht im Kontext von Googles Entscheidung, politische Werbung in der EU ab Oktober 2025 zu verbieten. Dies könnte Meta eine Quasi-Monopolstellung bei digitaler Wahlwerbung verschaffen. Das birgt potenzielle Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für bezahlte digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten."
+  },
+  {
+    "objectID": "index.html#ai-transparency",
+    "href": "index.html#ai-transparency",
+    "title": "CampAIgn Tracker",
+    "section": "AI Transparency",
+    "text": "AI Transparency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures."
+  },
+  {
+    "objectID": "index.html#ai-content-analysis",
+    "href": "index.html#ai-content-analysis",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content Analysis",
+    "text": "AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple topics."
   }
 ]

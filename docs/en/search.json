@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "anfang.html",
+    "href": "anfang.html",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Samstagmorgen, 9.00 Uhr im grauen Berlin: voller Erwartungen und Vorfreude treffen wir einzeln in der weihnachtlich beleuchteten Landesvertretung Baden-Württemberg ein.\nWir, das sind Dr. Simon Kruschinski (Politischer Kommunikationsforscher der Johannes Gutenberg-Universität Mainz), Miriam Runde (M. Sc. Data Science for Public Policy), Dr. Fabio Votta (Postdoc Forscher Data-Driven-Campaigning an der Universität Amsterdam), Jakob Scherer (M. Sc. Management) und Theresa Schültken (MA Internationale Beziehungen, Beraterin Strategische Vorausschau).\nAls wir uns dann gegen 10.30 Uhr zum ersten Mal kennenlernen, merken wir gleich, dass wir mit der Kombination aus Politikwissenschaft, Data Science und KI-Kenntnissen eine sehr gute Grundlage für das Wochenende haben.\nIm Laufe eines Wochenendes paralleler Datenaufbereitung, Tests von möglichen KI-Modellen, Persona-Recherche und vielen erkenntnisreichen Gesprächen wurde aus einer Idee ein Projekt: Der CampAIgn Tracker.\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren\n\n\n\nVor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.\nDie Sorge vor Fake News, Desinformation, Emotionalisierung und Beeinflussung ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.\nHier setzt der CampAIgn Tracker an:\nEr stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.\n\n“Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht.”\n— Dr. Simon Kruschinski\n\n\n\n\nAuf dem Politechathon entstand hierfür ein erster Prototyp.\nDie Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.\nDie erste Herausforderung bestand darin, ein KI-Modell zur Identifizierung von KI-generierten Inhalten zu finden und mit der Datengrundlage zu testen.\nHier setzt der CampAIgn Tracker auf ein zweistufiges Verfahren:\n\nAutomatisierte Erkennung von KI-generierten Inhalten.\n\nManuelle Validierung durch Expert:innen, um die Genauigkeit zu erhöhen.\n\nSo wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts.\n\n\n\nAuf der Website www.campaigntracker.de können in Zukunft:\n\nKI-generierte Inhalte von über 3000 politischen Akteuren in Deutschland eingesehen werden\n\nDetails zu Interaktionen, Geldausgaben und Reichweite abgerufen werden\n\nEinzelne KI-Botschaften mit Metadaten analysiert werden\n\n\n\n\nAm Sonntagnachmittag kam dann die große Überraschung:\nNach einem Projektpitch gewannen wir den ersten Platz in der Kategorie Medienkompetenz – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.\nInnerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von Transparenz im Wahlkampf.\n\n“Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas ‘Nerd-Power’ (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "anfang.html#hintergrund",
+    "href": "anfang.html#hintergrund",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Vor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.\nDie Sorge vor Fake News, Desinformation, Emotionalisierung und Beeinflussung ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.\nHier setzt der CampAIgn Tracker an:\nEr stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.\n\n“Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht.”\n— Dr. Simon Kruschinski"
+  },
+  {
+    "objectID": "anfang.html#entwicklung-des-prototyps",
+    "href": "anfang.html#entwicklung-des-prototyps",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Auf dem Politechathon entstand hierfür ein erster Prototyp.\nDie Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.\nDie erste Herausforderung bestand darin, ein KI-Modell zur Identifizierung von KI-generierten Inhalten zu finden und mit der Datengrundlage zu testen.\nHier setzt der CampAIgn Tracker auf ein zweistufiges Verfahren:\n\nAutomatisierte Erkennung von KI-generierten Inhalten.\n\nManuelle Validierung durch Expert:innen, um die Genauigkeit zu erhöhen.\n\nSo wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts."
+  },
+  {
+    "objectID": "anfang.html#ausblick",
+    "href": "anfang.html#ausblick",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Auf der Website www.campaigntracker.de können in Zukunft:\n\nKI-generierte Inhalte von über 3000 politischen Akteuren in Deutschland eingesehen werden\n\nDetails zu Interaktionen, Geldausgaben und Reichweite abgerufen werden\n\nEinzelne KI-Botschaften mit Metadaten analysiert werden"
+  },
+  {
+    "objectID": "anfang.html#unser-erfolg-beim-politechathon",
+    "href": "anfang.html#unser-erfolg-beim-politechathon",
+    "title": "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz",
+    "section": "",
+    "text": "Am Sonntagnachmittag kam dann die große Überraschung:\nNach einem Projektpitch gewannen wir den ersten Platz in der Kategorie Medienkompetenz – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.\nInnerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von Transparenz im Wahlkampf.\n\n“Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas ‘Nerd-Power’ (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann.”\n— Miriam Runde\n\n\n\n\nCredits @ BW Stiftung / Viktor Heekeren"
+  },
+  {
+    "objectID": "ausgaben.html",
+    "href": "ausgaben.html",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "",
+    "text": "Digitale Wahlwerbung spielt eine zentrale Rolle in modernen Wahlkämpfen. Im Vorfeld der Bundestagswahl am 23. Februar 2025 analysiere ich die digitalen Werbeausgaben der Parteien im Vergleich zu den Wahlen 2021.\n🔗 Englische längere Version hier lesen: favstats.eu/post/btws"
+  },
+  {
+    "objectID": "ausgaben.html#steigende-digitale-werbeausgaben",
+    "href": "ausgaben.html#steigende-digitale-werbeausgaben",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Steigende digitale Werbeausgaben",
+    "text": "Steigende digitale Werbeausgaben\nInsgesamt sind die Ausgaben für digitale Werbung um 665.000 € gestiegen. Zwei Wochen vor der Wahl wurden 2025 bereits 4,8 Mio. € ausgegeben, verglichen mit 4,1 Mio. € im gleichen Zeitraum 2021.\n\n\n\nVergleich der digitalen Werbeausgaben zwischen 2021 und 2025\n\n\nDieser Anstieg könnte darauf hindeuten, dass digitale Plattformen eine noch zentralere Rolle im Wahlkampf spielen. Möglicherweise zeigt es allerdings auch dass die Budgets insgesamt gestiegen sind. Eine genauere Analyse folgt in einem zukünftigen Blogpost."
+  },
+  {
+    "objectID": "ausgaben.html#wer-gibt-mehr-aus-und-wer-weniger",
+    "href": "ausgaben.html#wer-gibt-mehr-aus-und-wer-weniger",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Wer gibt mehr aus – und wer weniger?",
+    "text": "Wer gibt mehr aus – und wer weniger?\nBesonders Die Grünen (+419.000 €) und Volt (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die CDU/CSU (-392.000 €) und die SPD (-370.000 €) ihre digitalen Wahlwerbungsbudgets gekürzt.\n\n\n\nVergleich der Parteiausgaben für digitale Werbung\n\n\nDiese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald."
+  },
+  {
+    "objectID": "ausgaben.html#plattformwechsel-google-boomt-meta-stagniert",
+    "href": "ausgaben.html#plattformwechsel-google-boomt-meta-stagniert",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Plattformwechsel: Google boomt, Meta stagniert",
+    "text": "Plattformwechsel: Google boomt, Meta stagniert\nEin interessanter Trend zeigt sich bei den Plattformen:\n\nDie Ausgaben für Google-Werbung haben sich mehr als verdoppelt (+909.000 €), während\n\nDie Meta-Ausgaben leicht zurückgingen (-245.000 €).\n\n\n\n\nPlattformvergleich: Meta vs. Google"
+  },
+  {
+    "objectID": "ausgaben.html#trozdem-google-steigt-aus-meta-bleibt",
+    "href": "ausgaben.html#trozdem-google-steigt-aus-meta-bleibt",
+    "title": "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl",
+    "section": "Trozdem: Google steigt aus – Meta bleibt",
+    "text": "Trozdem: Google steigt aus – Meta bleibt\nDiese Entwicklung steht im Kontext von Googles Entscheidung, politische Werbung in der EU ab Oktober 2025 zu verbieten. Dies könnte Meta eine Quasi-Monopolstellung bei digitaler Wahlwerbung verschaffen. Das birgt potenzielle Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für bezahlte digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Keine Treffer"
+  },
+  {
+    "objectID": "impressum.html",
+    "href": "impressum.html",
+    "title": "Impressum",
+    "section": "",
+    "text": "Impressum\nAngaben gemäß § 5 TMG: Dr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland Kontakt: E-Mail: Simon.kruschinski@gmail.com\nVerantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Dr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland\nHaftungsausschluss: Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.\nUrheberrecht:\nDie auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.\n\n\nDatenschutzerklärung\n\nAllgemeine Hinweise Diese Datenschutzerklärung informiert Sie darüber, welche personenbezogenen Daten beim Besuch dieser Website und bei der Nutzung von Daten aus der Meta Ad Library erhoben und verarbeitet werden. Der Schutz Ihrer Daten hat für uns höchste Priorität. Wir behandeln Ihre personenbezogenen Daten vertraulich und gemäß den gesetzlichen Datenschutzvorschriften (DSGVO, BDSG).\nVerantwortliche Stelle\n\nVerantwortlich für die Datenverarbeitung auf dieser Website ist:\nDr. Simon Kruschinski Watfordstraße 22 55122 Mainz Deutschland\n\nErhebung und Speicherung personenbezogener Daten\n\n\nBeim Besuch der Website\n\nBeim Besuch dieser Website werden automatisch folgende Daten in Logfiles gespeichert: IP-Adresse (anonymisiert) Datum und Uhrzeit der Anfrage Besuchte Seiten Verwendeter Browser und Betriebssystem Referrer-URL (die zuvor besuchte Seite) Diese Daten werden ausschließlich zur Bereitstellung der Website und zur Sicherheit des Systems genutzt.\n\nVerarbeitung von Daten aus der Meta Ad Library\n\nIm Rahmen unseres wissenschaftlichen Projekts analysieren wir Daten aus der Meta Ad Library. Diese Daten enthalten öffentliche Informationen über politische Werbeanzeigen und Kampagnen, die auf Meta-Plattformen (Facebook, Instagram) geschaltet wurden. Die Verarbeitung dieser Daten erfolgt ausschließlich zu Forschungszwecken. Dabei werden: Daten zur Werbefinanzierung, Zielgruppen und Inhalten politischer Anzeigen analysiert. Personenbezogene Daten nicht aktiv erhoben oder gespeichert, es sei denn, sie sind bereits öffentlich in der Meta Ad Library zugänglich.\nKeine individuellen Profile erstellt oder personenbezogene Informationen für automatisierte Entscheidungsprozesse genutzt.\nFalls Sie weitere Informationen zur Meta Ad Library und deren Datenschutzrichtlinien benötigen, besuchen Sie bitte die Datenschutzerklärung von Meta unter: 🔗 https://www.facebook.com/privacy/policy\n\nRechtsgrundlage der Verarbeitung Die Verarbeitung Ihrer Daten erfolgt gemäß: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) zur Analyse von politischer Werbung. Art. 6 Abs. 1 lit. e DSGVO (öffentliches Interesse in der wissenschaftlichen Forschung).\nSpeicherdauer Forschungsdaten aus der Meta Ad Library werden nur für die Dauer des wissenschaftlichen Projekts gespeichert und anschließend anonymisiert oder gelöscht.\nWeitergabe von Daten Die erhobenen Daten werden nicht an Dritte weitergegeben. Forschungsergebnisse werden ausschließlich in anonymisierter oder aggregierter Form veröffentlicht.\nIhre Rechte als betroffene Person\n\nSie haben folgende Rechte gemäß DSGVO: Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO) Berichtigung unrichtiger Daten (Art. 16 DSGVO) Löschung („Recht auf Vergessenwerden“) (Art. 17 DSGVO) Einschränkung der Verarbeitung (Art. 18 DSGVO) Datenübertragbarkeit (Art. 20 DSGVO) Widerspruch gegen die Verarbeitung (Art. 21 DSGVO) Falls Sie Fragen zur Verarbeitung Ihrer Daten haben oder Ihre Rechte geltend machen möchten, kontaktieren Sie uns unter den oben genannten Kontaktdaten.\n\nÄnderungen dieser Datenschutzerklärung Diese Datenschutzerklärung kann aktualisiert werden, falls sich gesetzliche oder technische Rahmenbedingungen ändern. Bitte überprüfen Sie sie daher regelmäßig."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CampAIgn Tracker",
+    "section": "",
+    "text": "Welcome to the CampAIgn Tracker! The platform that uncovers AI-driven campaigns by political parties on social networks.\nIn live tracking, we analyze all posts and paid advertisements on Facebook and Instagram from parties and candidates for the 2025 Bundestag election. The CampAIgn Tracker allows you to see how many AI-generated messages are being spread by which parties. Additionally, we highlight which topics are being used and whether the tone is positive or negative.\nOn this page, you will find analyses of AI-generated campaigns for the 2025 Bundestag election. A searchable overview of individual AI-generated images and videos is available in the AI Explorer."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party1",
+    "href": "index.html#ki-content-by-party1",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content by Party",
+    "text": "AI Content by Party\n\n\n\n\n\n\n\n\nThis visualization shows how many AI-generated contents each party has published. The field size corresponds to the number of identified posts. Larger fields indicate a higher use of AI by the respective party."
+  },
+  {
+    "objectID": "index.html#ki-content-by-party2",
+    "href": "index.html#ki-content-by-party2",
+    "title": "CampAIgn Tracker",
+    "section": "Share of Posts with and without AI by Party",
+    "text": "Share of Posts with and without AI by Party\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\nNote: For parties with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
+  },
+  {
+    "objectID": "index.html#ai-transparency",
+    "href": "index.html#ai-transparency",
+    "title": "CampAIgn Tracker",
+    "section": "AI Transparency",
+    "text": "AI Transparency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures."
+  },
+  {
+    "objectID": "index.html#medienformatte",
+    "href": "index.html#medienformatte",
+    "title": "CampAIgn Tracker",
+    "section": "AI Media Formats",
+    "text": "AI Media Formats\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the percentage share of images and videos in posts identified as AI-generated. This helps reveal which media formats are used more frequently."
+  },
+  {
+    "objectID": "index.html#ai-content-analysis",
+    "href": "index.html#ai-content-analysis",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content Analysis",
+    "text": "AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple topics."
+  },
+  {
+    "objectID": "index.html#personen",
+    "href": "index.html#personen",
+    "title": "CampAIgn Tracker",
+    "section": "",
+    "text": "This visualization shows which person groups appear in image/video content and their frequency."
+  },
+  {
+    "objectID": "index.html#ai-over-time",
+    "href": "index.html#ai-over-time",
+    "title": "CampAIgn Tracker",
+    "section": "AI Content Over Time",
+    "text": "AI Content Over Time\n\n\n\n\n\n\n\n\n\n\n\nThis chart shows the usage of of AI vs non-AI content over time."
+  },
+  {
+    "objectID": "info.html",
+    "href": "info.html",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "",
+    "text": "We are an interdisciplinary team volunteering to ensure transparency about AI usage in political discourse on social media. We met at the Politechathon organized by the Baden-Württemberg Foundation in Berlin, where we won prize money in the “Media Literacy” category, enabling us to further develop the CampAIgn Tracker.\n\n\nOur team consists of two researchers - Dr. Simon Kruschinski (University of Mainz) and Dr. Fabio Votta (AlgoSoc Consortium at the University of Amsterdam) - who research political campaigns on social media. They brought the initial idea to the group and are responsible for seamless coding of images/videos and their rapid processing on our platform. Miriam Runde, our data scientist, handles backend development and AI detector implementation. Jakob Scherer (background in business administration and IT) and Theresa Schültken (background in politics and strategic foresight) manage external communications and content development.\n\n\n\nFrom left to right in the picture: Theresa Gröninger (Politechathon jury member), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer [Credits: @BW Stiftung / Viktor Heekeren]"
+  },
+  {
+    "objectID": "info.html#methodology",
+    "href": "info.html#methodology",
+    "title": "\nCampAIgn Tracker\n",
+    "section": "Methodology",
+    "text": "Methodology\nThe CampAIgn Tracker helps citizens and journalists understand where AI is being used and in what context through our two-stage process for reliably identifying and coding AI-generated images.\n\nData Collection\nWe collect all unpaid posts and paid advertisements from over 3,000 accounts belonging to political parties and leading candidates from SPD, CDU/CSU, FDP, Greens, Left Party, AfD, BSW, Freie Wähler, Animal Protection Party, Progress Party, dieBasis, VOLT, Pirates, Bavaria Party, V-Party, and NPD/Heimat (along with many other minor parties).\nWe monitor party accounts at federal, state, and local levels:\n\nOrganic posts collected via Brightdata\n\nAdvertisements sourced from Meta Ad Library API\n\nCurrently tracking 12070 posts between 2025-01-26 and 2025-02-02.\n\n\n\n\n\n\n\nAccount classification is based on the dedicated volunteer work of Who Targets Me, an organization advocating for transparency in digital campaigning. They track online advertising expenditures from over 100,000 advertisers across 650+ parties in more than 50 countries.\n\n\nAI Detection\nOur AI detection is a two-stage process combining automatic classification with AI models and manual annotation:\n\nAutomatic Screening:\n\nAll collected images and video stills are checked for AI generation using the AI detection model from SightEngine.\n\nHuman Validation:\n\nIf the classification probability exceeds 0.1, trained coders manually review the image.\n\nThis ensures automated AI classification is verified through human expertise.\n\n\nFor all identified AI content, coders additionally classify these features:\n\nDisclosure of AI usage\n\nPersons depicted in image/video\n\nImage/video theme\n\nActors mentioned in the entire post\n\nUse of negativity, e.g., through attacks on parties\n\nUse of acclaims, e.g., through references to party achievements\n\nThese comprehensive insights are available through intuitive visualizations on our platform campaigntracker.de.\nThis enables citizens and journalists to understand how AI is used in campaigns and facilitates public debate about AI’s role in politics."
+  }
+]
