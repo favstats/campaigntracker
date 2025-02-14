@@ -88,7 +88,7 @@
     "href": "index.html",
     "title": "CampAIgn Tracker",
     "section": "",
-    "text": "Welcome to the CampAIgn Tracker! The platform that uncovers AI-driven campaigns by political parties on social networks.\nIn live tracking, we analyze all posts and paid advertisements on Facebook and Instagram from parties and candidates for the 2025 Bundestag election. The CampAIgn Tracker allows you to see how many AI-generated messages are being spread by which parties. Additionally, we highlight which topics are being used and whether the tone is positive or negative.\nOn this page, you will find analyses of AI-generated campaigns for the 2025 Bundestag election. A searchable overview of individual AI-generated images and videos is available in the AI Explorer."
+    "text": "Welcome to the CampAIgn Tracker! The platform that uncovers AI-driven campaigns by political parties on social networks.\nIn our live tracking, we analyze all posts and paid advertisements on Facebook and Instagram from parties and candidates for the 2025 Bundestag election. The CampAIgn Tracker allows you to see how many AI-generated messages are being spread by which parties. Additionally, we highlight which topics are being used and whether the tone is positive or negative.\nOn this page, you will find analyses of AI-generated campaigns for the 2025 Bundestag election. A searchable overview of individual AI-generated images and videos is available in the AI Explorer."
   },
   {
     "objectID": "index.html#ki-content-by-party1",
@@ -130,7 +130,7 @@
     "href": "index.html#personen",
     "title": "CampAIgn Tracker",
     "section": "",
-    "text": "This visualization shows which person groups appear in image/video content and their frequency."
+    "text": "This visualization shows which person groups appear in image/video content and their frequency.\n\nNote: A single image may contain multiple people."
   },
   {
     "objectID": "index.html#ai-over-time",
