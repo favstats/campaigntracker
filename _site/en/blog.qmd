@@ -1,0 +1,13 @@
+---
+title: "Blog"
+lang: de
+listing:
+  contents: posts
+  type: default
+  sort: "date desc"
+  categories: false
+page-layout: full  
+---
+
+
+

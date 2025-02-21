@@ -8,6 +8,18 @@ format:
     code-fold: true
     code-overflow: wrap
     html-math-method: mathjax
+    include-after-body:
+      text: |
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+                  link.addEventListener("click", function(event) {
+                      event.preventDefault(); // Prevent default behavior
+                      window.open(link.href, "_blank"); // Open in a new tab/window
+                  });
+              });
+          });
+        </script>
     includes:
       in-header: |
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -30,26 +42,50 @@ knitr::opts_chunk$set(echo = F, message = F, warning = F)
 library(glue)
 # write_csv(aidat, file = "../data/aidat.csv")
 
+# transl <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1gnJk9uw4e0SGE-cNiE3IqCnB9ag6vIGGTNqjrVH90-U/edit?gid=0#gid=0")
+# 
+lang <- "de"
+
+# saveRDS(transl, file = "../data/transl.rds")
+
+transl <- readRDS( "data/transl.rds")
+# get_text()
+
+get_text <- function(thtxt, lang) {
+  transl %>% filter(variable == thtxt) %>% pull(lang) 
+}
+
+
+
+
 ```
 
 
-> Willkommen beim **CampAIgn Tracker**, Ihrer **go-to Plattform** zur Überwachung des Einsatzes von **KI-generierten Inhalten** in politischen Kampagnen. *Derzeit* konzentriert sich unsere Analyse auf *bezahlte Werbung auf Meta-Plattformen* von offiziellen Parteiaccounts in Deutschland und bietet Einblicke in **Targeting-Strategien**, **Ausgabemuster** und **die Verbreitung von KI-generierten Bildern und Botschaften**.
+<!-- `r get_text("landingexplore", lang)` -->
+
+**Im KI Explorer** könnt ihr *alle erkannten KI-generierten Beiträge der Parteien* sehen und nach bestimmten Kriterien sortieren. Die Beiträge lassen sich nach **Partei, Beitragstext, Plattform, Post/Anzeige** filtern, um *spezifische Muster und Trends* sichtbar zu machen.  
+
+Zudem können die Beitragstexte auch nach **bestimmten Wörtern** durchsucht werden.  
+
+Über den **Link** kann der *Originalpost auf der entsprechenden Plattform* aufgerufen werden.  
 
 ```{r}
-# cleaned_content <- readRDS("../data/cleaned_content.rds")
-labeled <- readRDS("data/labeled.rds")
+labeled <- readRDS("data/labeled.rds")  %>% 
+  mutate(party = case_when(
+    party == "AFD" ~ "AfD",
+    party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
+    party %in% c("CDU", "CSU") ~ "CDU/CSU",
+    party %in% c("MLPD – Marxistisch-Leninistische Partei Deutschlands") ~ "MLPD",
+    party %in% c("Piratenpartei Deutschland", "Piratenpartei") ~ "Piratenpartei",
+    party %in% c("SSW - Südschleswiger Wählerverband") ~ "SSW",
+    party %in% c("V-Partei³ - Partei für Veränderung, Vegetarier und Veganer") ~ "V-Partei³",
+    str_detect(party, "ÖDP") ~ "ÖDP",
+    str_detect(party, "PdF") ~ "PdF",
+    T ~party
+  )) %>% 
+  filter(str_detect(page_name, "Stiftung", negate = T))
 
-ai_dat <- readRDS("data/ai_dat.rds")
-
-
-
-workwith <- labeled %>% 
-  # count(ki_bild_video) %>% 
-  mutate(ai = ifelse(str_detect(ki_bild_video, "Ja", negate = T) | is.na(ki_bild_video), 0, 1)) %>%
-  mutate(ai = sample(c(0, 1,1,0,0), nrow(labeled), replace = T)) %>% 
-  bind_rows(
-    ai_dat %>% mutate(ai = ifelse(ai_generated >= 0.5, 1, 0))
-  ) %>% 
+ai_dat <- readRDS("data/ai_dat.rds")  %>% 
   mutate(party = case_when(
     party == "AFD" ~ "AfD",
     party == "BüSo – Bürgerrechtsbewegung Solidarität" ~ "BüSo",
@@ -64,6 +100,17 @@ workwith <- labeled %>%
   ))
 
 
+
+workwith <- labeled %>% 
+  # count(ki_bild_video) %>% 
+  mutate(ai = ifelse(str_detect(ki_bild_video, "Ja|es beinhaltet also sowohl KI-generierte", negate = T) | is.na(ki_bild_video), 0, 1)) %>% 
+  mutate(ai_generated = ai)
+  # mutate(ai = sample(c(0, 1,1,0,0), nrow(labeled), replace = T)) %>% 
+  # bind_rows(
+  #   ai_dat %>% mutate(ai = ifelse(ai_generated >= 0.5, 1, 0))
+  # )
+
+
  # write_csv(workwith, "workwith.csv")
 
 ai_hashes <- workwith %>% 
@@ -73,7 +120,7 @@ ai_hashes <- workwith %>%
 # Step 2: Get all medication-related files
 allmeds <- dir("organic", recursive = TRUE, all.files = TRUE, full.names = T) %>% 
   c(dir("paid", recursive = TRUE, all.files = TRUE, full.names = T)) %>% 
-  c(dir("output_frames", recursive = TRUE, all.files = TRUE, full.names = T)) %>% 
+  c(dir("mnt/storage/output_frames", recursive = TRUE, all.files = TRUE, full.names = T)) %>% 
   discard(~ str_detect(.x, "vid_hash|mp4"))
 
 # Step 3: Map AI hashes to matched medications
@@ -85,6 +132,7 @@ result <- tibble(ai_hash = ai_hashes, matched_meds = hhh) %>%
 
 # Display the final tibble
 
+# labeled
 
 # workwith %>% 
 #   select(hash, text, platform, type, ai_generated) %>% 
@@ -145,51 +193,202 @@ library(htmltools)
 embed_image <- function(image_url) {
   img(src = image_url, height = "300px", alt = "Image")  # Adjust 'height' as needed
 }
+# 
+# rawprep %>% count(type) %>% 
+#   mutate(type = case_when(
+#     type == ""
+#   ))
+
+
+# rawprep%>%   slice(30) %>% 
+#   select(Themen)
+#   rowwise() %>% 
+#   mutate(text = paste0(text, "\n"))
 ```
 
 ## Entdecken
 
 ```{r}
 rawprep <- workwith %>% 
-  select(hash, text, party, platform, type, ai_generated, url) %>% 
-  filter(ai_generated >= 0.9) %>% 
-  left_join(result %>% distinct(ai_hash, .keep_all = T) %>% rename(hash = ai_hash))
+  # select(hash, text, party, platform, type, ai_generated, url) %>% 
+  # filter(ai_generated >= 0.9) %>% 
+  left_join(result %>% distinct(ai_hash, .keep_all = T) %>% rename(hash = ai_hash)) %>% 
+  arrange(party) %>%
+  filter(ai_generated == 1) %>% 
+  mutate(
+    detect_bild = str_detect(coalesce(ki_kennzeichnung_im_bild_video, ""), "KEINEN"),
+    detect_text = str_detect(coalesce(ki_kennzeichnung_im_text_des_posts, ""), "KEINEN"),
+    detect_ad   = str_detect(coalesce(ki_kennzeichnung_im_post_ad, ""), "KEINEN"),
+    no_label_present = case_when(
+      !detect_bild | !detect_text | !detect_ad ~ 0,
+      TRUE ~ 1
+    )
+  ) %>% 
+  mutate(platform = case_when(
+    str_detect(platform, "instagram") & str_detect(platform, "facebook") ~ "Facebook + Instagram",
+    str_detect(platform, "instagram") ~ "Instagram",
+    str_detect(platform, "facebook") ~ "Facebook",
+     T ~ platform
+  )) %>% 
+  mutate(type = case_when(
+    type == "organic" ~ "Posts",
+    type == "paid" ~ "Werbung",
+    TRUE ~ type  # Falls es andere Werte gibt, bleiben sie unverändert
+  )) %>% 
+  mutate(rown = row_number())
+
+
+# rawprep %>%
+#   glimpse() %>% 
+#   filter(ai_generated == 1) %>% 
+#   select(positive_tendenz_tonalitat, negative_tendenz_tonalitat, themen)
+# 
+# rawprep  %>% 
+#   filter(ai_generated == 1) %>% 
+#   select(themen)
 ```
 
 
 ```{r}
-data <- rawprep %>% select(Inhalte = matched_meds, party, text, ai_generated, platform, type, url) %>% 
-  arrange(desc(ai_generated)) 
+library(tidyverse)
+
+# Assuming 'rawprep' contains your data
+transformed_data <- rawprep  %>%
+  mutate(
+    `Sonstiges Politisches Thema` = str_detect(themen, "Sonstiges Politisches Thema"),
+    `Bildung und Kultur` = str_detect(themen, "Bildung und Kultur"),
+    Europa = str_detect(themen, "Europa"),
+    `Digitales und Infrastruktur` = str_detect(themen, "Digitales und Infrastruktur"),
+    Verteidigungspolitik = str_detect(themen, "Verteidigungspolitik"),
+    Energiepolitik = str_detect(themen, "Energiepolitik"),
+    `Innen und Migrationspolitik` = str_detect(themen, "Migrationspolitik"),
+    `Arbeit und Soziales` = str_detect(themen, "Arbeit und Soziales"),
+    `Wirtschaft und Finanzen` = str_detect(themen, "Wirtschaft und Finanzen"),
+    Wahlaufruf = str_detect(themen, "Wahlaufruf"),
+    `Politische Parteien und Politiker:innen` = str_detect(themen, "Kandidatenvorstellung"),
+    `Wahl im Generellen` = str_detect(themen, "Wahl im Generellen")
+  ) %>%  # Adding Post IDs
+  pivot_longer(cols = `Sonstiges Politisches Thema`:`Wahl im Generellen`, 
+               names_to = "Topic", 
+               values_to = "Present") %>%
+  filter(Present) %>%
+  group_by(rown) %>%
+  summarise(Topics = list(Topic), .groups = 'drop')
+
+# Display the transformed data
+# print(transformed_data)
+
+rawprep <- rawprep %>%
+  left_join(transformed_data) %>% 
+  mutate(
+    text = ifelse(text == "NULL", "[Kein Text!]", text)
+  ) %>% 
+  rowwise() %>% 
+  mutate(text = paste0(text, "\n\n--------\n\nKodierte Themen:\n", paste(unique(unlist(Topics)), collapse = "\n"))) %>% 
+  ungroup()
+
+# rawprep %>% 
+#   filter(no_label_present)
+```
+
+
+```{r}
+# Load necessary libraries
+library(reactable)
+library(htmltools)
+library(dplyr)
+
+# Topic color mapping
+topic_colors <- c(
+  "Sonstiges Politisches Thema" = "#A9A9A9",      # Gray for miscellaneous topics
+  "Bildung und Kultur" = "#6B5B95",               # Purple for education/culture
+  "Europa" = "#2E86C1",                           # Blue for Europe
+  "Digitales und Infrastruktur" = "#17A589",     # Teal for digital/infrastructure
+  "Verteidigungspolitik" = "#A93226",            # Red for defense/military
+  "Energiepolitik" = "#D35400",                  # Orange for energy
+  "Innen und Migrationspolitik" = "#884EA0",     # Deep purple for migration/internal affairs
+  "Arbeit und Soziales" = "#F4D03F",             # Yellow for labor/social affairs
+  "Wirtschaft und Finanzen" = "#1F618D",         # Dark blue for economy/finance
+  "Wahlaufruf" = "#FF5733",                      # Bright red-orange for election calls
+  "Kandidierendenvorstellung" = "#7DCEA0",       # Light green for candidate introductions
+  "Wahl im Generellen" = "#F5B041"               # Warm yellow-orange for general elections
+)
+
+# Function to Create Colored Tags
+create_tags <- function(topics) {
+  tags$div(
+    lapply(topics, function(topic) {
+      tags$span(
+        topic,
+        style = paste0(
+          "background-color: ", topic_colors[topic], ";",
+          "color: white;",
+          "padding: 4px 8px;",
+          "border-radius: 4px;",
+          "margin: 2px;",
+          "display: inline-block;"
+        )
+      )
+    })
+  )
+}
+
+# Reactable with Colored Tags
+# reactable(
+#   data,
+#   columns = list(
+#     Post = colDef(name = "Post Title"),
+#     Topics = colDef(
+#       name = "Topics",
+#       cell = function(value) create_tags(value),
+#       html = TRUE
+#     )
+#   ),
+#   bordered = TRUE,
+#   striped = TRUE,
+#   highlight = TRUE,
+#   theme = reactableTheme(
+#     headerStyle = list(backgroundColor = "#f8f9fa", fontWeight = "bold")
+#   )
+# )
+```
+
+
+```{r}
+data2 <- rawprep %>% select(Inhalte = matched_meds, party, text, ai_generated, platform, type, url) %>% 
+  arrange(party)
 
 
 library(reactable)
 library(htmltools)
 library(dplyr)
 
-file.copy2 <- function(from, to, ...) {
-  # Ensure destination directory exists
-  dir.create(dirname(to), recursive = TRUE, showWarnings = FALSE)
-  
-  # Copy the file
-  file.copy(from, to, ...)
-}
 
 # hashed_files/0056e9bbb2cf3325f1e29caaf135326c.jpg
 
-data %>%
-  select(Inhalte) %>%# View()
-  # slice(1) %>%
-  split(1:nrow(.)) %>%
-  walk(~{
-    the_dat <-  paste0("docs/explore/", .x$Inhalte)
-    # print(the_dat)
-    file.copy2(.x$Inhalte, to = paste0("docs/explore/", .x$Inhalte), recursive = T, overwrite = T)
-  })
+saveRDS(data2, file = "data/rawprep.rds")
 
-data <- data %>% 
-  mutate(Inhalte = paste0("https://raw.githubusercontent.com/favstats/campaigntracker/refs/heads/main/docs/explore/", Inhalte))
+
 ```
 
+```{r}
+
+data <- data2 %>% 
+  mutate(Inhalte = paste0("https://raw.githubusercontent.com/favstats/campaigntracker/refs/heads/main/docs/explore/", Inhalte)) %>% 
+  select(-ai_generated)
+
+# data %>% 
+#   filter(ur)
+
+# data %>% 
+#   as_tibble()
+
+# data %>% View()
+
+# data
+
+# write_csv(data,"data/ai_explorer.csv")
+```
 
 
 ```{r}
@@ -336,15 +535,15 @@ reactable(
       }"),
       minWidth = 300
     ),
-    ai_generated = colDef(
-      name = paste0(as.character(fa("robot")), " KI"),
-      format = colFormat(percent = TRUE, digits = 1),
-      style = function(value) {
-        color <- ifelse(value >= 0.9, "#00C853", "#FF9800")
-        list(color = color, fontWeight = "bold")
-      },
-      html = TRUE,
-    ),
+    # ai_generated = colDef(
+    #   name = paste0(as.character(fa("robot")), " KI"),
+    #   format = colFormat(percent = TRUE, digits = 1),
+    #   style = function(value) {
+    #     color <- ifelse(value >= 0.9, "#00C853", "#FF9800")
+    #     list(color = color, fontWeight = "bold")
+    #   },
+    #   html = TRUE,
+    # ),
     platform = colDef(
       name = paste0(as.character(fa("icons")), " Medium"),
       cell = function(value) {
@@ -380,8 +579,8 @@ reactable(
           color = "white"
         )
         type_color <- case_when(
-          value == "organic" ~ "#2196F3",
-          value == "paid" ~ "#4CAF50",
+          value == "Posts" ~ "#2196F3",
+          value == "Werbung" ~ "#4CAF50",
           value == "Story" ~ "#9C27B0",
           TRUE ~ "#607D8B"
         )
@@ -400,6 +599,11 @@ reactable(
           style = "width: 100%; height: 28px;"
         )
       }    ),
+    # Topics = colDef(
+    #   name = "Topics",
+    #   cell = function(value) create_tags(value),
+    #   html = TRUE
+    # ),
     url = colDef(
       name = paste0(as.character(fa("link")), " Link"),
       cell = function(value) {
@@ -411,7 +615,7 @@ reactable(
             textDecoration = "none",
             "&:hover" = list(textDecoration = "underline")
           ),
-          "View Source"
+          "Zum Beitrag"
         )
       },
       html = TRUE,
@@ -464,5 +668,14 @@ reactable(
   },
   elementId = "cars-select"
 )
+
 ```
 
+
+
+<br>
+<center>
+  <a href="https://favstats.github.io/campaigntracker">
+    <img src="logobelow.png" width="50%">
+  </a>
+</center>

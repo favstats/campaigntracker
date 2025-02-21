@@ -1,6 +1,5 @@
 ---
 title: "Blog"
-description: "Hoe jagen politieke partijen op jouw stem, wat willen ze juist niet dat je ziet en hoeveel geld geven ze daaraan uit? In aanloop naar de Tweede Kamerverkiezingen monitoren we politieke microtargeting."
 lang: de
 listing:
   contents: posts
@@ -9,3 +8,6 @@ listing:
   categories: false
 page-layout: full  
 ---
+
+
+

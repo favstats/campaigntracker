@@ -1,0 +1,173 @@
+---
+title: ""
+format:
+  html:
+    theme: lumen
+    page-layout: full
+    self-contained: true
+    code-fold: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    include-after-body:
+      text: |
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              document.querySelectorAll("a[href='https://favstats.github.io/de25/']").forEach(function(link) {
+                  link.addEventListener("click", function(event) {
+                      event.preventDefault(); // Prevent default behavior
+                      window.open(link.href, "_blank"); // Open in a new tab/window
+                  });
+              });
+          });
+        </script>
+---
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #0056b3;
+}
+
+.section-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.section-container p {
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+.section-container strong {
+  color: #0073e6;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #0073e6;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+</style>
+
+<!-- Content -->
+<div class="section-container">
+  <h1>CampAIgn Tracker</h1>
+  
+  <h2>Über Uns</h2>
+  <p>
+    Wir sind ein interdisziplinäres Team, welches sich ehrenamtlich dafür engagiert, dass im politischen Diskurs auf Social Media Transparenz über den Einsatz von KI herrscht. Wir haben uns auf dem von der [Baden-Württemberg Stiftung](https://www.bwstiftung.de/de/) organisierten Politechathon in Berlin kennengelernt. Auf diesem konnten wir das Preisgeld in der Kategorie „Medienkompetenz“ gewinnen, was es uns ermöglicht, den <strong>CampAIgn Tracker</strong> weiterzuentwickeln.
+  </p>
+
+  <p>
+    Wir, das sind unsere zwei Forscher Dr. Simon Kruschinski (Universität Mainz) und Dr. Fabio Votta ([AlgoSoc Konsortium](https://algosoc.org/) an der Universität Amsterdam), die im Bereich politische Kampagnen auf Social Media forschen. Sie haben die Idee in die Gruppe gebracht und sind für die reibungslose Kodierung der Bilder und Videos sowie deren schnelle Aufbereitung auf unserer Plattform verantwortlich. Miriam Runde ist Data Scientist und ist vor allem mitverantwortlich für das Backend der Plattform sowie die Nutzung von KI-Detektoren. Jakob Scherer (Hintergrund in BWL und IT) und Theresa Schültken (Hintergrund in Politik und Strategischer Vorausschau) sind für die Außenkommunikation des CampAIgn Trackers sowie die inhaltliche Mitgestaltung zuständig.
+  </p>
+
+![](img/us.png)
+  <p>
+    <strong>Von links nach rechts auf dem Bild:</strong> Theresa Gröninger (Jurorin beim Politechathon), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer <em>[Credits: @BW Stiftung / Viktor Heekeren]</em>
+  </p>
+</div>
+
+<div class="section-container">
+
+## Methode
+
+Wir wollen mit dem **CampAIgn Tracker** dazu beitragen, dass Bürger:innen und Journalist:innen nachvollziehen können, **wo KI genutzt wurde und in welchem Kontext**. Dafür haben wir ein **zweistufiges Verfahren** entwickelt, um KI-generierte Bilder zuverlässig zu identifizieren und zu kodieren.  
+
+### Datenerhebung  
+
+```{r, echo=F, warning=F, message=F}
+library(tidyverse)
+library(reactable)
+full_data <- readRDS("../data/full_data.rds")
+
+
+```
+
+Wir erfassen **alle unbezahlten Beiträge und bezahlten Werbeanzeigen** von über **3000 Accounts** der Parteien und Spitzenkandidierenden von SPD, CDU/CSU, FDP, Grünen, der Linken, AfD, BSW, Freie Wähler, Tierschutzpartei, Partei des Fortschritts, dieBasis, VOLT, Piraten, Bayernpartei, V-Partei, und NPD/Heimat (und viele weitere Kleinstparteien). 
+
+Dabei berücksichtigen wir die **Accounts der Parteien auf Bundes-, Landes- und Lokalebene**.  
+
+- **Organische Posts** werden über die *[Brightdata](https://brightdata.com)* gesammelt.  
+- **Werbeanzeigen** stammen aus der *[Meta Ad Library API](https://www.facebook.com/ads/library/api/)*.  
+
+Derzeit tracken wir *`r nrow(full_data)` Beiträge* zwischen `r min(full_data$posted_date)` und `r max(full_data$posted_date)`.
+
+```{r, echo=F, warning=F, message=F}
+
+full_data %>% 
+  count(party, sort = T) %>%
+  rename(Partei = party, Beiträge = n) %>% 
+  reactable()
+```
+
+
+Die Klassifizierung der Accounts basiert auf der engagierten Freiwilligenarbeit von [Who Targets Me](https://whotargets.me/), einer Organisation, die sich für Transparenz im digitalen Wahlkampf einsetzt. Sie verfolgen die Online-Werbeausgaben von über 100.000 Werbetreibenden von 650+ Parteien in über 50 Ländern. 
+
+### KI-Detektion  
+
+Unsere KI-Detektion ist ein *zweistufiges Verfahren*, das **automatische Klassifikation** mit einem KI-Modell und **manuelle Annotation** kombiniert.  
+
+1. **Automatische Prüfung:**  
+   - Alle gesammelten Bilder und Video-Stills werden mit dem **KI-Detektionsmodell von [SightEngine](https://sightengine.com/detect-ai-generated-images)** auf KI-Generierung geprüft.  
+
+2. **Menschliche Validierung:**  
+   - Falls die *Klassifikations-wahrscheinlichkeit über 0.1 liegt*, prüfen **geschulte Codierer:innen** das Bild manuell.  
+   - So wird die automatische KI-Klassifikation durch menschliche Expertise abgesichert.  
+
+Zusätzlich klassifizieren die Codierer:innen für alle identifizierten **KI-Beiträge** folgende Merkmale:  
+
+- **Die Kennzeichnung von KI-Nutzung**  
+- **Die Akteur:innen im Bild oder Video**  
+- **Das Thema des Bildes oder Videos**  
+- **Die Akteur:innen im gesamten Beitrag**  
+- **Die Verwendung von Negativität**, z. B. durch Angriffe auf Parteien  
+- **Die Verwendung von Acclaims**, z. B. durch Verweise auf Erfolge einer Partei  
+
+Diese umfassenden Informationen sind auf unserer Plattform [campaigntracker.de](https://www.campaigntracker.de) in einfachen Visualisierungen verfügbar.  
+
+So ermöglichen wir, dass **Bürger:innen und Journalist:innen** erfahren, wie KI im Wahlkampf genutzt wird und eine **öffentliche Debatte** über den Einsatz von KI in der Politik führen können.  
+</div>
+
+<div class="section-container button-container">
+  <h2>Kontakt</h2>
+  <p>
+    Um mehr über die methodischen Hintergründe zu erfahren oder falls Sie als Journalist:in mit dem Team in Kontakt treten wollen, kontaktieren Sie uns bitte unter:
+  </p>
+  <a href="mailto:info@campaigntracker.de" class="button">info@campaigntracker.de</a>
+</div>
+
+
+
+<br>
+<center>
+<img src="logobelow.png" width="50%">
+</center>

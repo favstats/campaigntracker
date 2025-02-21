@@ -1,0 +1,132 @@
+---
+title: "Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz"
+description-meta: "Der CampAIgn Tracker schafft Transparenz über den Einsatz von KI in politischen Kampagnen auf Social Media. Verfolgen Sie den Einfluss von KI-generierten Inhalten im Wahlkampf 2024."
+author: "Theresa Schültken"
+date: "2.12.2025"
+image: "Foto 2_Preisgeld.jpeg"
+lang: de
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Inhalt"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+# Der CampAIgn Tracker für mehr Transparenz beim KI-Einsatz
+
+Samstagmorgen, 9.00 Uhr im grauen Berlin: voller Erwartungen und Vorfreude treffen wir einzeln in der weihnachtlich beleuchteten Landesvertretung Baden-Württemberg ein.  
+Wir, das sind **Dr. Simon Kruschinski** (Politischer Kommunikationsforscher der Johannes Gutenberg-Universität Mainz), **Miriam Runde** (M. Sc. Data Science for Public Policy), **Dr. Fabio Votta** (Postdoc Forscher Data-Driven-Campaigning an der Universität Amsterdam), **Jakob Scherer** (M. Sc. Management) und **Theresa Schültken** (MA Internationale Beziehungen, Beraterin Strategische Vorausschau).
+
+Als wir uns dann gegen 10.30 Uhr zum ersten Mal kennenlernen, merken wir gleich, dass wir mit der Kombination aus **Politikwissenschaft**, **Data Science** und **KI-Kenntnissen** eine sehr gute Grundlage für das Wochenende haben.  
+Im Laufe eines Wochenendes paralleler Datenaufbereitung, Tests von möglichen KI-Modellen, Persona-Recherche und vielen erkenntnisreichen Gesprächen wurde aus einer Idee ein Projekt: **Der CampAIgn Tracker.**
+
+![Teamfoto des CampAIgn Tracker](fotoa1.png)  
+<div class="credit">Credits @ BW Stiftung / Viktor Heekeren</div>
+
+## Hintergrund
+
+Vor dem Hintergrund des Super-Wahljahres 2024 wurden in den Medien und der Öffentlichkeit immer wieder die Gefahren von KI-Einsatz in der politischen Debatte thematisiert.  
+Die Sorge vor **Fake News**, **Desinformation**, **Emotionalisierung** und **Beeinflussung** ist zu spüren und trägt zur Verunsicherung bei – konkrete Anhaltspunkte und eine Datengrundlage, inwieweit KI tatsächlich in politischen Kampagnen auf Social Media Plattformen eingesetzt wird, fehlen allerdings.
+
+Hier setzt der **CampAIgn Tracker** an:  
+Er stellt eine Plattform bereit, auf der nachvollzogen werden kann, welche Bild- und Videobotschaften von politischen Akteuren in Deutschland auf Social Media tatsächlich mit Hilfe von KI erzeugt wurden.
+
+> _"Mit CampAIgn Tracker tragen wir wesentlich zur notwendigen Transparenz rund um den Einsatz von KI zur Generierung visueller Inhalte bei, der den Menschen dabei hilft, zu diskutieren, ob dieser Einsatz zur Verbreitung auf Social Media stattfindet, legitim ist oder eine mögliche Gefahr davon ausgeht."_  
+> — **Dr. Simon Kruschinski**
+
+## Entwicklung des Prototyps
+
+Auf dem **Politechathon** entstand hierfür ein erster Prototyp.  
+Die Datengrundlage umfasste die bezahlten Facebook- und Instagram-Posts von allen Bundes- und Landesparteien im Jahr 2024.  
+Die erste Herausforderung bestand darin, ein **KI-Modell zur Identifizierung von KI-generierten Inhalten** zu finden und mit der Datengrundlage zu testen.
+
+Hier setzt der CampAIgn Tracker auf ein **zweistufiges Verfahren**:
+
+1. **Automatisierte Erkennung** von KI-generierten Inhalten.  
+2. **Manuelle Validierung** durch Expert:innen, um die Genauigkeit zu erhöhen.  
+
+So wird eine sehr hohe Genauigkeit bei der Identifikation von KI-generierten Inhalten sichergestellt – ein zentraler Faktor für die Akzeptanz des Projekts.
+
+## Ausblick
+
+Auf der Website [www.campaigntracker.de](https://www.campaigntracker.de) können in Zukunft:
+
+- **KI-generierte Inhalte** von über 3000 politischen Akteuren in Deutschland eingesehen werden  
+- Details zu **Interaktionen**, **Geldausgaben** und **Reichweite** abgerufen werden  
+- Einzelne KI-Botschaften mit Metadaten analysiert werden  
+
+## Unser Erfolg beim Politechathon
+
+Am Sonntagnachmittag kam dann die große Überraschung:  
+Nach einem Projektpitch gewannen wir den **ersten Platz in der Kategorie Medienkompetenz** – samt Preisgeld für die Weiterentwicklung des CampAIgn Trackers.
+
+Innerhalb von 48 Stunden wurde aus einer Idee eine anwendungsreife Plattform zur Förderung von **Transparenz im Wahlkampf**.
+
+> _"Fazit: Netzwerk erweitern, in kürzester Zeit ein KI-Tool entwickeln und am Ende sogar ausgezeichnet werden – der Politechathon hat gezeigt, dass mit dem richtigen Teamgeist und etwas 'Nerd-Power' (wie die Tagesthemen so liebevoll titelten) in 48 Stunden Unfassbares entstehen kann."_  
+> — **Miriam Runde**
+
+![Preisverleihung des Politechathons](Foto 2_Preisgeld.jpeg)  
+<div class="credit">Credits @ BW Stiftung / Viktor Heekeren</div>
+
+
+
+
+<br>
+<center>
+<img src="logo.png" width="50%">
+</center>

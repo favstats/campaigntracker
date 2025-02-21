@@ -1,0 +1,105 @@
+---
+title: "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl"
+description-meta: "Eine Analyse der digitalen Werbeausgaben deutscher Parteien zur Bundestagswahl 2025 im Vergleich zu 2021."
+author: "Fabio Votta"
+date: "2.13.2025"
+image: "https://i.imgur.com/yBSHI1p.png"
+lang: de
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Inhalt"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+
+
+Digitale Wahlwerbung spielt eine zentrale Rolle in modernen Wahlkämpfen. Im Vorfeld der Bundestagswahl am 23. Februar 2025 analysiere ich die digitalen Werbeausgaben der Parteien im Vergleich zu den Wahlen 2021.  
+
+🔗 **Englische längere Version hier lesen:** [favstats.eu/post/btws](https://www.favstats.eu/post/btws)
+
+## **Steigende digitale Werbeausgaben**
+
+Insgesamt sind die Ausgaben für digitale Werbung um **665.000 €** gestiegen. Zwei Wochen vor der Wahl wurden 2025 bereits **4,8 Mio. €** ausgegeben, verglichen mit **4,1 Mio. €** im gleichen Zeitraum 2021.  
+
+![Vergleich der digitalen Werbeausgaben zwischen 2021 und 2025](https://i.imgur.com/yBSHI1p.png)
+
+Dieser Anstieg könnte darauf hindeuten, dass digitale Plattformen eine noch zentralere Rolle im Wahlkampf spielen. Möglicherweise zeigt es allerdings auch dass die Budgets insgesamt gestiegen sind. Eine genauere Analyse folgt in einem zukünftigen Blogpost.
+
+## **Wer gibt mehr aus – und wer weniger?**
+
+Besonders **Die Grünen** (+419.000 €) und **Volt** (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die **CDU/CSU** (-392.000 €) und die **SPD** (-370.000 €) ihre digitalen Wahlwerbungsbudgets gekürzt.  
+
+![Vergleich der Parteiausgaben für digitale Werbung](https://i.imgur.com/a468LSA.png)
+
+Diese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald.
+
+## **Plattformwechsel: Google boomt, Meta stagniert**
+
+Ein interessanter Trend zeigt sich bei den Plattformen:
+
+- Die **Ausgaben für Google-Werbung haben sich mehr als verdoppelt** (+909.000 €), während  
+- Die **Meta-Ausgaben leicht zurückgingen** (-245.000 €).  
+
+![Plattformvergleich: Meta vs. Google](https://i.imgur.com/QgVqLKs.png)
+
+## **Trozdem: Google steigt aus – Meta bleibt**
+
+Diese Entwicklung steht im Kontext von Googles Entscheidung, **politische Werbung in der EU ab Oktober 2025 zu verbieten**. Dies könnte Meta eine **Quasi-Monopolstellung** bei digitaler Wahlwerbung verschaffen. Das birgt potenzielle Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für bezahlte digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten.
+
