@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "CampAIgn Tracker",
     "section": "",
-    "text": "Willkommen beim CampAIgn Tracker! Die Plattform, die KI-Kampagnen der Parteien auf sozialen Netzwerken aufdeckt.\nIm Live-Tracking untersuchen wir alle Posts und bezahlten Werbeanzeigen auf Facebook und Instagram von Parteien und Kandidierenden zur Bundestagswahl 2025. Im CampAIgn Tracker kann nachgeschaut werden, wie viele KI-generierte Botschaften von welchen Parteien verbreitet werden. Außerdem zeigen wir, welche Themen genutzt werden und ob eine positive oder negative Tonalität vorherrscht.\nAuf dieser Seite finden sich Auswertungen zu den KI-generierten Kampagnen bei der Bundestagswahl 2025. Eine durchsuchbare Übersicht über die einzelnen Ki-Bilder und -Videos ist im KI Explorer zu finden."
+    "text": "Im CampAIgn Tracker untersuchen wir alle Posts und bezahlten Werbeanzeigen auf Facebook und Instagram von Parteien und Kandidierenden zur Bundestagswahl 2025.\nIn unserem Live-Tracking kann nachgeschaut werden, wie viele KI-generierte Botschaften von welchen Parteien verbreitet werden.\nAußerdem zeigen wir, ob eine KI-Kennzeichnung vorhanden ist, welche Akteure abgebildet sind*, **welche Themen* vorkommen und ob eine positive oder negative Tonalität vorherrscht.\nAuf dieser Seite finden sich Auswertungen zu den KI-generierten Kampagnen bei der Bundestagswahl 2025. Eine durchsuchbare Übersicht über die einzelnen KI-Bilder und -Videos ist im KI Explorer zu finden."
   },
   {
     "objectID": "index.html#hello",
@@ -193,14 +193,14 @@
     "href": "index.html#transparenz-beim-ki-einsatz",
     "title": "CampAIgn Tracker",
     "section": "Transparenz beim KI-Einsatz",
-    "text": "Transparenz beim KI-Einsatz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnungen von KI-Inhalten mit Disclaimern durch die Parteien oder durch Plattformen sind wichtig für einen transparenten Einsatz. Diese Grafik zeigt, wie oft KI-generierte Inhalte ohne bzw. mit Kennzeichnung veröffentlicht wurden."
+    "text": "Transparenz beim KI-Einsatz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnungen von KI-Inhalten mit Disclaimern durch die Parteien oder durch Plattformen sind wichtig für einen transparenten Einsatz. Diese Grafik zeigt, wie oft KI-generierte Inhalte ohne bzw. mit Kennzeichnung veröffentlicht wurden und ob die Kennzeichnung durch die Partei oder Meta erfolgte."
   },
   {
     "objectID": "index.html#analyse-der-ki-inhalte",
     "href": "index.html#analyse-der-ki-inhalte",
     "title": "CampAIgn Tracker",
     "section": "Analyse der KI-Inhalte",
-    "text": "Analyse der KI-Inhalte\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Beitrag kann mehrere Themen gleichzeitig behandeln.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Bild kann mehrere Inhalte gleichzeitig zeigen."
+    "text": "Analyse der KI-Inhalte\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Beitrag kann mehrere Themen gleichzeitig behandeln.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Bild kann mehrere Bild-/Videoinhalte gleichzeitig beinhalten."
   },
   {
     "objectID": "info.html#methode",
@@ -221,14 +221,14 @@
     "href": "index.html#medienformatte",
     "title": "CampAIgn Tracker",
     "section": "KI-Medienformate",
-    "text": "KI-Medienformate\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt den prozentualen Anteil von Bildern und Videos in den als KI-generiert erkannten Beiträgen. So lässt sich erkennen, welche Medienformate häufiger verwendet werden."
+    "text": "KI-Medienformate\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt den prozentualen Anteil von Bildern und Videos in den als KI-generiert erkannten Beiträgen. So lässt sich erkennen, welche Medienformate häufiger mit KI verwendet werden."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
     "title": "CampAIgn Tracker",
     "section": "",
-    "text": "Diese Grafik zeigt, welche Personen(gruppen) in den Bild-/Video-Inhalten vorkommen und wie häufig sie vertreten sind\n\nHinweis: Ein Bild kann mehrere Personen gleichzeitig zeigen."
+    "text": "Diese Grafik zeigt, welche Personen(gruppen) in den KI-generierten Bildern/Videos vorkommen und in wie vielen Inhalten sie vertreten sind.\n\nHinweis: Ein Bild kann mehrere Personen gleichzeitig zeigen."
   },
   {
     "objectID": "posts/ausgaben.html",
