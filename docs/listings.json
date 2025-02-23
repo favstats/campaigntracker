@@ -3,6 +3,9 @@
     "listing": "/blog.html",
     "items": [
       "/posts/ausgaben.html",
+      "/posts/verantwortung.html",
+      "/posts/erkennung.html",
+      "/posts/llms.html",
       "/posts/anfang.html"
     ]
   }
