@@ -86,56 +86,56 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "In the CampAIgn Tracker, we analyze all posts and paid advertisements on Facebook and Instagram from parties and candidates for the 2025 Bundestag election.\nThe live tracking allows you to see how many AI-generated messages are being spread by which parties. Additionally, we show if AI-Labels are used, what actors are depicted, which topics are discussed and whether the tone is positive or negative.\nOn this page, you will find analyses of AI-generated campaigns for the 2025 Bundestag election. A searchable overview of individual AI-generated images and videos is available in the AI Explorer."
   },
   {
     "objectID": "index.html#ki-content-by-party1",
     "href": "index.html#ki-content-by-party1",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI Content by Party",
     "text": "AI Content by Party\n\n\n\n\n\n\n\n\nThis visualization shows how many AI-generated contents each party has published. The field size corresponds to the number of identified posts. Larger fields indicate a higher use of AI by the respective party."
   },
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Share of Posts with and without AI by Party",
     "text": "Share of Posts with and without AI by Party\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the relative share of AI-generated content per party. The parties are sorted by the highest share of AI content.\n\nNote: For parties with fewer total posts (including smaller parties), even limited AI use may result in high relative percentages."
   },
   {
     "objectID": "index.html#ai-transparency",
     "href": "index.html#ai-transparency",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI Transparency",
     "text": "AI Transparency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclosure of AI content through party-added disclaimers or platform labels is crucial for transparency. This visualization shows how often AI-generated content was published with/without disclosures and whether the label was applied by the party or Meta."
   },
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI Media Formats",
     "text": "AI Media Formats\n\n\n\n\n\n\n\n\n\n\nThis graphic shows the percentage share of images and videos in posts identified as AI-generated. This helps reveal which media formats are used more frequently with AI."
   },
   {
     "objectID": "index.html#ai-content-analysis",
     "href": "index.html#ai-content-analysis",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI Content Analysis",
     "text": "AI Content Analysis\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single post may cover multiple topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: A single image may contain multiple image/video topics."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "This visualization shows which person (groups) are depicted in how many of the AI-generated images/videos.\n\nNote: A single image may contain multiple people."
   },
   {
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "AI Content Over Time",
     "text": "AI Content Over Time\n\n\n\n\n\n\n\n\n\n\n\nThis chart shows the usage of of AI vs non-AI content over time."
   },
@@ -156,14 +156,14 @@
   {
     "objectID": "index.html#number-of-likes-for-posts-with-and-without-ai-only-posts-no-ads",
     "href": "index.html#number-of-likes-for-posts-with-and-without-ai-only-posts-no-ads",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Number of Likes for Posts with and without AI (only Posts, no Ads)",
     "text": "Number of Likes for Posts with and without AI (only Posts, no Ads)"
   },
   {
     "objectID": "index.html#number-of-likes-for-posts-with-and-without-ai-by-party-only-posts-no-ads",
     "href": "index.html#number-of-likes-for-posts-with-and-without-ai-by-party-only-posts-no-ads",
-    "title": "CampAIgn Tracker",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Number of Likes for Posts with and without AI by Party (only Posts, no Ads)",
     "text": "Number of Likes for Posts with and without AI by Party (only Posts, no Ads)\n\nCDU/CSUSPDAfDFDPB90/GRÜNELINKEFreie WählerDieBasisPiratenparteiPdFBayernparteiV-Partei³NPD /Die Heimat"
   }

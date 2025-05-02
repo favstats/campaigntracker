@@ -117,12 +117,14 @@ htmltools::tags$head(
 library(glue)
 # write_csv(aidat, file = "../data/aidat.csv")
 
-
 # transl <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1gnJk9uw4e0SGE-cNiE3IqCnB9ag6vIGGTNqjrVH90-U/edit?gid=0#gid=0")
+# 
+# 
+# saveRDS(transl, file = "../data/transl.rds")
+
 # 
 lang <- "de"
 
-# saveRDS(transl, file = "../../data/transl.rds")
 
 transl <- readRDS( "../data/transl.rds")
 # get_text()
@@ -137,7 +139,32 @@ get_text <- function(thtxt, lang) {
 
 ```
 
+```{css}
+/* Modern, Subtle Blockquote Styling */
+blockquote {
+  background: #f9f9f9;  /* Light gray background for subtlety */
+  border-left: 4px solid #6c63ff;  /* Soft purple left border for a modern touch */
+  padding: 1rem 1.5rem;  /* Adequate padding for readability */
+  margin: 1.5rem 0;  /* Space around blockquote */
+  font-style: italic;  /* Classic blockquote style */
+  color: #333;  /* Dark text for good contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);  /* Light shadow for depth */
+  border-radius: 8px;  /* Rounded corners for a modern feel */
+  transition: background-color 0.3s ease, border-color 0.3s ease;  /* Smooth hover transition */
+}
+
+/* Hover effect for subtle interaction */
+blockquote:hover {
+  background: #f0f0ff;  /* Very light purple on hover */
+  border-left-color: #4e47d6;  /* Slightly darker purple on hover */
+}
+```
+
+
+
 `r get_text("landingtext", lang)`
+
+> Der **CampAIgn Tracker** zeigt alle *Posts und bezahlten Werbeanzeigen* auf **Facebook** und **Instagram** von über 3000 Accounts der deutschen **Parteien und Kandidierenden**, die vier Wochen vor der **Bundestagswahl 2025** gepostet/gekauft wurden *(26.1.25–23.2.25)*.
 
 <!-- **Willkommen beim CampAIgn Tracker!**  Die **Plattform**, die KI-Kampagnen der Parteien auf sozialen Netzwerken aufdeckt.   -->
 
@@ -147,6 +174,8 @@ get_text <- function(thtxt, lang) {
 
 
 ```{r}
+# setwd("/home/favstats/campaigntracker")
+
 # cleaned_content <- readRDS("../data/cleaned_content.rds")
 labeled <- readRDS("../data/labeled.rds")  %>% 
   mutate(party = case_when(
@@ -239,6 +268,35 @@ saveRDS(full_data, file = "../data/full_data.rds")
 
 # full_data %>% filter(type == "paid") %>% View()
 # ai_dat %>% filter(type == "paid")
+
+# handlesss <- workwith %>% 
+#   # ggplot(aes(as.character(ai), ai_generated)) +
+#   # geom_boxplot() +
+#   # EnvStats::stat_mean_sd_text()
+#   filter(ai == 1) %>% 
+#   count(phandle, sort =T) %>% 
+#   pull(phandle)
+# 
+# 
+# ai_accounts <- workwith %>%
+#    filter(ai == 1) %>% 
+#   filter(phandle %in% handlesss) %>%
+#   mutate(url = case_when(
+#     platform == "Instagram" ~ paste0("https://www.instagram.com/", phandle),
+#     platform == "Facebook" ~ paste0("https://www.facebook.com/", phandle),
+#     )
+#   ) %>%
+#   filter(type == "organic")
+# 
+# readr::write_csv(ai_accounts, "../data/ai_accounts.csv")
+# 
+# 
+# workwith %>%
+#    filter(ai == 1) %>% 
+#   filter(phandle %in% handlesss) %>% 
+#   # filter(type == "organic") %>% 
+#   select(page_name, page_id, phandle, posted_date, text, url, everything()) %>% 
+#   write_csv("../data/ai_schatz.csv")
 ```
 
 
@@ -307,7 +365,33 @@ total_ai <- spark_box(
 #     column(4, total_ai)
 #   )
 # )
+  # Official German party color mapping
+  party_colors <- c(
+    "CDU/CSU" = "#000000",       # Black
+    "SPD" = "#E3000F",           # Red
+    "AfD" = "#009EE0",           # Light Blue
+    "FDP" = "#FFED00",           # Yellow
+    "B90/GRÜNE" = "#46962B",     # Green
+    "LINKE" = "#BE3075",         # Magenta
+    "BSW" = "#782151",           # Dark Blue
+    "Freie Wähler" = "#f6a800",  # Orange
+    "DieBasis" = "#7F7F7F",      # Gray
+    "Piratenpartei" = "#FF8800", # Orange
+    "ÖDP" = "#00AA00",           # Dark Green
+    "VOLT" = "#562883",          # Purple
+    "NPD/Die Heimat" = "#8B0000",# Dark Red
+    "WerteUnion" = "#004B88",     # Blue
+    "MLPD" = "#FF0000",           # Bright Red
+    "PdF" = "#f5a519",
+    "Bayernpartei" = "#97f5fd",
+    "V-Partei³" = "#9fbe15",
+    "Partei der Humanisten" = "#ff00ff",
+    "Die PARTEI" = "#a81e31",
+    "DEMOKRATIE IN BEWEGUNG" = "#253c69",
+    "NPD /Die Heimat" = "#d59e29"
 
+    #
+  )
 # Display in one row using div with CSS Flexbox
 # Display in one row with improved spacing
 htmltools::tags$div(
@@ -382,33 +466,7 @@ create_political_treemap <- function(
   title = "AI Content Distribution by Political Party",
   height = 400
 ) {
-  # Official German party color mapping
-  party_colors <- c(
-    "CDU/CSU" = "#000000",       # Black
-    "SPD" = "#E3000F",           # Red
-    "AfD" = "#009EE0",           # Light Blue
-    "FDP" = "#FFED00",           # Yellow
-    "B90/GRÜNE" = "#46962B",     # Green
-    "LINKE" = "#BE3075",         # Magenta
-    "BSW" = "#782151",           # Dark Blue
-    "Freie Wähler" = "#f6a800",  # Orange
-    "DieBasis" = "#7F7F7F",      # Gray
-    "Piratenpartei" = "#FF8800", # Orange
-    "ÖDP" = "#00AA00",           # Dark Green
-    "VOLT" = "#562883",          # Purple
-    "NPD/Die Heimat" = "#8B0000",# Dark Red
-    "WerteUnion" = "#004B88",     # Blue
-    "MLPD" = "#FF0000",           # Bright Red
-    "PdF" = "#f5a519",
-    "Bayernpartei" = "#97f5fd",
-    "V-Partei³" = "#9fbe15",
-    "Partei der Humanisten" = "#ff00ff",
-    "Die PARTEI" = "#a81e31",
-    "DEMOKRATIE IN BEWEGUNG" = "#253c69",
-    "NPD /Die Heimat" = "#d59e29"
 
-    #
-  )
   
   # Validate data structure
   if (!all(c("x", "y") %in% names(data))) {
@@ -1243,17 +1301,16 @@ personen_im_bild_video_data <- full_data %>%
   gather(key = "personen_im_bild_video", value = "value") %>% 
   filter(value) #
 
-# Bar Chart Using Apexcharter
-personen_im_bild_video_chart <- apex(data = personen_im_bild_video_data%>% 
-  count(personen_im_bild_video, sort = TRUE), type = "bar", mapping = aes(x = reorder(personen_im_bild_video, n), y = n)) %>%
-  ax_chart(stacked = FALSE, horizontal = TRUE, height = 800) %>%
-  ax_plotOptions(
-    bar = list(
-      barHeight = "60%",
-      borderRadius = 5
-    )
-  ) %>%
-  ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
+
+
+
+personen_im_bild_video_chart <- apex(personen_im_bild_video_data %>% add_count(personen_im_bild_video, sort = T) %>% mutate(personen_im_bild_video = fct_reorder(personen_im_bild_video, n)) %>% arrange(personen_im_bild_video), aes(x = personen_im_bild_video ), "treemap") %>% 
+  ax_colors("#547D01")   %>%
+  ax_dataLabels(
+    style = list(
+      colors = list("#000000") # Setzt die Schriftfarbe auf Schwarz
+    ))%>%
+  # ax_dataLabels(enabled = TRUE, formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))) %>%
   ax_xaxis(
     title = list(text = get_text("numberposts", lang))
   ) %>%
@@ -1264,27 +1321,7 @@ personen_im_bild_video_chart <- apex(data = personen_im_bild_video_data%>%
     text = get_text("peoples", lang),
     align = "center",
     style = list(fontSize = "18px", fontWeight = "bold")
-  ) %>%
-  ax_tooltip(
-    shared = TRUE,
-    y = list(
-      formatter = JS(paste0("function(val) { return val + ' ",get_text("theposts", lang),"'; }"))
-    )
-  ) %>%
-  ax_legend(
-    position = "bottom",
-    labels = list(colors = "#000")
   )
-
-# personen_im_bild_video_chart
-
-
-personen_im_bild_video_chart <- apex(personen_im_bild_video_data %>% add_count(personen_im_bild_video, sort = T) %>% mutate(personen_im_bild_video = fct_reorder(personen_im_bild_video, n)) %>% arrange(personen_im_bild_video), aes(x = personen_im_bild_video ), "treemap") %>% 
-  ax_colors("#547D01")   %>%
-  ax_dataLabels(
-    style = list(
-      colors = list("#000000") # Setzt die Schriftfarbe auf Schwarz
-    ))
 
 htmltools::tagList(
   custom_css,
@@ -1371,7 +1408,7 @@ full_data %>%
   ggplot(aes(ai, likes)) +
   geom_boxplot() +
   scale_y_log10() +
-  ggpub
+  # ggpub
   EnvStats::stat_median_iqr_text()
 ```
 ```{r, eval = F}
@@ -1384,7 +1421,10 @@ median_values <- full_data %>%
   summarise(median_likes = median(likes, na.rm = TRUE))
 
 full_data %>% 
+  filter(type == "organic") %>% 
   select(likes, ai) %>% 
+  # count(likes, sort = T) %>% View()
+  # filter(is.na(likes)) %>% 
   mutate(likes = as.numeric(likes)) %>% 
   mutate(ai = as.character(ai)) %>% 
   ggplot(aes(x = ai, y = likes)) +
@@ -1427,17 +1467,535 @@ full_data %>%
   # theme(legend.position = "none") +
   coord_flip()
 ```
+## Anzahl an Likes für Beiträge mit und ohne KI (nur Posts)
 
+```{r}
+library(dplyr)
+library(forcats)
+library(apexcharter)
+
+organic_b <- readRDS("~/campaigntracker/data/organic.rds") %>% bind_rows(readRDS("~/campaigntracker/data/organic_ig.rds"))
+
+missing_likes <- full_data %>% 
+  filter(type == "organic") %>% 
+  filter(is.na(likes)) %>% 
+  select(likes, platform, everything())
+
+add_likes <- organic_b %>% 
+  filter(url %in% missing_likes$url_eintragen_url) %>% 
+  select(url, likes_o = likes)
+
+# Datenvorbereitung: likes als numerisch; nur positive Werte; KI-Label in Deutsch; Log-Transformation
+data_prepped <- full_data %>% 
+  left_join(add_likes) %>% 
+  mutate(likes = ifelse(is.na(likes), likes_o, likes)) %>% 
+  # bind_rows(add_likes, .) %>% 
+  distinct(url, .keep_all = T) %>% 
+  # select(likes, ai, party) %>% 
+  mutate(
+    likes = as.numeric(likes)
+  ) %>% 
+  # filter(likes >= 0) %>%  # ausschließen, da log(0) nicht definiert
+  mutate(likes = ifelse(likes == 0, 1, likes)) %>% 
+  mutate(
+    ai = ifelse(ai == 1, "Mit KI", "Ohne KI"),
+    # party = fct_reorder(party, likes),
+    log_likes = log10(likes)
+  )
+
+# organic
+ # data_prepped %>% 
+ #  filter(type == "organic") %>% 
+ #  filter(is.na(likes)) %>% 
+ #  select(likes, platform, everything()) %>% View()
+ #   count(platform)
+ # 
+ #  organic_b %>% 
+ #    filter(str_detect(url, "DGJVSwBukzA")) %>% View()
+```
+
+
+```{r}
+# Berechne die Median-Werte für die Annotationen
+medians <- data_prepped %>%
+  group_by(ai) %>%
+  summarise(
+    median_value = median(log_likes, na.rm = TRUE),
+    total_value = sum(likes, na.rm = TRUE),
+    n_value = n()
+  ) %>% 
+  mutate(median_original = round(10^median_value))  # zurücktransformiert
+```
+
+
+
+```{r}
+# Median-Labels vorbereiten
+annotations <- list(
+  list(
+    x = "Mit KI",  # Kategorie auf der x-Achse
+    y = medians$median_value[medians$ai == "Mit KI"],  # Median-Wert (log-skaliert)
+    label = list(
+      text = paste("Median:", format(medians$median_original[medians$ai == "Mit KI"], big.mark = ".", decimal.mark = ","), "Likes"),
+      style = list(
+        color = "#FF6F61",
+        fontSize = "12px",
+        fontWeight = "bold"
+      )
+    )
+  ),
+  list(
+    x = "Ohne KI",
+    y = medians$median_value[medians$ai == "Ohne KI"],
+    label = list(
+      text = paste("Median:", format(medians$median_original[medians$ai == "Ohne KI"], big.mark = ".", decimal.mark = ","), "Likes"),
+      style = list(
+        color = "#6B5B95",
+        fontSize = "12px",
+        fontWeight = "bold"
+      )
+    )
+  )
+)
+
+ max_likes <- max(as.numeric(data_prepped$likes), na.rm = TRUE)
+
+# Boxplot mit logarithmischer y-Achse (transformierte Daten) und deutscher Beschriftung
+boxies <- apex(data_prepped, aes(x = ai, y = log_likes, color = ai, group = ai), "boxplot") %>%
+  ax_plotOptions(
+    boxPlot = boxplot_opts(color.upper = "#FF6F61", color.lower = "#8BB0A6")
+  ) %>%
+  # Manually assign different colors per group
+  # ax_colors_manual(list(
+  #   "Mit KI" = "#FF6F61", 
+  #   "Ohne KI" = "#6B5B95"
+  # )) %>%
+  # ax_grid(
+  #   xaxis = list(lines = list(show = TRUE)),
+  #   yaxis = list(lines = list(show = FALSE))
+  # ) %>%
+  ax_yaxis(
+    title = list(text = "Gefällt mir (logarithmisch)"),
+    labels = list(formatter = htmlwidgets::JS("function(val){ return Math.pow(10, val).toFixed(0); }"))
+  ) %>%
+  # ax_xaxis(
+  #   title = list(text = "")
+  # ) %>%
+  ax_title(text = "Verteilung Likes von Beiträgen mit und ohne KI")
+boxies <- apex(data_prepped, aes(x = ai, y = log_likes, color = ai, group = ai), "boxplot") %>%
+  ax_plotOptions(
+    boxPlot = boxplot_opts(
+      color.upper = "#8BB0A6",
+      color.lower = "#8BB0A6"
+    )
+  ) %>%
+  ax_yaxis(
+    title = list(text = "Likes (logarithmisch)"),
+    labels = list(
+      formatter = htmlwidgets::JS("
+        function(val) {
+          return Math.pow(10, val).toFixed(0);  // Normale Zahlenanzeige
+        }
+      ")
+    ),
+    min = -1#,  # Minimum der Y-Achse
+    # max = log10(max_likes)  # Maximale Y-Achse auf das tatsächliche Maximum setzen
+  )  %>%
+  ax_tooltip(
+    shared = FALSE,
+    custom = htmlwidgets::JS("
+      function({ seriesIndex, dataPointIndex, w }) {
+        var thePoint = w.config.series[seriesIndex].data[dataPointIndex];
+        var label = thePoint.x;
+
+        var arr = thePoint.y;  // [Min, Q1, Median, Q3, Max]
+
+        // Zurückrechnen in Originalwerte
+        var minVal    = Math.pow(10, arr[0]).toFixed(0);
+        var q1Val     = Math.pow(10, arr[1]).toFixed(0);
+        var medianVal = Math.pow(10, arr[2]).toFixed(0);
+        var q3Val     = Math.pow(10, arr[3]).toFixed(0);
+
+        // Tooltip ohne den irreführenden Maximalwert
+        return `
+          <div style='padding: 8px; font-size: 14px;'>
+            <strong>${label}</strong><br/>
+            <hr style='margin: 4px 0;'>
+            Min: ${minVal} Likes<br/>
+            1. Quartil (25%): ${q1Val} Likes<br/>
+            Median: ${medianVal} Likes<br/>
+            3. Quartil (75%): ${q3Val} Likes<br/>
+            <br/>
+            <em>Die Hälfte der Beiträge hat mehr als ${medianVal} Likes erhalten.</em>
+          </div>
+        `;
+      }
+    ")
+  )%>%
+  ax_xaxis(title = list(text = "")) %>%
+  ax_title(text = "Verteilung Likes von Beiträgen mit und ohne KI") %>%
+  ax_legend(
+    labels = list(
+      formatter = htmlwidgets::JS("
+        function(seriesName) {
+          return seriesName === 'Mit KI'
+            ? 'Beiträge mit KI'
+            : 'Beiträge ohne KI';
+        }
+      ")
+    )
+  ) %>%
+  ax_chart(
+    toolbar = list(show = FALSE),
+    animations = list(enabled = TRUE)
+  )%>%
+  ax_annotations(
+    points = annotations  # Hier werden die Mediane als sichtbare Punkte angezeigt
+  ) 
+
+library(apexcharter)
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(boxies)
+  )
+)
+
+# data_prepped %>%
+#   drop_na(likes) %>% 
+#   mutate(likes = as.numeric(likes)) %>%
+#   arrange(desc(likes)) %>%
+#   select(page_name, text, likes)
+```
+
+
+<br>
+
+Die Analyse umfasst **insgesamt `r scales::comma(sum(medians$n_value), accuracy = 1)` Beiträge**, die entweder **mit** oder **ohne** den Einsatz von Künstlicher Intelligenz (KI) erstellt wurden. Davon stammen **`r medians$n_value[medians$ai == "Mit KI"]` Beiträge aus der Kategorie mit KI** und **`r scales::label_number(scale_cut = scales::cut_short_scale())(medians$n_value[medians$ai == "Ohne KI"])`** aus der Kategorie **ohne KI**. 
+
+Die Beiträge **mit KI** erzielten insgesamt **`r scales::label_number(scale_cut = scales::cut_short_scale())(medians$total_value[medians$ai == "Mit KI"])` Likes**, während die Beiträge **ohne KI `r scales::label_number(scale_cut = scales::cut_short_scale())(medians$total_value[medians$ai == "Ohne KI"])` Likes** erreichten.
+
+Beim **Median der Likes** – also die Anzahl der Likes, die ein typischer Beitrag in der Mitte der Verteilung erhält – zeigt sich dass Beiträge **mit KI** im Median **`r medians$median_original[medians$ai == "Mit KI"]` Likes erhielten**, während Beiträge **ohne KI `r medians$median_original[medians$ai == "Ohne KI"]` Likes** erzielten. 
+
+
+<br>
+<br>
+
+
+
+```{r}
+
+library(dplyr)
+library(forcats)
+library(apexcharter)
+library(htmltools)
+
+# Filter parties that used AI
+only_ai_parties <- workwith %>% filter(ai == 1) %>% pull(party)
+
+# Convert party_colors to a named vector
+party_colors_vector <- unlist(party_colors)
+
+# Prepare the data with log transformation
+data_prepped <- full_data %>% 
+  left_join(add_likes) %>% 
+  mutate(likes = ifelse(is.na(likes), likes_o, likes)) %>% 
+  mutate(
+    likes = as.numeric(likes),
+    likes = ifelse(likes == 0, 1, likes),
+    ai = ifelse(ai == 1, "Mit KI", "Ohne KI"),
+    log_likes = log10(likes)
+  ) %>% 
+  filter(party %in% only_ai_parties) %>% 
+  drop_na(log_likes)
+
+# Calculate median likes per party for annotation
+medians <- data_prepped %>%
+  group_by(party, ai) %>%
+  summarise(
+    median_value = median(log_likes, na.rm = TRUE),
+    n_value = n()
+  ) %>% 
+  mutate(median_original = round(10^median_value))  # Back-transform
+
+# Prepare function to create each chart
+create_party_chart <- function(party_name) {
+  party_data <- data_prepped %>% filter(party == party_name)
+  party_color <- party_colors_vector[party_name] %>% unname()
+  party_median <- medians %>% filter(party == party_name)
+
+annotations <- list(
+  list(
+    x = "Mit KI",  # Kategorie auf der x-Achse
+    y = party_median$median_value[party_median$ai == "Mit KI"],  # Median-Wert (log-skaliert)
+    label = list(
+      text = paste("Median:", format(party_median$median_original[party_median$ai == "Mit KI"], big.mark = ".", decimal.mark = ","), "Likes"),
+      style = list(
+        color = "#FF6F61",
+        fontSize = "12px",
+        fontWeight = "bold"
+      )
+    )
+  ),
+  list(
+    x = "Ohne KI",
+    y = party_median$median_value[party_median$ai == "Ohne KI"],
+    label = list(
+      text = paste("Median:", format(party_median$median_original[party_median$ai == "Ohne KI"], big.mark = ".", decimal.mark = ","), "Likes"),
+      style = list(
+        color = "#6B5B95",
+        fontSize = "12px",
+        fontWeight = "bold"
+      )
+    )
+  )
+)
+
+  max_likes <- max(party_data$likes, na.rm = TRUE)
+# print(party_data)
+party_data <<- party_data
+  # Create chart
+  chartss <- apex(party_data, aes(x = ai, y = log_likes), "boxplot") %>%
+    ax_plotOptions(
+      boxPlot = boxplot_opts(
+        color.upper = party_color,
+        color.lower = party_color
+      )
+    ) %>%
+    ax_yaxis(
+      title = list(text = "Likes (logarithmisch)"),
+      labels = list(
+        formatter = htmlwidgets::JS("
+          function(val) {
+            return Math.pow(10, val).toFixed(0);
+          }
+        ")
+    ),
+    min = -1#,  # Minimum der Y-Achse
+      # max = log10(max_likes)
+    ) %>%
+    ax_tooltip(
+      shared = FALSE,
+      custom = htmlwidgets::JS("
+        function({ seriesIndex, dataPointIndex, w }) {
+          var thePoint = w.config.series[seriesIndex].data[dataPointIndex];
+          var label = thePoint.x;
+          var arr = thePoint.y;
+
+          var minVal    = Math.pow(10, arr[0]).toFixed(0);
+          var q1Val     = Math.pow(10, arr[1]).toFixed(0);
+          var medianVal = Math.pow(10, arr[2]).toFixed(0);
+          var q3Val     = Math.pow(10, arr[3]).toFixed(0);
+
+          return `
+            <div style='padding: 8px; font-size: 14px;'>
+              <strong>${label}</strong><br/>
+              <hr style='margin: 4px 0;'>
+              1. Quartil (25%): ${q1Val} Likes<br/>
+              Median: ${medianVal} Likes<br/>
+              3. Quartil (75%): ${q3Val} Likes<br/>
+              <br/>
+              <em>Die Hälfte der Beiträge hat mehr als ${medianVal} Likes erhalten.</em>
+            </div>
+          `;
+        }
+      ")
+    ) %>%
+    ax_title(text = paste("Verteilung der Likes -", party_name)) %>%
+    ax_annotations(points = annotations) %>%
+    ax_chart(
+      toolbar = list(show = FALSE),
+      animations = list(enabled = TRUE)
+    )
+  return(chartss)
+}
+```
+
+
+
+## Anzahl an Likes für Beiträge mit und ohne KI nach Partei (nur Posts)
+
+::: {.panel-tabset}
+
+#### CDU/CSU
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("CDU/CSU"))
+  )
+)
+```
+
+#### SPD
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("SPD"))
+  )
+)
+```
+
+#### AfD
+```{r, results='asis'}
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("AfD"))
+  )
+)
+```
+
+#### FDP
+```{r, results='asis'}
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("FDP"))
+  )
+)
+```
+
+#### B90/GRÜNE
+```{r, results='asis'}
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("B90/GRÜNE"))
+  )
+)
+```
+
+#### LINKE
+```{r, results='asis'}
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("LINKE"))
+  )
+)
+```
+
+
+#### Freie Wähler
+```{r, results='asis'}
+
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("Freie Wähler"))
+  )
+)
+```
+
+#### DieBasis
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("DieBasis"))
+  )
+)
+```
+
+#### Piratenpartei
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("Piratenpartei"))
+  )
+)
+```
+
+
+
+#### PdF
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("PdF"))
+  )
+)
+```
+
+#### Bayernpartei
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("Bayernpartei"))
+  )
+)
+```
+
+#### V-Partei³
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("V-Partei³"))
+  )
+)
+```
+
+#### NPD /Die Heimat
+```{r, results='asis'}
+htmltools::tagList(
+  custom_css,
+  tags$div(
+    class = "apex-container",
+htmltools::browsable(
+create_party_chart("NPD /Die Heimat"))
+  )
+)
+```
+
+
+::: 
 
 ```{r, eval = F}
 full_data %>% 
+  # filter(party == "NPD /Die Heimat")
   select(likes, ai, party) %>% 
   mutate(likes = as.numeric(likes)) %>% 
   mutate(ai = as.character(ai)) %>% 
   filter(party %in% only_ai_parties) %>% 
   mutate(party = fct_reorder(party, likes)) %>% 
   arrange(party) %>% 
-  filter(party == "CDU/CSU") %>% View()
+  # filter(party == "CDU/CSU") %>% View()
   ggplot(aes(x = party, y = likes)) +
   geom_boxplot() +  # Boxplot with color
   scale_y_log10() +  # Log scale

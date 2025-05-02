@@ -1,0 +1,113 @@
+---
+title: "Wie erkennt man KI-generierte Bilder und wie stärkt man die eigene KI-Kompetenz?"
+description-meta: "Tipps zur Erkennung KI-generierter Bilder und zur Stärkung digitaler Resilienz in politischen Kampagnen."
+author: "Jakob Scherer"
+date: "2.17.2025"
+image: "yPrk02y.png"
+lang: de
+format:
+  html:
+    theme: lumen
+    toc: true
+    toc-title: "Inhalt"
+    toc-depth: 2
+    smooth-scroll: true
+---
+
+<!-- Custom CSS -->
+<style>
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: justify;
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f8ff;
+  padding: 15px;
+  border-left: 4px solid #004080;
+  margin: 20px 0;
+}
+
+.callout {
+  background-color: #e7f3fe;
+  padding: 15px;
+  border-left: 5px solid #2196F3;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  margin-top: -10px;
+}
+</style>
+
+
+Die Fähigkeit, KI-generierte Bilder zu erkennen, ist essenziell, um Desinformation und Manipulation in digitalen Kampagnen zu verhindern. Besonders im Kontext politischer Kommunikation wird generative KI zunehmend genutzt – teils für kreative Zwecke, teils für bewusste Irreführung. Der **campAIgn Tracker** bietet einen Überblick über aktuelle KI-Trends in politischen Kampagnen und hilft Bürgerinnen und Bürgern, sich gegen Desinformation zu wappnen.
+
+### **KI-generierte Bilder: Täuschend echt und doch erkennbar**
+
+Moderne KI kann mittlerweile realistisch anmutende Bilder erstellen. Doch einige Hinweise verraten sie:
+
+- **Unnatürliche Details:** Verzerrte Gesichtsproportionen, inkonsistente Lichtquellen oder fehlende Reflexionen.  
+- **Auffällige Texturen und Muster:** Wiederholungen oder unscharfe Stellen, besonders in Hintergründen.  
+- **Probleme bei Augen und Händen:** KI hat Schwierigkeiten, realistische Hände oder symmetrische Augen zu generieren.  
+- **Metadaten-Analyse:** Mit Tools wie *Foto-Forensik* oder *Google Lens* kann die Herkunft eines Bildes überprüft werden.  
+- **Reverse Image Search:** Durch eine Rückwärtssuche kann festgestellt werden, ob das Bild als KI-generiert markiert wurde.  
+
+![[Infobox aus aktueller Studie zur KI im Wahlkampf](https://www.otto-brenner-stiftung.de/generative-ki-in-politischen-kampagnen/) von Dr. Simon Kruschinski, Dr. Pablo Jost, Tobias Scherer und Hannah Fecher](A4gQPaI.png)
+
+### Digitale Resilienz: Wie Bürger*innen ihre KI-Kompetenz stärken
+
+Um Manipulationen zu vermeiden, ist eine kritische Auseinandersetzung mit digitalen Inhalten unerlässlich. Hier sind einige Maßnahmen, die helfen:
+
+#### **1. Kritisches Denken schulen**
+
+- Hinterfragen Sie Bilder und Inhalte, vor allem in politischen Kontexten.  
+- Vergleichen Sie Informationen mit seriösen Nachrichtenquellen oder Faktencheck-Plattformen.  
+
+#### **2. Technische Hilfsmittel nutzen**
+
+- Spezialisierte *Deepfake-Detektoren* und *Bildanalyse-Tools* helfen bei der Erkennung manipulierter Inhalte.  
+- Erweiterungen für Browser und KI-Warnsysteme geben erste Hinweise auf Fälschungen.  
+
+#### **3. Medienkompetenz ausbauen**
+
+- Nutzen Sie Bildungsangebote zu digitaler Kompetenz, wie sie der **campAIgn Tracker** bereitstellt.  
+- Schulen und Bildungseinrichtungen sollten verstärkt Workshops zu KI-Erkennung und ethischem Umgang mit KI anbieten.  
+
+#### **4. KI-Kennzeichnung fordern**
+
+- Setzen Sie sich für Transparenzrichtlinien ein, die eine Kennzeichnung von KI-generierten Inhalten verpflichtend machen.  
+- Öffentlicher Druck auf Plattformen wie **Meta** oder **X** (ehemals Twitter) kann helfen, verlässliche KI-Markierungen durchzusetzen.  
+
+### **Fazit**
+
+Der **campAIgn Tracker** zeigt, wie generative KI bereits heute in politischen Kampagnen eingesetzt wird – mit positiven wie negativen Auswirkungen. Wer weiß, wie KI-Bilder erkannt werden, kann sich besser vor Manipulation schützen.  
+
+**Digitale Resilienz** bedeutet, kritisches Denken, technische Hilfsmittel und ein Bewusstsein für Medienkompetenz zu kombinieren. Bleiben Sie informiert und stärken Sie Ihre digitale Kompetenz mit dem **campAIgn Tracker**!

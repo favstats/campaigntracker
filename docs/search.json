@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "Im CampAIgn Tracker untersuchen wir alle Posts und bezahlten Werbeanzeigen auf Facebook und Instagram von Parteien und Kandidierenden zur Bundestagswahl 2025.\nIn unserem Live-Tracking kann nachgeschaut werden, wie viele KI-generierte Botschaften von welchen Parteien verbreitet werden.\nAußerdem zeigen wir, ob eine KI-Kennzeichnung vorhanden ist, welche Akteure abgebildet sind, welche Themen vorkommen und ob eine positive oder negative Tonalität vorherrscht.\nAuf dieser Seite finden sich Auswertungen zu den KI-generierten Kampagnen bei der Bundestagswahl 2025. Eine durchsuchbare Übersicht über die einzelnen KI-Bilder und -Videos ist im KI Explorer zu finden."
   },
@@ -114,21 +114,21 @@
   {
     "objectID": "index.html#ai-over-time",
     "href": "index.html#ai-over-time",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "KI-Inhalte im Zeitverlauf",
     "text": "KI-Inhalte im Zeitverlauf\n\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt, wie sich die Anzahl der Beiträge mit und ohne KI über die Zeit entwickelt."
   },
   {
     "objectID": "index.html#ki-content-by-party1",
     "href": "index.html#ki-content-by-party1",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "KI-Inhalte nach Partei",
     "text": "KI-Inhalte nach Partei\n\n\n\n\n\n\n\n\nDiese Visualisierung zeigt, wie viele KI-generierte Inhalte jede Partei veröffentlicht hat. Die Feldgröße entspricht der Anzahl der identifizierten Beiträge. Größere Felder bedeuten mehr KI-Einsatz von der entsprechenden Partei."
   },
   {
     "objectID": "index.html#ki-content-by-party2",
     "href": "index.html#ki-content-by-party2",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Anteil von Beiträgen mit und ohne KI nach Partei",
     "text": "Anteil von Beiträgen mit und ohne KI nach Partei\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt den relativen Anteil von KI-generierten Inhalten pro Partei. Dabei sind die Parteien nach dem höchsten Anteil an KI-Inhalten sortiert.\n\nHinweis: Bei Parteien mit geringerer Beitragsanzahl (u.a. kleinere Parteien) kann auch ein geringer Einsatz von KI-Inhalten zu hohen relativen Anteilen führen."
   },
@@ -191,14 +191,14 @@
   {
     "objectID": "index.html#transparenz-beim-ki-einsatz",
     "href": "index.html#transparenz-beim-ki-einsatz",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Transparenz beim KI-Einsatz",
     "text": "Transparenz beim KI-Einsatz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDie Kennzeichnungen von KI-Inhalten mit Disclaimern durch die Parteien oder durch Plattformen sind wichtig für einen transparenten Einsatz. Diese Grafik zeigt, wie oft KI-generierte Inhalte ohne bzw. mit Kennzeichnung veröffentlicht wurden und ob die Kennzeichnung durch die Partei oder Meta erfolgte."
   },
   {
     "objectID": "index.html#analyse-der-ki-inhalte",
     "href": "index.html#analyse-der-ki-inhalte",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Analyse der KI-Inhalte",
     "text": "Analyse der KI-Inhalte\n\n\n\n\n\n\n\n\n\n\n\nHinweis: es gibt die Möglichkeit dass ein Post negative und positive Inhalte zeigt.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Beitrag kann mehrere Themen gleichzeitig behandeln.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHinweis: Ein Bild kann mehrere Bild-/Videoinhalte gleichzeitig beinhalten."
   },
@@ -219,14 +219,14 @@
   {
     "objectID": "index.html#medienformatte",
     "href": "index.html#medienformatte",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "KI-Medienformate",
     "text": "KI-Medienformate\n\n\n\n\n\n\n\n\n\n\nDiese Grafik zeigt den prozentualen Anteil von Bildern und Videos in den als KI-generiert erkannten Beiträgen. So lässt sich erkennen, welche Medienformate häufiger mit KI verwendet werden."
   },
   {
     "objectID": "index.html#personen",
     "href": "index.html#personen",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "",
     "text": "Diese Grafik zeigt, welche Personen(gruppen) in den KI-generierten Bildern/Videos vorkommen und in wie vielen Inhalten sie vertreten sind.\n\nHinweis: Ein Bild kann mehrere Personen gleichzeitig zeigen."
   },
@@ -296,14 +296,14 @@
   {
     "objectID": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nur-posts",
     "href": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nur-posts",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Anzahl an Likes für Beiträge mit und ohne KI (nur Posts)",
     "text": "Anzahl an Likes für Beiträge mit und ohne KI (nur Posts)\n\n\n\n\n\n\n\n\n\n\nDie Analyse umfasst insgesamt 68,601 Beiträge, die entweder mit oder ohne den Einsatz von Künstlicher Intelligenz (KI) erstellt wurden. Davon stammen 552 Beiträge aus der Kategorie mit KI und 68K aus der Kategorie ohne KI.\nDie Beiträge mit KI erzielten insgesamt 197K Likes, während die Beiträge ohne KI 27M Likes erreichten.\nBeim Median der Likes – also die Anzahl der Likes, die ein typischer Beitrag in der Mitte der Verteilung erhält – zeigt sich dass Beiträge mit KI im Median 52 Likes erhielten, während Beiträge ohne KI 20 Likes erzielten."
   },
   {
     "objectID": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nach-partei-nur-posts",
     "href": "index.html#anzahl-an-likes-für-beiträge-mit-und-ohne-ki-nach-partei-nur-posts",
-    "title": "&nbsp;&nbsp;&nbsp;Dashboard",
+    "title": "&nbsp;&nbsp;Dashboard",
     "section": "Anzahl an Likes für Beiträge mit und ohne KI nach Partei (nur Posts)",
     "text": "Anzahl an Likes für Beiträge mit und ohne KI nach Partei (nur Posts)\n\nCDU/CSUSPDAfDFDPB90/GRÜNELINKEFreie WählerDieBasisPiratenparteiPdFBayernparteiV-Partei³NPD /Die Heimat"
   },

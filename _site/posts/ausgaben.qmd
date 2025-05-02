@@ -2,8 +2,8 @@
 title: "Bezahlte Wahlwerbung: Analyse der digitalen Anzeigenausgaben zur Bundestagswahl"
 description-meta: "Eine Analyse der digitalen Werbeausgaben deutscher Parteien zur Bundestagswahl 2025 im Vergleich zu 2021."
 author: "Fabio Votta"
-date: "2.13.2025"
-image: "https://i.imgur.com/yBSHI1p.png"
+date: "2.21.2025"
+image: "EyHrp9J.png"
 lang: de
 format:
   html:
@@ -74,32 +74,53 @@ Digitale Wahlwerbung spielt eine zentrale Rolle in modernen Wahlkämpfen. Im Vor
 
 🔗 **Englische längere Version hier lesen:** [favstats.eu/post/btws](https://www.favstats.eu/post/btws)
 
-## **Steigende digitale Werbeausgaben**
+#### **Gesamtentwicklung: Die Ausgaben steigen, aber nur leicht**
 
-Insgesamt sind die Ausgaben für digitale Werbung um **665.000 €** gestiegen. Zwei Wochen vor der Wahl wurden 2025 bereits **4,8 Mio. €** ausgegeben, verglichen mit **4,1 Mio. €** im gleichen Zeitraum 2021.  
+Die Gesamtausgaben für digitale Werbung haben sich gegenüber 2021 kaum verändert. Drei Tage vor der Wahl beliefen sich die Ausgaben 2025 auf **8,36 Mio. €**, verglichen mit **8,32 Mio. €** im gleichen Zeitraum 2021 ([inflationsbereinigt](https://www.destatis.de/DE/Themen/Wirtschaft/Preise/Verbraucherpreisindex/Tabellen/Verbraucherpreise-12Kategorien.html#236116)).  
 
-![Vergleich der digitalen Werbeausgaben zwischen 2021 und 2025](https://i.imgur.com/yBSHI1p.png)
+![Vergleich der digitalen Werbeausgaben zwischen 2021 und 2025](EyHrp9J.png)
 
-Dieser Anstieg könnte darauf hindeuten, dass digitale Plattformen eine noch zentralere Rolle im Wahlkampf spielen. Möglicherweise zeigt es allerdings auch dass die Budgets insgesamt gestiegen sind. Eine genauere Analyse folgt in einem zukünftigen Blogpost.
+Diese Stabilität könnte darauf hindeuten, dass die Bedeutung digitaler Werbung im Wahlkampf konstant bleibt – auch wenn sich die Verteilung der Ausgaben zwischen den Parteien stark verändert hat.
 
-## **Wer gibt mehr aus – und wer weniger?**
+#### **Parteiausgaben: Wer investiert mehr, wer spart?**
 
-Besonders **Die Grünen** (+419.000 €) und **Volt** (+581.000 €) haben ihre Ausgaben erheblich gesteigert. Volt, die bislang nicht im Bundestag vertreten sind, setzen besonders stark auf digitale Werbung im Vergleich zu 2021. Dagegen haben Parteien wie die **CDU/CSU** (-392.000 €) und die **SPD** (-370.000 €) ihre digitalen Wahlwerbungsbudgets gekürzt.  
+Ein Blick auf die einzelnen Parteien offenbart deutliche Verschiebungen:
 
-![Vergleich der Parteiausgaben für digitale Werbung](https://i.imgur.com/a468LSA.png)
+Die **FDP** (+217.000 €) und besonders **Volt** (+815.000 €) haben ihre Budgets massiv erhöht. Für Volt, eine Partei ohne Bundestagsmandat, könnte dies ein Versuch sein, ihre Sichtbarkeit zu erhöhen.  
 
-Diese Verschiebungen deuten möglicherweise darauf hin, dass kleinere und neuere Parteien stärker auf digitale Kampagnen setzen, während etabliertere Parteien ihre Strategien möglicherweise anders ausrichten. Auch das Gesamtbudget der Parteien sollte hier in Betracht gezogen werden. Eine tiefergehende Analyse dazu folgt bald.
+Dagegen haben die **CDU/CSU** (-530.000 €) und die **SPD** (-731.000 €) ihre Ausgaben deutlich reduziert.  
 
-## **Plattformwechsel: Google boomt, Meta stagniert**
+![Vergleich der Parteiausgaben für digitale Werbung](mtMNPXH.png)
 
-Ein interessanter Trend zeigt sich bei den Plattformen:
 
-- Die **Ausgaben für Google-Werbung haben sich mehr als verdoppelt** (+909.000 €), während  
-- Die **Meta-Ausgaben leicht zurückgingen** (-245.000 €).  
+#### **Digitale Prioritäten: Wer setzt wie viel vom Budget ein?**
 
-![Plattformvergleich: Meta vs. Google](https://i.imgur.com/QgVqLKs.png)
+Noch aufschlussreicher ist der Anteil der digitalen Werbeausgaben am  [Gesamtbudgets](https://www.rnd.de/politik/was-kostet-der-wahlkampf-die-budgets-der-parteien-im-ueberblick-74RTDCITNNHETINXYGQNN4DUTE.html) SPD, Linke, und CDU/CSU geben nur ca. 2-3% ihres Wahlkampfbudgets für digitale Werbung aus. Die Grünen hingegen geben mit 11% ihres Budgets ein vielfaches auf digitale Wahlwerbung.
 
-## **Trozdem: Google steigt aus – Meta bleibt**
+Auch hier fällt **Volt** besonders auf: Der Anteil der digitalen Ausgaben ist um beeindruckende **28,33 Prozentpunkte** gestiegen, sodass nun rund **40 %** des Gesamtbudgets in digitale Werbung fließen.  
 
-Diese Entwicklung steht im Kontext von Googles Entscheidung, **politische Werbung in der EU ab Oktober 2025 zu verbieten**. Dies könnte Meta eine **Quasi-Monopolstellung** bei digitaler Wahlwerbung verschaffen. Das birgt potenzielle Risiken für den politischen Wettbewerb. Meta bleibt damit die wichtigste Plattform für bezahlte digitale Wahlwerbung, insbesondere wegen seiner granularen Targeting-Möglichkeiten.
+Bei traditionellen Parteien wie der **CDU/CSU** (-3,8 Prozentpunkte) und der **SPD** (-3,5 Prozentpunkte) ist der Anteil hingegen rückläufig.  
 
+Auch **Die Linke** verzeichnet einen Rückgang (-1,6 Prozentpunkte). Die **Grünen** hingegen bleiben stabil und haben nur einen leichten Rückgang von 0,3 Prozentpunkten verzeichnen.  
+
+![Anteil der digitalen Ausgaben am Gesamtbudget](ASiW05N.png)
+
+
+#### **Plattformvergleich: Google legt zu, Meta verliert**
+
+Ein interessanter Trend zeigt sich bei der Plattformwahl:
+
+- Die Ausgaben für **Google-Werbung haben sich mehr als verdoppelt**, von **699.000 €** im Jahr 2021 auf **1,5 Mio. €** in 2025.  
+- Gleichzeitig gingen die Ausgaben auf **Meta**-Plattformen (Facebook, Instagram) von **4,2 Mio. €** auf **3,3 Mio. €** zurück.  
+
+![Vergleich der Ausgaben zwischen Meta und Google](cT25PnW.png)
+
+#### **Google zieht sich zurück – Meta bleibt die Hauptplattform**
+
+Diese Entwicklung muss vor dem Hintergrund von Googles Entscheidung gesehen werden, [**politische Werbung in der EU ab Oktober 2025 zu verbieten**](https://blog.google/around-the-globe/google-europe/political-advertising-in-eu). Meta wird damit voraussichtlich eine dominierende Rolle im Bereich digitaler Wahlwerbung einnehmen.  
+
+Ein solches Quasi-Monopol birgt Risiken: Die Konzentration von Macht auf einer Plattform könnte den Wettbewerb einschränken, kleinere Parteien benachteiligen und politische Kommunikationsstrategien stark beeinflussen. Besonders besorgniserregend ist, dass Meta durch sein detailliertes Targeting politischen Akteuren große Reichweite ermöglicht – was jedoch auch die Gefahr einer verstärkten Manipulation birgt.
+
+---
+
+*Anmerkung: Eine frühere Version dieses Blogposts enthielt Daten bis zwei Wochen vor der Wahl. Die aktuellen Zahlen berücksichtigen nun auch die Inflation, sodass alle Ausgaben inflationsbereinigt und in 2025 Euro angegeben sind.*

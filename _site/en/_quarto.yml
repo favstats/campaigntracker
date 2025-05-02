@@ -3,10 +3,10 @@ project:
   output-dir: ../../docs/en
   
 website:
-  title: "CampAIgn Tracker"
-  favicon: "logo.png"
+  title: "&nbsp;&nbsp;Dashboard"
+  favicon: "RoundLogoSchriftzug_blue.png"
   navbar:
-    logo: "logo.png"
+    logo: "LogoSchriftzug.png"
     left:
       - href: index.qmd
         text: "{{< iconify ph star-four-light >}} AI Tracker"
@@ -28,6 +28,8 @@ website:
     left:
       - text: "Copyright 2025, CampAIgn Tracker (Click for Impressum)"
         href: https://favstats.github.io/campaigntracker/impressum.html
+      - text: "Datenschutzerklärung"
+        href: https://favstats.github.io/campaigntracker/daentschutz.html
     right:
       - text: "Financed through the Baden-Württemberg Stiftung"
         href: "https://www.bwstiftung.de/"

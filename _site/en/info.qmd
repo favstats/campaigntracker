@@ -90,7 +90,7 @@ h1, h2 {
     Our team consists of two researchers - Dr. Simon Kruschinski (University of Mainz) and Dr. Fabio Votta ([AlgoSoc Consortium](https://algosoc.org/) at the University of Amsterdam) - who research political campaigns on social media. They brought the initial idea to the group and are responsible for seamless coding of images/videos and their rapid processing on our platform. Miriam Runde, our data scientist, handles backend development and AI detector implementation. Jakob Scherer (background in business administration and IT) and Theresa Schültken (background in politics and strategic foresight) manage external communications and content development.
   </p>
 
-![](https://github.com/favstats/campaigntracker/blob/main/docs/img/us.png?raw=true)
+![](../img/us.png)
 
   <p>
     <strong>From left to right in the picture:</strong> Theresa Gröninger (Politechathon jury member), Theresa Schültken, Miriam Runde, Fabio Votta, Simon Kruschinski, Jakob Scherer <em>[Credits: @BW Stiftung / Viktor Heekeren]</em>
