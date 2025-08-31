@@ -3,16 +3,38 @@ project:
   output-dir: docs/explore
 
 website:
-  title: "CampAIgn Tracker"
+  title: "&nbsp;&nbsp;Dashboard"
+  favicon: "RoundLogoSchriftzug_blue.png"
   navbar:
+    logo: "LogoSchriftzug.png"
     left:
       - href: https://favstats.github.io/campaigntracker
-        text: "{{< iconify ph star-four-light >}} AI Content Tracking"
+        text: "{{< iconify ph star-four-light >}} KI Tracker"
       - href: index.qmd
-        text: "{{< iconify ph binoculars-light >}} Datenexplorer"
+        text: "{{< iconify ph binoculars-light >}} KI Explorer"
       - href: https://favstats.github.io/campaigntracker/blog
-        text: "Blog"
-
+        text: "{{< iconify ph newspaper-light >}} Blog"
+      - href: https://favstats.github.io/campaigntracker/info
+        text: "{{< iconify ph info-light >}} Mehr Info"
+    right:
+      - href: https://favstats.github.io/de25/
+        text: "{{< iconify material-symbols:target >}} Targeting Tracker"        
+        id: targeting-tracker
+      - text: "en {{< iconify emojione flag-for-united-kingdom >}}"
+        href: "https://www.campaigntracker.de/en"
+        
+  page-footer:
+    background: light # or dark
+    left:
+      - text: "Copyright 2025, CampAIgn Tracker (Klick für Impressum)"
+        href: https://favstats.github.io/campaigntracker/impressum.html
+      - text: "Datenschutzerklärung"
+        href: https://favstats.github.io/campaigntracker/datenschutz.html
+    right:
+      - text: "Finanziert durch die Baden-Württemberg Stiftung"
+        href: "https://www.bwstiftung.de/"
+        
+        
 format:
   html:
     theme:
