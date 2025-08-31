@@ -229,6 +229,8 @@ full_data <- workwith %>%
 
 saveRDS(full_data, file = "../data/full_data.rds")
 
+full_data <- readRDS("../data/igfb.rds") %>% mutate_at(vars(ai_generated, ai), as.numeric)
+workwith <- full_data
 # workwith %>% 
 #   count(ai)
 

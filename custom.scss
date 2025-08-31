@@ -6,30 +6,96 @@ $link-color: #0056b3;
 $link-hover-color: #000;
 $nav-tabs-link-active-color: #000;
 
+/* Reduce font size of ToC */
+/* Initially hide the ToC */
+/* Ensure the main content is responsive */
+
+
+
+/* Force main content to start fully centered */
+main {
+    margin: auto;  /* Centers the content */
+    transition: margin-right 0.3s ease-in-out;
+}
+
+/* Custom ToC styling */
+#custom-toc {
+    max-width: 260px;
+    font-size: 0.9em;
+}
+
+/* Footer stays below everything */
+footer {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Adjust the toggle button */
+#toggle-toc {
+    transition: background-color 0.2s;
+}
+
+#toggle-toc:hover {
+    background-color: #f0f0f0;
+}
 
 /*-- scss:variables --*/
-$font-primary: 'Roboto', Arial, sans-serif;
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+$font-primary: 'Roboto', Arial, sans-serif;
 
 html, body {
   font-family: $font-primary;
 }
 
-
 .navbar {
   border-bottom: 1px solid #ccc;
 }
 
-.navbar-logo {
-  max-height: 170px;
-  height: 170px;
-  border-radius: 0;
+/*
+.navbar-brand img {
+    height: 160px;
+    width: auto; 
 }
+*/
 
 .navbar-brand img {
-    height: 160px; /* Adjust height as needed */
-    width: auto;  /* Maintain aspect ratio */
+  height: 60px !important;
+  max-height: none !important;
+  width: auto !important;
+  max-width: none !important;
 }
+
+/*
+.navbar-brand img {
+    height: 160px; 
+    width: auto; 
+}
+*/
 /*
 .navbar-logo {
   height: 100px !important;
@@ -38,6 +104,16 @@ html, body {
   max-height: unset !important;
 }
 */
+
+.navbar-logo {
+  max-height: 1370px;
+  height: 1370px;
+  border-radius: 0;
+}
+
+
+
+
 h1 {
   font-size: 1.8rem;
 }
